@@ -1,4 +1,3 @@
-
 # Created by https://www.gitignore.io/api/node,maven,gradle,eclipse,intellij+iml
 
 ### Eclipse ###
@@ -103,6 +102,7 @@ cmake-build-debug/
 atlassian-ide-plugin.xml
 
 # Cursive Clojure plugin
+.idea
 .idea/replstate.xml
 
 # Crashlytics plugin (for Android Studio and IntelliJ)
