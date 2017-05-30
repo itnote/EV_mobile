@@ -27,7 +27,7 @@
                 <p>충전기정보</p><i class="fi icon-plug"></i></a>
         </li>
         <li>
-            <a href="">
+            <a href="/evcar/historySearch/list.mdo">
                 <p>이력조회</p><i class="fi icon-list"></i></a>
         </li>
         <li>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="HistorySearchDAO">
+    <typeAlias alias="SearchVO" type="egovframework.evcar.search.vo.SearchVO"/>
+    <typeAlias alias="HistorySearchVO" type="egovframework.evcar.historySearch.HistorySearchVO" />
+    <!--이력조회 화면 카운터-->
+    <select id="HistorySearchDAO.selectHistorySearchCount" parameterClass="SearchVO" resultClass="int">
+        SELECT
+        COUNT(*) AS totCnt
+        FROM   SETTLEMENT
+        WHERE  1=1
+    </select>
+    <!--이력조회 화면 리스트-->
+    <select id="HistorySearchDAO.selectHistorySearchList" parameterClass="SearchVO" resultClass="HistorySearchVO">
+        SELECT RNUM
+        ,USR_SNO  AS usrSno
+        ,SET_SNO  AS setSno
+        ,SET_TER  AS setTer
+        ,SID      AS sid
+        ,CID      AS cid
+        ,PDT      AS pdt
+        ,CAMT     AS camt
+        ,CWH      AS cwh
+        ,PTM      AS ptm
+        ,SET_MN   AS setMn
+        ,DIS_AMT  AS disAmt
+        ,SET_AMT  AS setAmt
+        ,UNCL_AMT AS unclAmt
+        ,SET_DT   AS setDt
+        ,UNC_DT   AS uncDt
+        FROM (
+        SELECT ROWNUM AS RNUM, TB.*
+        FROM (
+        SELECT
+         USR_SNO
+        ,SET_SNO
+        ,SET_TER
+        ,SID
+        ,CID
+        ,PDT
+        ,CAMT
+        ,CWH
+        ,PTM
+        ,SET_MN
+        ,DIS_AMT
+        ,SET_AMT
+        ,UNCL_AMT
+        ,SET_DT
+        ,UNC_DT
+        FROM SETTLEMENT
+        WHERE 1=1
+        ) TB
+        )
+        WHERE  1=1
+        AND RNUM  &gt; #firstIndex#
+        AND RNUM &lt;= #firstIndex# + #recordCountPerPage#
+    </select>
+</sqlMap>
