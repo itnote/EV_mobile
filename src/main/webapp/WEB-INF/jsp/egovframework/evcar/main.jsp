@@ -31,7 +31,7 @@
                 <p>이력조회</p><i class="fi icon-list"></i></a>
         </li>
         <li>
-            <a href="">
+            <a href="/evcar/alert/list.mdo">
                 <p>알림</p><i class="fi icon-ring "></i></a>
         </li>
         <li>

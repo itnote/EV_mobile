@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="AlertDAO">
+    <typeAlias alias="SearchVO" type="egovframework.evcar.search.vo.SearchVO"/>
+    <typeAlias alias="AlertVO" type="egovframework.evcar.alert.AlertVO" />
+    <!--알림화면카운터-->
+    <select id="AlertDAO.selectAlertCount" parameterClass="SearchVO" resultClass="int">
+        SELECT
+        COUNT(*) AS totCnt
+        FROM   ALARM_INFO
+        WHERE  1=1
+        AND USE_YN ='Y'
+    </select>
+    <!--알림화면리스트-->
+    <select id="AlertDAO.selectAlertList" parameterClass="SearchVO" resultClass="AlertVO">
+        SELECT RNUM
+            ,ACD        AS acd
+            ,ALARM      AS alarm
+            ,LVL        AS lvl
+            ,MEMO       AS memo
+            ,USE_YN     AS useYn
+            ,CREATED_AT AS createdAt
+            ,CREATED_BY AS createdBy
+            ,UPDATED_AT AS updatedAt
+            ,UPDATED_BY AS updatedBy
+            FROM (
+            SELECT ROWNUM AS RNUM, TB.*
+            FROM (
+            SELECT
+              ACD
+             ,ALARM
+             ,LVL
+             ,MEMO
+             ,USE_YN
+             ,CREATED_AT
+             ,CREATED_BY
+             ,UPDATED_AT
+             ,UPDATED_BY
+            FROM ALARM_INFO
+            WHERE 1=1
+            AND USE_YN ='Y'
+            ) TB
+            )
+            WHERE  1=1
+            AND RNUM  &gt; #firstIndex#
+            AND RNUM &lt;= #firstIndex# + #recordCountPerPage#
+    </select>
+</sqlMap>

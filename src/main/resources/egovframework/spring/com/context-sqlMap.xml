@@ -14,7 +14,7 @@
 		</property>
 		<property name="mappingLocations">
 			<list>
-				<value>classpath:/egovframework/evcar/**/dao/${Globals.DbType}/*.xml</value>
+				<value>classpath:/egovframework/evcar/**/dao/*.xml</value>
 			</list>
 		</property>
 		<property name="dataSource" ref="egov.dataSource"/>
