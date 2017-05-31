@@ -51,7 +51,7 @@
                 <p>FAQ</p><i class="fi icon-faq"></i></a>
         </li>
         <li>
-            <a href="">
+            <a href="/evcar/bbs/list.mdo?bbsId=BBSMSTR_000000000001">
                 <p>공지사항</p><i class="fi icon-notice"></i></a>
         </li>
         <li>
