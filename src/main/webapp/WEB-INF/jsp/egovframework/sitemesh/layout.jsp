@@ -8,6 +8,12 @@ switch (servletPath){
     case "/main.mdo":
         bodyClass="main";
         break;
+    case "/user/login.mdo":
+        bodyClass="login";
+        break;
+    case "/user/loginAct.mdo":
+        bodyClass="login";
+        break;
     default:
         bodyClass="sub";
         break;
@@ -35,14 +41,14 @@ switch (servletPath){
 <!-- E:skip_navi -->
 
 <!-- S:header -->
-<% if("main".equals(bodyClass)) {%>
+<% if(!"sub".equals(bodyClass)) {%>
 <header id="header">
     <h1><a href="/">중속충전기</a></h1>
 </header>
 <% } else { %>
 <header id="header">
     <h1 class="sr-only"><a href="/">중속충전기</a></h1>
-    <h2><a href="/">알림</a></h2>
+    <h2><a href="/">메뉴명</a></h2>
 
     <button class="back" href="">뒤로가기<i class="fi icon-back"></i></button>
     <button class="menu" href="">메뉴열기<i class="fi icon-menu"></i></button>

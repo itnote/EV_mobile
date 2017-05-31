@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="EvcarUsrDAO">
+
+    <typeAlias alias="EvcarUsrVO" type="egovframework.evcar.user.vo.EvcarUsrVO"/>
+
+    <select id="EvcarUsrDAO.loginAction" resultClass="EvcarUsrVO" parameterClass="EvcarUsrVO">
+        SELECT
+        USR_SNO as usrSno
+        , USR_CARD as usrCard
+        , ATH as ath
+        , USR as usr
+        , USR_NM as usrNm
+        , USR_ID as usrId
+        , USR_PWD as usrPwd
+        , CAMT as camt
+        , CWH as cwh
+        , PYN as pyn
+        , TOT_UNCL_AMT as totUnclAmt
+        , TOT_SETAMT as totSetamt
+        , USE_YN as useYn
+        , CREATED_AT as createdAt
+        , CREATED_BY as createdBy
+        , UPDATED_AT as updatedAt
+        , UPDATED_BY as updatedBy
+
+        FROM USR_ATH
+
+        WHERE 1=1
+        AND USE_YN = 'Y'
+        AND USR_ID = #usrId#
+        AND USR_PWD = #usrPwd#
+    </select>
+
+    <insert id="EvcarUsrDAO.joinUserData" parameterClass="EvcarUsrVO">
+        INSERT
+        INTO USR_ATH (
+             USR_SNO
+            ,ATH
+            ,USR_NM
+            ,USR_ID
+            ,USR_PWD
+            ,PYN
+            ,USE_YN
+            ,CREATED_AT
+            ,CREATED_BY
+        )
+        VALUES
+        (
+             #usrSno#
+            ,'2'
+            ,#usrNm#
+            ,#usrId#
+            ,#usrPwd#
+            ,'2'
+            ,'Y'
+            ,SYSDATE
+            ,#createdBy#
+        )
+    </insert>
+
+</sqlMap>
