@@ -25,4 +25,7 @@ public class HistorySearchServiceImpl implements HistorySearchService{
     public List<HistorySearchVO> selectHistorySearchList(SearchVO vo) {
         return historySearchDAO.selectHistorySearchList(vo);
     }
+    public HistorySearchVO ViewHistorySearch(HistorySearchVO historySearchVO) {
+        return historySearchDAO.ViewHistorySearch(historySearchVO);
+    }
 }

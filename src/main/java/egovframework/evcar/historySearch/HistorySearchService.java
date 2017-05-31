@@ -14,4 +14,7 @@ public interface HistorySearchService {
 
     /** 이력조회 화면 리스트 **/
     public List<HistorySearchVO> selectHistorySearchList(SearchVO vo);
+
+    /** 이력조회 화면 상세 **/
+    public HistorySearchVO ViewHistorySearch(HistorySearchVO historySearchVO);
 }

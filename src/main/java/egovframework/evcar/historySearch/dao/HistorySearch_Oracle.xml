@@ -56,4 +56,26 @@
         AND RNUM  &gt; #firstIndex#
         AND RNUM &lt;= #firstIndex# + #recordCountPerPage#
     </select>
+    <!--이력조회 화면 상세-->
+    <select id="HistorySearchDAO.ViewHistorySearch" parameterClass="HistorySearchVO" resultClass="HistorySearchVO">
+        SELECT
+         USR_SNO  AS usrSno
+        ,SET_SNO  AS setSno
+        ,SET_TER  AS setTer
+        ,SID      AS sid
+        ,CID      AS cid
+        ,PDT      AS pdt
+        ,CAMT     AS camt
+        ,CWH      AS cwh
+        ,PTM      AS ptm
+        ,SET_MN   AS setMn
+        ,DIS_AMT  AS disAmt
+        ,SET_AMT  AS setAmt
+        ,UNCL_AMT AS unclAmt
+        ,SET_DT   AS setDt
+        ,UNC_DT   AS uncDt
+        FROM SETTLEMENT
+        WHERE 1=1
+        AND SET_SNO =#setSno#
+    </select>
 </sqlMap>

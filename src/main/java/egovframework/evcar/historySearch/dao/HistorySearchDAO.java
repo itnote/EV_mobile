@@ -22,4 +22,8 @@ public class HistorySearchDAO extends EgovComAbstractDAO {
     public List<HistorySearchVO> selectHistorySearchList(SearchVO vo){
         return (List<HistorySearchVO>) list("HistorySearchDAO.selectHistorySearchList", vo);
     }
+    /** 이력조회 화면 상세 **/
+    public HistorySearchVO ViewHistorySearch(HistorySearchVO historySearchVO){
+        return (HistorySearchVO) selectByPk("HistorySearchDAO.ViewHistorySearch", historySearchVO);
+    }
 }

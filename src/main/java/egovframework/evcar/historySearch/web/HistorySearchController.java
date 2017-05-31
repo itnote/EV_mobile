@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -37,7 +38,7 @@ public class HistorySearchController {
      * @throws Exception
      */
     @RequestMapping({ "/list.*" })
-    public String alertList(HttpServletRequest request, HttpServletResponse response, ModelMap model,
+    public String HistoryList(HttpServletRequest request, HttpServletResponse response, ModelMap model,
                             @ModelAttribute("SearchVO") SearchVO vo) throws Exception{
         PaginationInfo paginationInfo = new PaginationInfo();
 
@@ -63,5 +64,23 @@ public class HistorySearchController {
         model.addAttribute("SearchVO", vo);
 
         return "egovframework/evcar/historySearch/list";
+    }
+    /**
+     * 이력조회 상세화면
+     * @param request
+     * @param response
+     * @param model
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping({ "/info.*" })
+    public String HistoryView(HttpServletRequest request, HttpServletResponse response, ModelMap model,
+                              @ModelAttribute("HistorySearchVO") HistorySearchVO historySearchVO) throws Exception {
+
+        historySearchVO = historySearchService.ViewHistorySearch(historySearchVO);
+
+        model.addAttribute("HistorySearchVO",historySearchVO);
+
+        return "egovframework/evcar/historySearch/historyInfo/info";
     }
 }
