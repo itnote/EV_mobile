@@ -69,4 +69,33 @@
         AND RNUM  &gt; #firstIndex#
         AND RNUM &lt;= #firstIndex# + #recordCountPerPage#
     </select>
+    <!--게시판 화면 상세-->
+    <select id="BbsDAO.ViewBbs" parameterClass="BbsVO" resultClass="BbsVO">
+        SELECT
+          BBS_ID AS bbsId
+        , NTT_ID AS nttId
+        , NTT_NO AS nttNo
+        , NTT_SJ AS nttSj
+        , NTT_CN AS nttCn
+        , ANSWER_AT AS answerAt
+        , PARNTSCTT_NO AS parntscttNo
+        , ANSWER_LC AS answerLc
+        , SORT_ORDR AS sortOrdr
+        , RDCNT AS rdcnt
+        , USE_AT AS useAt
+        , NTCE_BGNDE AS ntceBgnde
+        , NTCE_ENDDE AS ntceEndde
+        , NTCR_ID AS ntcrId
+        , NTCR_NM AS ntcrNm
+        , PASSWORD AS password
+        , ATCH_FILE_ID AS atchFileId
+        , FRST_REGIST_PNTTM AS frstRegistPnttm
+        , FRST_REGISTER_ID AS frstRegisterId
+        , LAST_UPDT_PNTTM AS lastUpdtPnttm
+        , LAST_UPDUSR_ID AS lastUpdusrId
+        FROM COMTNBBS
+        WHERE 1=1
+        AND BBS_ID =#bbsId#
+        AND NTT_ID =#nttId#
+    </select>
 </sqlMap>

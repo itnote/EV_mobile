@@ -2,7 +2,6 @@ package egovframework.evcar.bbs.dao;
 
 import egovframework.com.cmm.service.impl.EgovComAbstractDAO;
 import egovframework.evcar.bbs.BbsVO;
-import egovframework.evcar.search.vo.SearchVO;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -21,5 +20,10 @@ public class BbsDAO extends EgovComAbstractDAO {
     /** 게시판 화면 리스트 **/
     public List<BbsVO> selectBbsList(BbsVO vo){
         return (List<BbsVO>) list("BbsDAO.selectBbsList", vo);
+    }
+
+    /** 게시판 상세 화면 **/
+    public BbsVO ViewBbs(BbsVO bbsVO){
+        return (BbsVO) selectByPk("BbsDAO.ViewBbs", bbsVO);
     }
 }

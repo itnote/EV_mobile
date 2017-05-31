@@ -40,7 +40,7 @@ public class SearchVO extends ComDefaultVO {
     private int pageIndex = 1;
     private int pageUnit = 10;
     private int officepageUnit = 1;
-    private int pageSize = 10;
+    private int pageSize = 5;
     private int firstIndex = 1;
     private int lastIndex = 1;
     private int recordCountPerPage = 10;

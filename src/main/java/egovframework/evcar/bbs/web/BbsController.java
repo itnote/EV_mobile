@@ -63,4 +63,24 @@ public class BbsController {
 
         return "egovframework/evcar/bbs/list";
     }
+    /**
+     * 게시판 상세화면
+     * @param request
+     * @param response
+     * @param model
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping({ "/info.*" })
+    public String bbsView(HttpServletRequest request, HttpServletResponse response, ModelMap model,
+                              @ModelAttribute("BbsVO") BbsVO bbsVO) throws Exception {
+        // TODO: 페이징 개선필요
+        int pageIndex = bbsVO.getPageIndex();
+        bbsVO = bbsService.ViewBbs(bbsVO);
+        bbsVO.setPageIndex(pageIndex);
+
+        model.addAttribute("BbsVO",bbsVO);
+
+        return "egovframework/evcar/bbs/info";
+    }
 }

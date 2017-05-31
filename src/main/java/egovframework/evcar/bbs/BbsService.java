@@ -12,4 +12,7 @@ public interface BbsService {
 
     /** 게시판 화면 리스트 **/
     public List<BbsVO> selectBbsList(BbsVO vo);
+
+    /** 게시판 화면 상세 **/
+    public BbsVO ViewBbs(BbsVO bbsVO);
 }

@@ -24,4 +24,8 @@ public class BbsServiceImpl implements BbsService{
     public List<BbsVO> selectBbsList(BbsVO vo) {
         return bbsDAO.selectBbsList(vo);
     }
+
+    public BbsVO ViewBbs(BbsVO bbsVO) {
+        return bbsDAO.ViewBbs(bbsVO);
+    }
 }

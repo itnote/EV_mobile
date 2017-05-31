@@ -16,12 +16,14 @@
 	<!-- For Pagination Tag -->
 	<bean id="imageRenderer" class="egovframework.com.cmm.ImagePaginationRenderer"/>
 	<bean id="mblImageRenderer" class="egovframework.mbl.com.cmm.EgovImgPaginationRenderer"/>
+	<bean id="pageRenderer" class="egovframework.evcar.common.Pagination.PaginationController"/>
 
 	<bean id="paginationManager" class="egovframework.rte.ptl.mvc.tags.ui.pagination.DefaultPaginationManager">
 		<property name="rendererType">
 			<map>
 				<entry key="image" value-ref="imageRenderer"/>
 				<entry key="mblImage" value-ref="mblImageRenderer"/>
+				<entry key="pageImage" value-ref="pageRenderer"/>
 			</map>
 		</property>
 	</bean>

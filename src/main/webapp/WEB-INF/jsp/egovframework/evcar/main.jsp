@@ -43,11 +43,11 @@
                 <p>서비스관리</p><i class="fi icon-service"></i></a>
         </li>
         <li>
-            <a href="">
+            <a href="/evcar/bbs/list.mdo?bbsId=BBSMSTR_000000000004">
                 <p>전기차소식</p><i class="fi icon-ev"></i></a>
         </li>
         <li>
-            <a href="">
+            <a href="/evcar/bbs/list.mdo?bbsId=BBSMSTR_000000000003">
                 <p>FAQ</p><i class="fi icon-faq"></i></a>
         </li>
         <li>
@@ -55,7 +55,7 @@
                 <p>공지사항</p><i class="fi icon-notice"></i></a>
         </li>
         <li>
-            <a href="">
+            <a href="/evcar/bbs/list.mdo?bbsId=BBSMSTR_000000000002">
                 <p>도움말</p><i class="fi icon-help"></i></a>
         </li>
     </ul>
