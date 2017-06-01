@@ -56,17 +56,51 @@ switch (servletPath){
 </header>
 <nav id="sub-menu">
     <ul>
-        <li><a href="">로그인</a></li>
-        <li><a href="">카드관리</a></li>
-        <li><a href="">충전기정보</a></li>
-        <li><a href="">이력조회</a></li>
-        <li><a href="">알림</a></li>
-        <li><a href="">회원가입</a></li>
-        <li><a href="">서비스관리</a></li>
-        <li><a href="">전기차소식</a></li>
-        <li><a href="">FAQ</a></li>
-        <li><a href="">공지사항</a></li>
-        <li><a href="">도움말</a></li>
+        <c:if test="${empty loginVO}">
+        <li>
+            <a href="<c:url value="/user/login.mdo"/>">로그인</a>
+        </li>
+        </c:if>
+        <c:if test="${!empty loginVO}">
+            <li>
+                <a href="<c:url value="/user/logout.mdo"/>">로그아웃</a>
+            </li>
+        </c:if>
+        <c:if test="${!empty loginVO}">
+        <li>
+            <a href="">카드관리</a>
+        </li>
+        </c:if>
+        <li>
+            <a href="">충전기정보</a>
+        </li>
+        <c:if test="${!empty loginVO}">
+        <li>
+            <a href="/evcar/historySearch/list.mdo">이력조회</a>
+        </li>
+        </c:if>
+        <c:if test="${!empty loginVO}">
+        <li>
+            <a href="/evcar/alert/list.mdo">알림</a>
+        </li>
+        </c:if>
+        <c:if test="${empty loginVO}">
+        <li>
+            <a href="<c:url value="/user/join.mdo"/>">회원가입</a>
+        </li>
+        </c:if>
+        <li>
+            <a href="/evcar/bbs/list.mdo?bbsId=BBSMSTR_000000000004">전기차소식</a>
+        </li>
+        <li>
+            <a href="/evcar/bbs/list.mdo?bbsId=BBSMSTR_000000000003">FAQ</a>
+        </li>
+        <li>
+            <a href="/evcar/bbs/list.mdo?bbsId=BBSMSTR_000000000001">공지사항</a>
+        </li>
+        <li>
+            <a href="/evcar/bbs/list.mdo?bbsId=BBSMSTR_000000000002">도움말</a>
+        </li>
     </ul>
     <button class="close" herf="">메뉴닫기<i class="fi icon-close"></i></button>
 </nav>
