@@ -4,7 +4,9 @@ import egovframework.com.utl.sim.service.EgovFileScrty;
 import egovframework.evcar.user.dao.EvcarUsrDAO;
 import egovframework.evcar.user.service.EvcarUsrService;
 import egovframework.evcar.user.vo.EvcarUsrVO;
+import egovframework.evcar.user.vo.UsrCardVO;
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -41,13 +43,23 @@ public class EvcarUsrServiceImpl implements EvcarUsrService {
     public EvcarUsrVO joinUserData(EvcarUsrVO evcarUsrVO) throws Exception {
 
         // 고유키 발급
-        evcarUsrVO.setUsrSno(userAthKey.getNextStringId());
+        String userUniqKey = userAthKey.getNextStringId();
+        evcarUsrVO.setUsrSno(userUniqKey);
 
         // 입력한 비밀번호를 암호화한다.
         String enpassword = EgovFileScrty.encryptPassword(evcarUsrVO.getUsrPwd(), evcarUsrVO.getUsrId());
         evcarUsrVO.setUsrPwd(enpassword);
 
         evcarUserDAO.joinUserData(evcarUsrVO);
+
+        for (UsrCardVO vo : evcarUsrVO.getUsrCardList()) {
+            if(StringUtils.isEmpty(vo.getCardSno())){
+                logger.debug("카드번호가 없습니다.");
+                break;
+            }
+            vo.setUsrSno(userUniqKey);
+            evcarUserDAO.insertUserCard(vo);
+        }
 
         return evcarUsrVO;
     }

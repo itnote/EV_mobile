@@ -33,6 +33,7 @@ switch (servletPath){
     <!-- javaScript  -->
     <script src="<c:url value="/assets/js/jquery-1.11.3.min.js"/>"></script>
     <script src="<c:url value="/assets/js/common.js"/>"></script>
+    <script src="<c:url value="/assets/js/validate.js"/>"></script>
 </head>
 <body class="<%=bodyClass%>">
 
@@ -48,7 +49,7 @@ switch (servletPath){
 <% } else { %>
 <header id="header">
     <h1 class="sr-only"><a href="/">중속충전기</a></h1>
-    <h2><a href="/">메뉴명</a></h2>
+    <h2><a href="<c:url value="/main.mdo"/>">메뉴명</a></h2>
 
     <button class="back" href="">뒤로가기<i class="fi icon-back"></i></button>
     <button class="menu" href="">메뉴열기<i class="fi icon-menu"></i></button>

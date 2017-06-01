@@ -94,13 +94,36 @@ public class EvcarUsrController extends BaseController {
     @RequestMapping(value = "/join.mdo")
     public String joinView(HttpServletRequest request, ModelMap model){
 
-        return "/egovframework/evcar/user/join";
+        return "egovframework/evcar/user/join";
     }
 
+    /**
+     * 사용자 회원가입 처리 GET
+     * @param request
+     * @param model
+     * @param evcarUsrVO
+     * @return
+     */
+    @RequestMapping(value = "/joinAct.mdo", method = RequestMethod.GET)
+    public String joinAct(HttpServletRequest request, ModelMap model, EvcarUsrVO evcarUsrVO) {
+
+        return "egovframework/evcar/user/join";
+    }
+
+    /***
+     * 사용자 회원가입 처리 POST
+     * @param request
+     * @param model
+     * @param evcarUsrVO
+     * @param redirectAttr
+     * @return
+     * @throws Exception
+     */
     @RequestMapping(value = "/joinAct.mdo", method = RequestMethod.POST)
     public String joinAct(HttpServletRequest request, ModelMap model, EvcarUsrVO evcarUsrVO, RedirectAttributes redirectAttr) throws Exception {
 
         evcarUsrService.joinUserData(evcarUsrVO);
+
         redirectAttr.addFlashAttribute("message", egovMessageSource.getMessage("cop.request.msg"));
         return "redirect:/user/login.mdo";
     }

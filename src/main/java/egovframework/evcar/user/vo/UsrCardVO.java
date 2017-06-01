@@ -9,6 +9,8 @@ public class UsrCardVO {
     private String cardCd;
     private String cardSno;
     private String useYn;
+    private String cardRegYear;
+    private String cardRegMonth;
     private String cardRegYmd;
     private String resPayYmd;
 
@@ -42,6 +44,22 @@ public class UsrCardVO {
 
     public void setUseYn(String useYn) {
         this.useYn = useYn;
+    }
+
+    public String getCardRegYear() {
+        return cardRegYear;
+    }
+
+    public void setCardRegYear(String cardRegYear) {
+        this.cardRegYear = cardRegYear;
+    }
+
+    public String getCardRegMonth() {
+        return cardRegMonth;
+    }
+
+    public void setCardRegMonth(String cardRegMonth) {
+        this.cardRegMonth = cardRegMonth;
     }
 
     public String getCardRegYmd() {

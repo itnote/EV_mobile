@@ -19,7 +19,7 @@
 
     <p class="btn-set">
         <a class="btn main" href="javascript:;" onclick="loginAct()">로그인</a>
-        <a class="btn sub" href="">회원가입</a>
+        <a class="btn sub" href="<c:url value="/user/join.mdo"/>">회원가입</a>
     </p>
 </fieldset>
 </form>

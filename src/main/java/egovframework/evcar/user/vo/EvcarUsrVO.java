@@ -14,6 +14,9 @@ public class EvcarUsrVO {
     private String usrNm;
     private String usrId;
     private String usrPwd;
+    private String usrCel;
+    private String usrEmail;
+
     private int camt;
     private int cwh;
     private String pyn;
@@ -25,7 +28,7 @@ public class EvcarUsrVO {
     private String updatedAt;
     private String updatedBy;
 
-    private List<UsrCardVO> usrCardVOList;
+    private List<UsrCardVO> usrCardList;
 
     public String getUsrSno() {
         return usrSno;
@@ -81,6 +84,22 @@ public class EvcarUsrVO {
 
     public void setUsrPwd(String usrPwd) {
         this.usrPwd = usrPwd;
+    }
+
+    public String getUsrCel() {
+        return usrCel;
+    }
+
+    public void setUsrCel(String usrCel) {
+        this.usrCel = usrCel;
+    }
+
+    public String getUsrEmail() {
+        return usrEmail;
+    }
+
+    public void setUsrEmail(String usrEmail) {
+        this.usrEmail = usrEmail;
     }
 
     public int getCamt() {
@@ -163,11 +182,11 @@ public class EvcarUsrVO {
         this.updatedBy = updatedBy;
     }
 
-    public List<UsrCardVO> getUsrCardVOList() {
-        return usrCardVOList;
+    public List<UsrCardVO> getUsrCardList() {
+        return usrCardList;
     }
 
-    public void setUsrCardVOList(List<UsrCardVO> usrCardVOList) {
-        this.usrCardVOList = usrCardVOList;
+    public void setUsrCardList(List<UsrCardVO> usrCardList) {
+        this.usrCardList = usrCardList;
     }
 }

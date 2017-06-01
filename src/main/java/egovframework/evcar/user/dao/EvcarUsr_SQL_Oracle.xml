@@ -4,6 +4,7 @@
 <sqlMap namespace="EvcarUsrDAO">
 
     <typeAlias alias="EvcarUsrVO" type="egovframework.evcar.user.vo.EvcarUsrVO"/>
+    <typeAlias alias="UsrCardVO" type="egovframework.evcar.user.vo.UsrCardVO"/>
 
     <select id="EvcarUsrDAO.loginAction" resultClass="EvcarUsrVO" parameterClass="EvcarUsrVO">
         SELECT
@@ -41,7 +42,8 @@
             ,USR_NM
             ,USR_ID
             ,USR_PWD
-            ,PYN
+            ,USR_CEL
+            ,USR_EMAIL
             ,USE_YN
             ,CREATED_AT
             ,CREATED_BY
@@ -53,10 +55,30 @@
             ,#usrNm#
             ,#usrId#
             ,#usrPwd#
-            ,'2'
+            ,#usrCel#
+            ,#usrEmail#
             ,'Y'
             ,SYSDATE
             ,#createdBy#
+        )
+    </insert>
+
+    <insert id="EvcarUsrDAO.insertUserCard" parameterClass="UsrCardVO">
+        INSERT
+        INTO   USR_CARD (
+             CARD_SNO
+            ,CARD_CD
+            ,USR_SNO
+            ,USE_YN
+            ,CARD_REG_YMD
+            ,RES_PAY_YMD
+        ) VALUES (
+             #cardSno#
+            ,#cardCd#
+            ,#usrSno#
+            ,'Y'
+            ,#cardRegYear# || '/' ||#cardRegMonth#
+            ,#resPayYmd#
         )
     </insert>
 
