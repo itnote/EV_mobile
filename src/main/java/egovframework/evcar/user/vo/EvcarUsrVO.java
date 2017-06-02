@@ -1,5 +1,7 @@
 package egovframework.evcar.user.vo;
 
+import egovframework.evcar.card.vo.UsrCardVO;
+
 import java.util.List;
 
 /**
@@ -17,11 +19,12 @@ public class EvcarUsrVO {
     private String usrCel;
     private String usrEmail;
 
-    private int camt;
-    private int cwh;
+    private String camt;
+    private String cwh;
     private String pyn;
-    private int totUnclAmt;
-    private int totSetamt;
+    private String totUnclAmt;
+    private String totSetamt;
+    private String totChw;
     private String useYn;
     private String createdAt;
     private String createdBy;
@@ -102,19 +105,19 @@ public class EvcarUsrVO {
         this.usrEmail = usrEmail;
     }
 
-    public int getCamt() {
+    public String getCamt() {
         return camt;
     }
 
-    public void setCamt(int camt) {
+    public void setCamt(String camt) {
         this.camt = camt;
     }
 
-    public int getCwh() {
+    public String getCwh() {
         return cwh;
     }
 
-    public void setCwh(int cwh) {
+    public void setCwh(String cwh) {
         this.cwh = cwh;
     }
 
@@ -126,20 +129,28 @@ public class EvcarUsrVO {
         this.pyn = pyn;
     }
 
-    public int getTotUnclAmt() {
+    public String getTotUnclAmt() {
         return totUnclAmt;
     }
 
-    public void setTotUnclAmt(int totUnclAmt) {
+    public void setTotUnclAmt(String totUnclAmt) {
         this.totUnclAmt = totUnclAmt;
     }
 
-    public int getTotSetamt() {
+    public String getTotSetamt() {
         return totSetamt;
     }
 
-    public void setTotSetamt(int totSetamt) {
+    public void setTotSetamt(String totSetamt) {
         this.totSetamt = totSetamt;
+    }
+
+    public String getTotChw() {
+        return totChw;
+    }
+
+    public void setTotChw(String totChw) {
+        this.totChw = totChw;
     }
 
     public String getUseYn() {

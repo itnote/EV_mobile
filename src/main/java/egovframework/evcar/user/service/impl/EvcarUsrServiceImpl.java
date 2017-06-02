@@ -1,10 +1,11 @@
 package egovframework.evcar.user.service.impl;
 
 import egovframework.com.utl.sim.service.EgovFileScrty;
+import egovframework.evcar.card.dao.CardDAO;
 import egovframework.evcar.user.dao.EvcarUsrDAO;
 import egovframework.evcar.user.service.EvcarUsrService;
 import egovframework.evcar.user.vo.EvcarUsrVO;
-import egovframework.evcar.user.vo.UsrCardVO;
+import egovframework.evcar.card.vo.UsrCardVO;
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -23,6 +24,9 @@ public class EvcarUsrServiceImpl implements EvcarUsrService {
 
     @Resource(name="EvcarUsrDAO")
     private EvcarUsrDAO evcarUserDAO;
+
+    @Resource(name="CardDAO")
+    private CardDAO cardDAO;
 
     @Resource(name="userAthKeyIdGnrService")
     private EgovIdGnrService userAthKey;
@@ -58,7 +62,7 @@ public class EvcarUsrServiceImpl implements EvcarUsrService {
                 break;
             }
             vo.setUsrSno(userUniqKey);
-            evcarUserDAO.insertUserCard(vo);
+            cardDAO.insertUserCard(vo);
         }
 
         return evcarUsrVO;

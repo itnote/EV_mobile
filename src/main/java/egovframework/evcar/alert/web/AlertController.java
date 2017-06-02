@@ -3,7 +3,8 @@ package egovframework.evcar.alert.web;
 import egovframework.com.cmm.SessionVO;
 import egovframework.evcar.alert.AlertService;
 import egovframework.evcar.alert.AlertVO;
-import egovframework.evcar.search.vo.SearchVO;
+import egovframework.evcar.common.BaseController;
+import egovframework.evcar.common.vo.BaseVO;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -22,7 +23,7 @@ import java.util.List;
 @Controller
 @SessionAttributes(types = { SessionVO.class })
 @RequestMapping({ "/evcar/alert" })
-public class AlertController{
+public class AlertController extends BaseController {
 
     @Resource(name = "AlertService")
     private AlertService alertService;
@@ -38,7 +39,7 @@ public class AlertController{
      */
     @RequestMapping({ "/list.*" })
     public String alertList(HttpServletRequest request, HttpServletResponse response, ModelMap model,
-                              @ModelAttribute("SearchVO") SearchVO vo) throws Exception{
+                              @ModelAttribute("SearchVO") BaseVO vo) throws Exception{
         PaginationInfo paginationInfo = new PaginationInfo();
 
         paginationInfo.setCurrentPageNo(vo.getPageIndex());

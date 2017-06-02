@@ -2,10 +2,10 @@
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
 
 <sqlMap namespace="AlertDAO">
-    <typeAlias alias="SearchVO" type="egovframework.evcar.search.vo.SearchVO"/>
+    <typeAlias alias="BaseVO" type="egovframework.evcar.common.vo.BaseVO"/>
     <typeAlias alias="AlertVO" type="egovframework.evcar.alert.AlertVO" />
     <!--알림화면카운터-->
-    <select id="AlertDAO.selectAlertCount" parameterClass="SearchVO" resultClass="int">
+    <select id="AlertDAO.selectAlertCount" parameterClass="BaseVO" resultClass="int">
         SELECT
         COUNT(*) AS totCnt
         FROM   ALARM_INFO
@@ -13,7 +13,7 @@
         AND USE_YN ='Y'
     </select>
     <!--알림화면리스트-->
-    <select id="AlertDAO.selectAlertList" parameterClass="SearchVO" resultClass="AlertVO">
+    <select id="AlertDAO.selectAlertList" parameterClass="BaseVO" resultClass="AlertVO">
         SELECT RNUM
             ,ACD        AS acd
             ,ALARM      AS alarm

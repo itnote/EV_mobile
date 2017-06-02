@@ -1,7 +1,7 @@
 package egovframework.evcar.alert;
 
 import egovframework.evcar.alert.dao.AlertDAO;
-import egovframework.evcar.search.vo.SearchVO;
+import egovframework.evcar.common.vo.BaseVO;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -17,12 +17,12 @@ public class AlertServiceImpl implements AlertService{
     private AlertDAO alertDAO;
 
     @Override
-    public int selectAlertCount(SearchVO vo) {
+    public int selectAlertCount(BaseVO vo) {
         return alertDAO.selectAlertCount(vo);
     }
 
     @Override
-    public List<AlertVO> selectAlertList(SearchVO vo) {
+    public List<AlertVO> selectAlertList(BaseVO vo) {
         return alertDAO.selectAlertList(vo);
     }
 }

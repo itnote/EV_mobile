@@ -1,6 +1,6 @@
 package egovframework.evcar.alert;
 
-import egovframework.evcar.search.vo.SearchVO;
+import egovframework.evcar.common.vo.BaseVO;
 
 import java.util.List;
 
@@ -10,8 +10,8 @@ import java.util.List;
 public interface AlertService {
 
     /** 알림 화면 카운터  **/
-    public int selectAlertCount(SearchVO vo);
+    public int selectAlertCount(BaseVO vo);
 
     /** 알림 화면 리스트 **/
-    public List<AlertVO> selectAlertList(SearchVO vo);
+    public List<AlertVO> selectAlertList(BaseVO vo);
 }

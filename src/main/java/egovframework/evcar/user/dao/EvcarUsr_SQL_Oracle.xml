@@ -4,11 +4,11 @@
 <sqlMap namespace="EvcarUsrDAO">
 
     <typeAlias alias="EvcarUsrVO" type="egovframework.evcar.user.vo.EvcarUsrVO"/>
-    <typeAlias alias="UsrCardVO" type="egovframework.evcar.user.vo.UsrCardVO"/>
+    <typeAlias alias="UsrCardVO" type="egovframework.evcar.card.vo.UsrCardVO"/>
 
     <select id="EvcarUsrDAO.loginAction" resultClass="EvcarUsrVO" parameterClass="EvcarUsrVO">
         SELECT
-        USR_SNO as usrSno
+          USR_SNO as usrSno
         , USR_CARD as usrCard
         , ATH as ath
         , USR as usr
@@ -20,6 +20,7 @@
         , PYN as pyn
         , TOT_UNCL_AMT as totUnclAmt
         , TOT_SETAMT as totSetamt
+        , TOT_CHW as totChw
         , USE_YN as useYn
         , CREATED_AT as createdAt
         , CREATED_BY as createdBy
@@ -60,25 +61,6 @@
             ,'Y'
             ,SYSDATE
             ,#createdBy#
-        )
-    </insert>
-
-    <insert id="EvcarUsrDAO.insertUserCard" parameterClass="UsrCardVO">
-        INSERT
-        INTO   USR_CARD (
-             CARD_SNO
-            ,CARD_CD
-            ,USR_SNO
-            ,USE_YN
-            ,CARD_REG_YMD
-            ,RES_PAY_YMD
-        ) VALUES (
-             #cardSno#
-            ,#cardCd#
-            ,#usrSno#
-            ,'Y'
-            ,#cardRegYear# || '/' ||#cardRegMonth#
-            ,#resPayYmd#
         )
     </insert>
 

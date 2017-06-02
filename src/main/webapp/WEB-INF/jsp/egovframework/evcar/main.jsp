@@ -24,12 +24,12 @@
 
         <c:if test="${!empty loginVO}">
         <li>
-            <a href="">
+            <a href="<c:url value="/card/status.mdo"/>">
                 <p>카드관리</p><i class="fi icon-card"></i></a>
         </li>
         </c:if>
         <li>
-            <a href="">
+            <a href="<c:url value="/charger/station.mdo"/>">
                 <p>충전기정보</p><i class="fi icon-plug"></i></a>
         </li>
         <c:if test="${!empty loginVO}">

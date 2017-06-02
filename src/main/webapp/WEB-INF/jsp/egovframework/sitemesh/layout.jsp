@@ -33,7 +33,11 @@ switch (servletPath){
     <!-- javaScript  -->
     <script src="<c:url value="/assets/js/jquery-1.11.3.min.js"/>"></script>
     <script src="<c:url value="/assets/js/common.js"/>"></script>
+    <script src="<c:url value="/assets/js/evcar.js"/>"></script>
     <script src="<c:url value="/assets/js/validate.js"/>"></script>
+
+    <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=21b110c76efc5127c52ddc183aa80a46"></script>
+    <script src="<c:url value="/assets/js/initMap.js"/>"></script>
 </head>
 <body class="<%=bodyClass%>">
 

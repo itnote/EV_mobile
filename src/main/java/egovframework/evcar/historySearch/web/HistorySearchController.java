@@ -1,9 +1,10 @@
 package egovframework.evcar.historySearch.web;
 
 import egovframework.com.cmm.SessionVO;
+import egovframework.evcar.common.BaseController;
+import egovframework.evcar.common.vo.BaseVO;
 import egovframework.evcar.historySearch.HistorySearchService;
 import egovframework.evcar.historySearch.HistorySearchVO;
-import egovframework.evcar.search.vo.SearchVO;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,7 +23,7 @@ import java.util.List;
 @Controller
 @SessionAttributes(types = { SessionVO.class })
 @RequestMapping({ "/evcar/historySearch" })
-public class HistorySearchController {
+public class HistorySearchController  extends BaseController {
 
     @Resource(name = "HistorySearchService")
     private HistorySearchService historySearchService;
@@ -39,7 +39,7 @@ public class HistorySearchController {
      */
     @RequestMapping({ "/list.*" })
     public String HistoryList(HttpServletRequest request, HttpServletResponse response, ModelMap model,
-                            @ModelAttribute("SearchVO") SearchVO vo) throws Exception{
+                            @ModelAttribute("SearchVO") BaseVO vo) throws Exception{
         PaginationInfo paginationInfo = new PaginationInfo();
 
         paginationInfo.setCurrentPageNo(vo.getPageIndex());

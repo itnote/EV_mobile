@@ -56,25 +56,25 @@ public class BaseController {
     /**
      * PAGING 처리
      *
-     * @param searchVO
+     * @param vo
      * @param totalPage
      * @return
      */
-    protected PaginationInfo getPaginationInfo(ComDefaultVO searchVO, int totalPage) {
+    protected PaginationInfo getPaginationInfo(ComDefaultVO vo, int totalPage) {
         PaginationInfo paginationInfo = new PaginationInfo();
-        paginationInfo.setCurrentPageNo(searchVO.getPageIndex());
-        paginationInfo.setRecordCountPerPage(searchVO.getRecordCountPerPage());
-        paginationInfo.setPageSize(searchVO.getPageSize());
+        paginationInfo.setCurrentPageNo(vo.getPageIndex());
+        paginationInfo.setRecordCountPerPage(vo.getRecordCountPerPage());
+        paginationInfo.setPageSize(vo.getPageSize());
         paginationInfo.setTotalRecordCount(totalPage);
 
-        searchVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
-        searchVO.setLastIndex(paginationInfo.getLastRecordIndex());
-        searchVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
+        vo.setFirstIndex(paginationInfo.getFirstRecordIndex());
+        vo.setLastIndex(paginationInfo.getLastRecordIndex());
+        vo.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
 
         if (paginationInfo.getCurrentPageNo() > paginationInfo.getTotalPageCount()) {
-            searchVO.setPageIndex(paginationInfo.getTotalPageCount());
+            vo.setPageIndex(paginationInfo.getTotalPageCount());
             paginationInfo.setCurrentPageNo(paginationInfo.getTotalPageCount());
-            searchVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
+            vo.setFirstIndex(paginationInfo.getFirstRecordIndex());
         }
 
         return paginationInfo;

@@ -1,4 +1,4 @@
-package egovframework.evcar.user.vo;
+package egovframework.evcar.card.vo;
 
 /**
  * Created by dongguk on 2017-05-31.

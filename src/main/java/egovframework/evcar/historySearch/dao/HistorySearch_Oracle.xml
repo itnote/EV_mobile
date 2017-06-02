@@ -2,17 +2,17 @@
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
 
 <sqlMap namespace="HistorySearchDAO">
-    <typeAlias alias="SearchVO" type="egovframework.evcar.search.vo.SearchVO"/>
+    <typeAlias alias="BaseVO" type="egovframework.evcar.common.vo.BaseVO"/>
     <typeAlias alias="HistorySearchVO" type="egovframework.evcar.historySearch.HistorySearchVO" />
     <!--이력조회 화면 카운터-->
-    <select id="HistorySearchDAO.selectHistorySearchCount" parameterClass="SearchVO" resultClass="int">
+    <select id="HistorySearchDAO.selectHistorySearchCount" parameterClass="BaseVO" resultClass="int">
         SELECT
         COUNT(*) AS totCnt
         FROM   SETTLEMENT
         WHERE  1=1
     </select>
     <!--이력조회 화면 리스트-->
-    <select id="HistorySearchDAO.selectHistorySearchList" parameterClass="SearchVO" resultClass="HistorySearchVO">
+    <select id="HistorySearchDAO.selectHistorySearchList" parameterClass="BaseVO" resultClass="HistorySearchVO">
         SELECT RNUM
         ,USR_SNO  AS usrSno
         ,SET_SNO  AS setSno

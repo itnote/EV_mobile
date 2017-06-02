@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<form name="user" action="<c:url value="/user/joinAct.mdo"/>" method="POST">
+<form name="user" id="user" action="<c:url value="/user/joinAct.mdo"/>" method="POST">
     <fieldset class="sign">
         <legend class="sr-only">회원정보를 입력하세요</legend>
         <h3 class="sr-only">회원가입 폼</h3>
@@ -79,9 +79,10 @@
 
 <script type="text/javascript">
     function join() {
-        document.user.submit();
+
+        $( "#user" ).submit();
     }
-    var validator = new FormValidator('user', [{
+    /*var validator = new FormValidator('user', [{
         name: 'usrId',
         display: 'required',
         rules: 'required'
@@ -103,7 +104,7 @@
             // Show the errors
             console.log(errors);
         }
-    });
+    });*/
 </script>
 </body>
 </html>

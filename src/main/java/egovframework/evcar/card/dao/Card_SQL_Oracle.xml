@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="CardDAO">
+
+    <typeAlias alias="UsrCardVO" type="egovframework.evcar.card.vo.UsrCardVO"/>
+
+
+    <insert id="CardDAO.insertUserCard" parameterClass="UsrCardVO">
+        INSERT
+        INTO   USR_CARD (
+             CARD_SNO
+            ,CARD_CD
+            ,USR_SNO
+            ,USE_YN
+            ,CARD_REG_YMD
+            ,RES_PAY_YMD
+        ) VALUES (
+             #cardSno#
+            ,#cardCd#
+            ,#usrSno#
+            ,'Y'
+            ,#cardRegYear# || '/' ||#cardRegMonth#
+            ,#resPayYmd#
+        )
+    </insert>
+
+</sqlMap>

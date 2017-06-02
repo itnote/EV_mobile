@@ -21,10 +21,10 @@ public class BaseVO implements Serializable {
     private int  pageIndex = 1;
 
     /** 페이지갯수 */
-    private int pageUnit = 10;
+    private int pageUnit = 6;
 
     /** 페이지사이즈 */
-    private int pageSize = 10;
+    private int pageSize = 5;
 
     /** firstIndex */
     private int firstIndex = 1;
@@ -33,7 +33,16 @@ public class BaseVO implements Serializable {
     private int lastIndex = 1;
 
     /** recordCountPerPage */
-    private int recordCountPerPage = 10;
+    private int recordCountPerPage = 6;
+
+    /** 좌표 X*/
+    private String lat = "33.50033";
+
+    /** 좌표 Y*/
+    private String lon = "126.5297";
+
+    /** 거리 x미터*/
+    private String distance = "500";
 
     public String getSearchCondition() {
         return searchCondition;
@@ -105,5 +114,29 @@ public class BaseVO implements Serializable {
 
     public void setRecordCountPerPage(int recordCountPerPage) {
         this.recordCountPerPage = recordCountPerPage;
+    }
+
+    public String getLat() {
+        return lat;
+    }
+
+    public void setLat(String lat) {
+        this.lat = lat;
+    }
+
+    public String getLon() {
+        return lon;
+    }
+
+    public void setLon(String lon) {
+        this.lon = lon;
+    }
+
+    public String getDistance() {
+        return distance;
+    }
+
+    public void setDistance(String distance) {
+        this.distance = distance;
     }
 }

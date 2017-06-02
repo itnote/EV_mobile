@@ -3,6 +3,7 @@ package egovframework.evcar.bbs.web;
 import egovframework.com.cmm.SessionVO;
 import egovframework.evcar.bbs.BbsService;
 import egovframework.evcar.bbs.BbsVO;
+import egovframework.evcar.common.BaseController;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -21,7 +22,7 @@ import java.util.List;
 @Controller
 @SessionAttributes(types = { SessionVO.class })
 @RequestMapping({ "/evcar/bbs" })
-public class BbsController {
+public class BbsController  extends BaseController {
 
     @Resource(name = "BbsService")
     private BbsService bbsService;

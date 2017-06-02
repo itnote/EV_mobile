@@ -1,11 +1,11 @@
 package egovframework.evcar.bbs;
 
-import egovframework.evcar.search.vo.SearchVO;
+import egovframework.evcar.common.vo.BaseVO;
 
 /**
  * Created by Doum on 2017-05-31.
  */
-public class BbsVO extends SearchVO{
+public class BbsVO extends BaseVO {
 
     private String bbsId;
     private String nttId;

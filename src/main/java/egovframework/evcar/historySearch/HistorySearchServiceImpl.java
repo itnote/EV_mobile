@@ -1,7 +1,7 @@
 package egovframework.evcar.historySearch;
 
+import egovframework.evcar.common.vo.BaseVO;
 import egovframework.evcar.historySearch.dao.HistorySearchDAO;
-import egovframework.evcar.search.vo.SearchVO;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -17,12 +17,12 @@ public class HistorySearchServiceImpl implements HistorySearchService{
     private HistorySearchDAO historySearchDAO;
 
     @Override
-    public int selectHistorySearchCount(SearchVO vo) {
+    public int selectHistorySearchCount(BaseVO vo) {
         return historySearchDAO.selectHistorySearchCount(vo);
     }
 
     @Override
-    public List<HistorySearchVO> selectHistorySearchList(SearchVO vo) {
+    public List<HistorySearchVO> selectHistorySearchList(BaseVO vo) {
         return historySearchDAO.selectHistorySearchList(vo);
     }
     public HistorySearchVO ViewHistorySearch(HistorySearchVO historySearchVO) {

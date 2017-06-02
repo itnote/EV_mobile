@@ -16,7 +16,7 @@
 	<!-- For Pagination Tag -->
 	<bean id="imageRenderer" class="egovframework.com.cmm.ImagePaginationRenderer"/>
 	<bean id="mblImageRenderer" class="egovframework.mbl.com.cmm.EgovImgPaginationRenderer"/>
-	<bean id="pageRenderer" class="egovframework.evcar.common.Pagination.PaginationController"/>
+	<bean id="pageRenderer" class="egovframework.evcar.common.pagination.PaginationController"/>
 
 	<bean id="paginationManager" class="egovframework.rte.ptl.mvc.tags.ui.pagination.DefaultPaginationManager">
 		<property name="rendererType">
@@ -29,11 +29,31 @@
 	</bean>
 
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+					<!--<property name="supportedMediaTypes" value="text/plain;charset=UTF-8"/>-->
+				</bean>
+			</list>
+		</property>
         <property name="webBindingInitializer">
             <bean class="egovframework.com.cmm.web.EgovBindingInitializer"/>
         </property>
     </bean>
-    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
+
+	<!-- EVCAR LOGIN CHECK INTERCEPTOR -->
+	<bean id="loginCheckInterceptor" class="egovframework.evcar.common.interceptor.LoginCheckInterceptor"/>
+
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
+		<property name="useSuffixPatternMatch" value="true" />
+		<property name="alwaysUseFullPath" value="true" />
+		<property name="order" value="1" />
+		<property name="interceptors">
+			<list>
+				<ref bean="loginCheckInterceptor"/>
+			</list>
+		</property>
+	</bean>
 
     <!-- 로그인 체크가 필요한 URL과 로그인 여부를 체크해줄 인터셉터를 등록한다. -->
     <mvc:interceptors>

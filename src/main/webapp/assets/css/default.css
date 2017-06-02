@@ -1,0 +1,116 @@
+/* function */
+/* mixin */
+/* header */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+}
+a {
+  text-decoration: none;
+  color: #333;
+}
+.btn {
+  display: inline-block;
+  text-align: center;
+  padding: 14px;
+  font-size: 1rem;
+  color: #fff;
+}
+.btn.main {
+  background: #118444;
+}
+.btn.sub {
+  background: #67a855;
+}
+.btn-set {
+  margin: 0;
+}
+.btn-set.full {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  font-size: 0;
+}
+.btn-set.full .btn {
+  width: 100%;
+  font-size: 26px;
+  font-weight: 600;
+}
+.btn-set.full .half {
+  width: 50%;
+}
+.paging {
+  text-align: center;
+  margin: 20px 0;
+}
+.paging a {
+  display: inline-block;
+  border: 1px solid #999;
+  color: #555;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+}
+.paging a.arrow {
+  font-size: 0;
+  border-color: transparent;
+}
+.paging a.arrow i {
+  font-style: normal;
+  font-size: 1rem;
+}
+.paging strong {
+  display: inline-block;
+  vertical-align: top;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  background: #00522d;
+  color: #fff;
+}
+/*font*/
+@media only screen and (max-width: 360px) {
+  html {
+    font-size: 16px;
+  }
+}
+@media only screen and (min-width: 361px) and (max-width: 480px) {
+  html {
+    font-size: 18px;
+  }
+}
+@media only screen and (min-width: 481px) {
+  html {
+    font-size: 21px;
+  }
+}
+html {
+  min-width: 320px;
+  height: 100%;
+}
+body {
+  font-family: HelveticaNeue-Light, AppleSDGothicNeo-Light, 'Malgun Gothic', '맑은 고딕', sans-serif;
+  color: #333;
+  height: 100%;
+}

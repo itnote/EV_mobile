@@ -1,6 +1,7 @@
 // out: ./style.css, sourcemap: false, compress: true
 @import "normalize.css";
 @import "fi.less";
+@import "rem.less";
 @import "default.less";
 /*
 @import "phone.less" screen and (max-width: 360px);
@@ -257,7 +258,7 @@
             display: block;
         }
     }
-
+ 
     #content {
 
         .sign {
@@ -507,6 +508,7 @@
             .tabs {
                 display: block;
                 position: absolute;
+                z-index:600;
                 left: 50%;
                 top: 0.625rem;
                 .rem(top, 12);
@@ -536,6 +538,7 @@
 
             .zoom {
                 position: absolute;
+                z-index:600;
                 list-style: none;
                 .rem(right, 12);
                 .rem(bottom, 12);
@@ -562,6 +565,7 @@
 
             .location {
                 position: absolute;
+                z-index:600;
                 .pad0-mag0;
                 .rem(right, 12);
                 .rem(bottom, 164);
@@ -693,7 +697,7 @@
             dt {
                 float: left;
                 position: relative;
-                .rem(width, 164);
+                .rem(width, 180);
                 .rem(padding, 22 0 22 12);
             }
 
@@ -710,33 +714,15 @@
                     font-style: @font-normal;
                     color: @gray;
                 }
+
+                &.red {
+                    color:red;
+                }
             }
         }
     }
 
-    #content > dl {
-        dt {
-            float: left;
-            position: relative;
-            .rem(width, 164);
-            .rem(padding, 22);
-        }
 
-        dd {
-            background: @white;
-            margin: 0 0 1px;
-            .rem(padding, 22 0);
-            color: @green;
-
-            i {
-                display: block;
-                .rem(padding-top, 2);
-                .rem(font-size, 18);
-                font-style: normal;
-                color: @gray;
-            }
-        }
-    }
 
     .card-info {
       display:inline-block;

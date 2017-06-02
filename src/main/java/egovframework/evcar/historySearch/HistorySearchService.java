@@ -1,6 +1,6 @@
 package egovframework.evcar.historySearch;
 
-import egovframework.evcar.search.vo.SearchVO;
+import egovframework.evcar.common.vo.BaseVO;
 
 import java.util.List;
 
@@ -10,10 +10,10 @@ import java.util.List;
 public interface HistorySearchService {
 
     /** 이력조회 화면 카운터  **/
-    public int selectHistorySearchCount(SearchVO vo);
+    public int selectHistorySearchCount(BaseVO vo);
 
     /** 이력조회 화면 리스트 **/
-    public List<HistorySearchVO> selectHistorySearchList(SearchVO vo);
+    public List<HistorySearchVO> selectHistorySearchList(BaseVO vo);
 
     /** 이력조회 화면 상세 **/
     public HistorySearchVO ViewHistorySearch(HistorySearchVO historySearchVO);

@@ -2,7 +2,6 @@ package egovframework.evcar.user.dao;
 
 import egovframework.com.cmm.service.impl.EgovComAbstractDAO;
 import egovframework.evcar.user.vo.EvcarUsrVO;
-import egovframework.evcar.user.vo.UsrCardVO;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -17,10 +16,6 @@ public class EvcarUsrDAO extends EgovComAbstractDAO {
 
     public void joinUserData(EvcarUsrVO evcarUsrVO) {
         insert("EvcarUsrDAO.joinUserData", evcarUsrVO);
-    }
-
-    public void insertUserCard(UsrCardVO usrCardVO) {
-        insert("EvcarUsrDAO.insertUserCard", usrCardVO);
     }
 
 }
