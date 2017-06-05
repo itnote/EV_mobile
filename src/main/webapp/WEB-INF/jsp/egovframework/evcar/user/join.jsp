@@ -5,7 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
-    <title>EVCAR</title>
+    <title>회원가입</title>
 </head>
 <body>
 
@@ -16,22 +16,22 @@
 
         <h4 class="">회원정보</h4>
         <dl>
-            <dt><label for="user-id">아이디</label></dt>
-            <dd><input id="user-id" name="usrId" type="text" placeholder="아이디를 입력하세요"></dd>
-            <dt><label for="user-passwd">비밀번호</label></dt>
-            <dd><input id="user-passwd" name="usrPwd" type="password" placeholder="비밀번호를 입력하세요"></dd>
-            <dt><label for="user-repasswd">재입력</label></dt>
-            <dd><input id="user-repasswd" name="usrPwd_re" type="password" placeholder="비밀번호를 입력하세요"></dd>
+            <dt><label for="usrId">아이디</label></dt>
+            <dd><input id="usrId" name="usrId" type="text" placeholder="아이디를 입력하세요"></dd>
+            <dt><label for="usrPwd">비밀번호</label></dt>
+            <dd><input id="usrPwd" name="usrPwd" type="password" placeholder="비밀번호를 입력하세요"></dd>
+            <dt><label for="usrPwd_re">재입력</label></dt>
+            <dd><input id="usrPwd_re" name="usrPwd_re" type="password" placeholder="비밀번호를 입력하세요"></dd>
         </dl>
 
         <h4 class="">기본정보</h4>
         <dl>
-            <dt><label for="user-name">이름</label></dt>
-            <dd><input id="user-name" name="usrNm" type="text" placeholder="이름을 입력하세요"></dd>
-            <dt><label for="user-cel">휴대전화</label></dt>
-            <dd><input id="user-cel" name="usrCel" type="text" placeholder="전화번호를 입력하세요"></dd>
-            <dt><label for="user-email">이메일</label></dt>
-            <dd><input id="user-email" name="usrEmail" type="text" placeholder="이메일주소를 입력하세요"></dd>
+            <dt><label for="usrNm">이름</label></dt>
+            <dd><input id="usrNm" name="usrNm" type="text" placeholder="이름을 입력하세요"></dd>
+            <dt><label for="usrCel">휴대전화</label></dt>
+            <dd><input id="usrCel" name="usrCel" type="text" placeholder="전화번호를 입력하세요"></dd>
+            <dt><label for="usrEmail">이메일</label></dt>
+            <dd><input id="usrEmail" name="usrEmail" type="text" placeholder="이메일주소를 입력하세요"></dd>
         </dl>
 
         <h4>티머니카드</h4>
@@ -78,33 +78,57 @@
 </form>
 
 <script type="text/javascript">
-    function join() {
+    $(document).ready(function(){
+        $('form#user').validate({
+            rules: {
+                usrId: {
+                    required: true,
+                    minlength: 4
+                },
+                usrPwd: {required: true},
+                usrPwd_re: {
+                    equalTo: "#usrPwd"
+                },
+                usrNm: {required: true},
+                usrCel: {
+                    required: true,
+                    number: true
+                },
+                usrEmail: {
+                    required: true,
+                    email: true
+                }
+            },
+            messages: {
+                usrId: {
+                    required: '아이디를 입력하세요.',
+                    minlength: $.validator.format("아이디는 {0}자 이상 입력하셔야합니다.")
+                },
+                usrPwd: {required: '비밀번호를 입력하세요.'},
+                usrPwd_re: {equalTo: "비밀번호를 다시 확인하세요."},
+                usrNm: {required: '이름을 입력하여주시기 바랍니다.'},
+                usrCel: {
+                    required: "전화번호를 입력하여주시기 바랍니다.",
+                    number: "전화번호는 숫자만 입력가능합니다."
+                },
+                usrEmail: {
+                    required: "이메일주소를 입력하시오.",
+                    email: "올바른 이메일주소를 입력하시오."
+                }
+            },
+            submitHandler: function (frm) {
+                frm.submit();
+            },
+            success: function (e) {
 
-        $( "#user" ).submit();
+            }
+        });
+    });
+
+    function join() {
+        if($('form#user').valid())
+            $( "#user" ).submit();
     }
-    /*var validator = new FormValidator('user', [{
-        name: 'usrId',
-        display: 'required',
-        rules: 'required'
-    }, {
-        name: 'usrPwd',
-        rules: 'required'
-    }, {
-        name: 'usrPwd_re',
-        display: 'password confirmation',
-        rules: 'required|matches[password]'
-    }, {
-        name: 'email',
-        rules: 'valid_email',
-        depends: function () {
-            return Math.random() > .5;
-        }
-    }], function (errors, event) {
-        if (errors.length > 0) {
-            // Show the errors
-            console.log(errors);
-        }
-    });*/
 </script>
 </body>
 </html>

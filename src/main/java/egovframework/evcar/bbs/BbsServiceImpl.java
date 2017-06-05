@@ -16,6 +16,11 @@ public class BbsServiceImpl implements BbsService{
     private BbsDAO bbsDAO;
 
     @Override
+    public BbsMasterVO selectBbsMaster(String bbsId) throws Exception {
+        return bbsDAO.selectBbsMaster(bbsId);
+    }
+
+    @Override
     public int selectBbsCount(BbsVO vo) {
         return bbsDAO.selectBbsCount(vo);
     }

@@ -7,6 +7,13 @@ import java.util.List;
  */
 public interface BbsService {
 
+    /***
+     * 게시판 정보 조회
+     * @param bbsId
+     * @return
+     */
+    public BbsMasterVO selectBbsMaster(String bbsId) throws Exception;
+
     /** 게시판 화면 카운터  **/
     public int selectBbsCount(BbsVO vo);
 

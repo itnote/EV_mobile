@@ -1,6 +1,7 @@
 package egovframework.evcar.bbs.dao;
 
 import egovframework.com.cmm.service.impl.EgovComAbstractDAO;
+import egovframework.evcar.bbs.BbsMasterVO;
 import egovframework.evcar.bbs.BbsVO;
 import org.springframework.stereotype.Repository;
 
@@ -11,6 +12,15 @@ import java.util.List;
  */
 @Repository("BbsDAO")
 public class BbsDAO extends EgovComAbstractDAO {
+
+    /***
+     * 게시판 정보 조회
+     * @param bbsId
+     * @return
+     */
+    public BbsMasterVO selectBbsMaster(String bbsId) {
+        return (BbsMasterVO) selectByPk("BbsDAO.selectBbsMaster", bbsId);
+    }
 
     /** 게시판 화면 카운터 **/
     public int selectBbsCount(BbsVO vo) {

@@ -22,6 +22,9 @@
         , TOT_SETAMT as totSetamt
         , TOT_CHW as totChw
         , USE_YN as useYn
+        , USR_CEL as usrCel
+        , USR_EMAIL as usrEmail
+        , TOT_CHW as totChw
         , CREATED_AT as createdAt
         , CREATED_BY as createdBy
         , UPDATED_AT as updatedAt
@@ -63,5 +66,12 @@
             ,#createdBy#
         )
     </insert>
+
+    <update id="EvcarUsrDAO.updateUsrCard" parameterClass="UsrCardVO">
+        UPDATE USR_ATH
+            SET USR_CARD = #cardSno#
+        WHERE 1=1
+            AND USR_SNO = #usrSno#
+    </update>
 
 </sqlMap>

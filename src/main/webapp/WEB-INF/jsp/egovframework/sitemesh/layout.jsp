@@ -27,14 +27,15 @@ switch (servletPath){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title><decorator:title default="INTRANET"/></title>
+    <title>EVCAR</title>
 
     <link href="<c:url value="/assets/css/style.css"/>" rel="stylesheet">
     <!-- javaScript  -->
     <script src="<c:url value="/assets/js/jquery-1.11.3.min.js"/>"></script>
+    <script src="<c:url value="/assets/js/jquery.validate.js"/>"></script>
+
     <script src="<c:url value="/assets/js/common.js"/>"></script>
     <script src="<c:url value="/assets/js/evcar.js"/>"></script>
-    <script src="<c:url value="/assets/js/validate.js"/>"></script>
 
     <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=21b110c76efc5127c52ddc183aa80a46"></script>
     <script src="<c:url value="/assets/js/initMap.js"/>"></script>
@@ -48,15 +49,15 @@ switch (servletPath){
 <!-- S:header -->
 <% if(!"sub".equals(bodyClass)) {%>
 <header id="header">
-    <h1><a href="/">중속충전기</a></h1>
+    <h1><a href="/">EVCAR</a></h1>
 </header>
 <% } else { %>
 <header id="header">
-    <h1 class="sr-only"><a href="/">중속충전기</a></h1>
-    <h2><a href="<c:url value="/main.mdo"/>">메뉴명</a></h2>
+    <h1 class="sr-only"><a href="/">EVCAR</a></h1>
+    <h2><a href="<c:url value="/main.mdo"/>"><decorator:title default="EVCAR"/></a></h2>
 
-    <button class="back" href="">뒤로가기<i class="fi icon-back"></i></button>
-    <button class="menu" href="">메뉴열기<i class="fi icon-menu"></i></button>
+    <button class="back" href="javascript:;" onclick="history.back();">뒤로가기<i class="fi icon-back"></i></button>
+    <button class="menu" href="javascript:;">메뉴열기<i class="fi icon-menu"></i></button>
 </header>
 <nav id="sub-menu">
     <ul>

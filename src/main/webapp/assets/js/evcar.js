@@ -12,6 +12,7 @@ var config = {
         lon: '126.5297'
     }
 };
+
 var getGeolocation = function(callback){
     // 현재위치조회
     try{
@@ -39,3 +40,18 @@ var getGeolocation = function(callback){
     }
 
 };
+
+// VALIDATE SETTINGS
+$.validator.setDefaults({
+    onkeyup:false,
+    onclick:false,
+    onfocusout:false,
+    showErrors:function(errorMap, errorList){
+        if(this.numberOfInvalids()) { // 에러가 있을 때만..
+            //var caption = $(errorList[0].element).attr('caption') || $(errorList[0].element).attr('name');
+            alert(errorList[0].message);
+            $(errorList[0].element).focus();
+// 				alert('[' + caption + ']' + errorList[0].message);
+        }
+    }
+});

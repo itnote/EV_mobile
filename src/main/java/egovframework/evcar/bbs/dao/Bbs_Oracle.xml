@@ -2,7 +2,33 @@
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
 
 <sqlMap namespace="BbsDAO">
+
+    <typeAlias alias="BbsMasterVO" type="egovframework.evcar.bbs.BbsMasterVO" />
     <typeAlias alias="BbsVO" type="egovframework.evcar.bbs.BbsVO" />
+
+    <select id="BbsDAO.selectBbsMaster" parameterClass="String" resultClass="BbsMasterVO">
+        SELECT   BBS_ID AS bbsId
+               , BBS_NM AS bbsNm
+               , BBS_INTRCN AS bbsIntrcn
+               , BBS_TY_CODE AS bbsTyCode
+               , BBS_ATTRB_CODE AS bbsAttrbCode
+               , REPLY_POSBL_AT AS replyPosblAt
+               , FILE_ATCH_POSBL_AT AS fileAtchPosblAt
+               , ATCH_POSBL_FILE_NUMBER AS atchPosblFileNumber
+               , ATCH_POSBL_FILE_SIZE AS atchPosblFileSize
+               , USE_AT AS useAt
+               , TMPLAT_ID AS tmplatId
+               , FRST_REGISTER_ID AS frstRegisterId
+               , FRST_REGIST_PNTTM AS frstRegistPnttm
+               , LAST_UPDUSR_ID AS lastUpdusrId
+               , LAST_UPDT_PNTTM AS lastUpdtPnttm
+      FROM COMTNBBSMASTER
+
+      WHERE 1=1
+          AND BBS_ID = #bbsId#
+          AND USE_AT = 'Y'
+    </select>
+
     <!--게시판 화면 카운터-->
     <select id="BbsDAO.selectBbsCount" parameterClass="BbsVO" resultClass="int">
         SELECT

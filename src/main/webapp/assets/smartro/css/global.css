@@ -1,0 +1,182 @@
+@charset "utf-8";
+/**********************************************************
+
+  Project: SM mobile
+	 
+	 2012.07.12 kim su kyum
+	
+	
+*********************************************************/
+
+/* input_txt */
+.input_txt {width:90%}
+.input_txt02 {width:80%}
+.input_txt03 {width:56%}
+.input_cad_number {width:36px; padding:3px 2px;}
+.input_cad_number02 {width:45px; padding:3px 2px;}
+.input_cad_number03 {width:35px; padding:3px 2px;}
+.input_phone_number {width:45px; padding:3px 2px;}
+.input_idcad_number {width:40%; padding:3px 2px;}
+
+/* select */
+.select_telecom {width:50%;}
+
+/* table */
+.table01 {width:100%;}
+.table01 th,.table01 td {border:1px solid #ccc; padding:5px 9px;}
+.table01 th {color:#000222; background:#f2f2f2;}
+
+.table02 {width:100%; border-bottom:2px solid #ccc;}
+.table02 th,.table02 td {border:1px solid #ccc; border-top:none; border-left:none; padding:5px 9px;}
+.table02 th {color:#000222; background:#f7f7f7;}
+.table02 td {border-right:none;}
+.table02 .fail {color:#ec1a23;}
+
+.table03 {width:100%;}
+.table03 th,.table03 td {border:1px solid #ccc; padding:5px 9px;}
+.table03 th {color:#000222; background:#f7f7f7;}
+
+.table04 {width:100%; border-top:2px solid #4d4d4d;}
+.table04 th,.table04 td {border:1px solid #ccc; padding:5px 9px; text-align:center;}
+.table04 th {color:#000222; background:#f7f7f7;}
+
+.table05 {width:100%; border-top:2px solid #4d4d4d;}
+.table05 th,.table05 td {border:1px solid #ccc; padding:5px 9px; text-align:center;}
+.table05 th {color:#000222; background:#f7f7f7;}
+.table05 .emphasis {background:#fbe4e4;}
+
+.table06 {width:100%;}
+.table06 th,.table06 td {padding:5px 9px; text-align:center;}
+.table06 th {color:#000222; background:#f7f7f7;}
+
+
+/* p */
+.p_01 {color:#ec1a23;}
+.p_02 {color:#000;}
+
+
+/* txt */
+.txt_c {text-align:center !important;}
+.txt_r {text-align:right !important;}
+
+/* title */
+.title01 {font-size:13px; color:#2c2c2c; padding-left:11px; background:url(../images/icon/obscure01.png) no-repeat left 2px;}
+@media screen and (-webkit-min-device-pixel-ratio:2) {
+.title01 {background:url(../images/icon/obscure01x2.png) no-repeat left 3px; -webkit-background-size:8px 8px;}
+}
+
+.title02 {font-size:13px; color:#fff; height:18px; line-height:18px; padding-left:5px; border-bottom:1px solid #4d4d4d; background:url(../images/common/bg_title02.png) no-repeat left bottom;}
+@media screen and (-webkit-min-device-pixel-ratio:2) {
+.title02 {background:url(../images/common/bg_title02x2.png) no-repeat left bottom; -webkit-background-size:94px 18px;}
+}
+
+.title03 {font-size:13px; color:#fff; text-align:center; padding-bottom:8px;}
+.title04 {text-align:center; padding-bottom:5px;}
+
+/* btn_layout */
+.btn_layout {text-align:center;}
+.btn_layout a {padding:0 3px;}
+
+.btn_layout_top15 {text-align:center; margin-top:15px;}
+.btn_layout_top15 a {padding:0 3px;}
+
+.button {display:inline-block; white-space:nowrap; background-color:#fff;
+         background-image:-webkit-gradient(linear, left top, left bottom, from(#fff), to(#c0c0c0));
+		 background-image:-webkit-linear-gradient(top, #fff, #c0c0c0);
+		 background-image:-moz-linear-gradient(top, #fff, #c0c0c0);
+		 background-image:-ms-linear-gradient(top, #fff, #c0c0c0);
+		 background-image:-o-linear-gradient(top, #fff, #c0c0c0);
+		 background-image: linear-gradient(top, #fff, #c0c0c0);
+		 border:1px solid #000; padding:5px 20px; margin:0.5em; font:bold 12px Arial, Helvetica; text-decoration:none; color:#111 !important; -moz-border-radius:.2em; -webkit-border-radius:.2em; border-radius:.2em; }
+
+
+
+
+/* nav */
+.nav01 {overflow:hidden; width:80%; background:url(../images/icon/nav01_bg_on.png) repeat-x left top;}
+@media screen and (-webkit-min-device-pixel-ratio:2) {
+.nav01 {background:url(../images/icon/nav01_bgx2_on.png) repeat-x left top; -webkit-background-size:1px 44px;}
+}
+.nav01 li {float:left; width:24%; border-left:1px solid #f58e92; border-left:1px solid #a51d22; }
+.nav01 li a {display:block; height:38px; padding-top:4px;}
+
+.nav01 .cad {background:url(../images/icon/nav01_bg_on.png) repeat-x left top;}
+@media screen and (-webkit-min-device-pixel-ratio:2) {
+.nav01 .cad {background:url(../images/icon/nav01_bgx2_on.png) repeat-x left top; -webkit-background-size:1px 44px;}
+}
+.nav01 .cad .on {border-top:2px solid #ed2931; height:36px; background:#fff !important;}
+@media screen and (-webkit-min-device-pixel-ratio:2) {
+.nav01 .cad .on {border-top:2px solid #ed2931; height:36px; background:#fff !important; -webkit-background-size:1px 44px;}
+}
+
+.nav01 .account01 {width:25%; background:url(../images/icon/nav01_bg_on.png) repeat-x left top;}
+@media screen and (-webkit-min-device-pixel-ratio:2) {
+.nav01 .account01 {background:url(../images/icon/nav01_bgx2_on.png) repeat-x left top; -webkit-background-size:1px 44px;}
+}
+.nav01 .account01 .on {border-top:2px solid #ed2931; height:36px; background:#fff !important;}
+@media screen and (-webkit-min-device-pixel-ratio:2) {
+.nav01 .account01 .on {border-top:2px solid #ed2931; height:36px; background:#fff !important; -webkit-background-size:1px 44px;}
+}
+
+.nav01 .account02 {width:25%; background:url(../images/icon/nav01_bg_on.png) repeat-x left top;}
+@media screen and (-webkit-min-device-pixel-ratio:2) {
+.nav01 .account02 {background:url(../images/icon/nav01_bgx2_on.png) repeat-x left top; -webkit-background-size:1px 43px;}
+}
+.nav01 .account02 .on {border-top:2px solid #ed2931; height:36px; background:#fff !important;}
+@media screen and (-webkit-min-device-pixel-ratio:2) {
+.nav01 .account02 .on {border-top:2px solid #ed2931; height:36px; background:#fff !important; -webkit-background-size:1px 43px;}
+}
+
+.nav01 .phone {background:url(../images/icon/nav01_bg_on.png) repeat-x left top;}
+@media screen and (-webkit-min-device-pixel-ratio:2) {
+.nav01 .phone {background:url(../images/icon/nav01_bgx2_on.png) repeat-x left top; -webkit-background-size:1px 43px;}
+}
+.nav01 .phone .on {border-top:2px solid #ed2931; height:36px; background:#fff !important;}
+@media screen and (-webkit-min-device-pixel-ratio:2) {
+.nav01 .phone .on {border-top:2px solid #ed2931; height:36px; background:#fff !important; -webkit-background-size:1px 43px;}
+}
+
+.nav01 .cashrcpt {background:url(../images/icon/nav01_bg_on.png) repeat-x left top;}
+@media screen and (-webkit-min-device-pixel-ratio:2) {
+.nav01 .cashrcpt {background:url(../images/icon/nav01_bgx2_on.png) repeat-x left top; -webkit-background-size:1px 43px;}
+}
+.nav01 .cashrcpt .on {border-top:2px solid #ed2931; height:36px; background:#fff !important;}
+@media screen and (-webkit-min-device-pixel-ratio:2) {
+.nav01 .cashrcpt .on {border-top:2px solid #ed2931; height:36px; background:#fff !important; -webkit-background-size:1px 43px;}
+}
+
+.nav02 {overflow:hidden; width:80%; background:url(../images/icon/nav01_bg_on.png) repeat-x left top;}
+@media screen and (-webkit-min-device-pixel-ratio:2) {
+.nav02 {background:url(../images/icon/nav01_bgx2_on.png) repeat-x left top; -webkit-background-size:1px 44px;}
+}
+.nav02 li {float:left; width:49%; border-left:1px solid #f58e92; border-left:1px solid #a51d22; }
+.nav02 li a {display:block; height:33px !important; padding-top:7px;}
+
+.nav02 .order_registration {background:url(../images/icon/nav01_bg_on.png) repeat-x left top;}
+@media screen and (-webkit-min-device-pixel-ratio:2) {
+.nav02 .order_registration {background:url(../images/icon/nav01_bgx2_on.png) repeat-x left top; -webkit-background-size:1px 44px;}
+}
+.nav02 .order_registration .on {border-top:2px solid #ed2931; height:36px; background:#fff !important;}
+@media screen and (-webkit-min-device-pixel-ratio:2) {
+.nav02 .order_registration .on {border-top:2px solid #ed2931; height:36px; background:#fff !important; -webkit-background-size:1px 44px;}
+}
+
+.nav02 .order_inquiry {background:url(../images/icon/nav01_bg_on.png) repeat-x left top;}
+@media screen and (-webkit-min-device-pixel-ratio:2) {
+.nav02 .order_inquiry {background:url(../images/icon/nav01_bgx2_on.png) repeat-x left top; -webkit-background-size:1px 44px;}
+}
+.nav02 .order_inquiry .on {border-top:2px solid #ed2931; height:36px; background:#fff !important;}
+@media screen and (-webkit-min-device-pixel-ratio:2) {
+.nav02 .order_inquiry .on {border-top:2px solid #ed2931; height:36px; background:#fff !important; -webkit-background-size:1px 44px;}
+}
+
+
+
+
+
+
+/* bdr */
+.bdr_btm {border-bottom:2px solid #c6c6c6;}
+
+
+

@@ -1,6 +1,7 @@
 package egovframework.evcar.bbs.web;
 
 import egovframework.com.cmm.SessionVO;
+import egovframework.evcar.bbs.BbsMasterVO;
 import egovframework.evcar.bbs.BbsService;
 import egovframework.evcar.bbs.BbsVO;
 import egovframework.evcar.common.BaseController;
@@ -39,27 +40,19 @@ public class BbsController  extends BaseController {
     @RequestMapping({ "/list.*" })
     public String bbsList(HttpServletRequest request, HttpServletResponse response, ModelMap model,
                               @ModelAttribute("BbsVO") BbsVO vo) throws Exception{
-        PaginationInfo paginationInfo = new PaginationInfo();
 
-        paginationInfo.setCurrentPageNo(vo.getPageIndex());
-        paginationInfo.setRecordCountPerPage(vo.getPageUnit());
-        paginationInfo.setPageSize(vo.getPageSize());
-        vo.setFirstIndex(paginationInfo.getFirstRecordIndex());
-        vo.setLastIndex(paginationInfo.getLastRecordIndex());
-        vo.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
+        BbsMasterVO boardVO = bbsService.selectBbsMaster(vo.getBbsId());
 
         int totCnt = bbsService.selectBbsCount(vo);
+
+        // 공통페이징처리
+        PaginationInfo paginationInfo = getPaginationInfo(vo, totCnt);
+
         List<BbsVO> BbsList = bbsService.selectBbsList(vo);
 
-        paginationInfo.setTotalRecordCount(totCnt);
-
-        if (paginationInfo.getCurrentPageNo() > paginationInfo.getTotalPageCount()) {
-            vo.setPageIndex(paginationInfo.getTotalPageCount());
-            paginationInfo.setCurrentPageNo(paginationInfo.getTotalPageCount());
-            vo.setFirstIndex(paginationInfo.getFirstRecordIndex());
-        }
         model.addAttribute("paginationInfo", paginationInfo);
         model.addAttribute("BbsList", BbsList);
+        model.addAttribute("boardVO", boardVO);
         model.addAttribute("BbsVO", vo);
 
         return "egovframework/evcar/bbs/list";
@@ -75,11 +68,15 @@ public class BbsController  extends BaseController {
     @RequestMapping({ "/info.*" })
     public String bbsView(HttpServletRequest request, HttpServletResponse response, ModelMap model,
                               @ModelAttribute("BbsVO") BbsVO bbsVO) throws Exception {
+
+        BbsMasterVO boardVO = bbsService.selectBbsMaster(bbsVO.getBbsId());
+
         // TODO: 페이징 개선필요
         int pageIndex = bbsVO.getPageIndex();
         bbsVO = bbsService.ViewBbs(bbsVO);
         bbsVO.setPageIndex(pageIndex);
 
+        model.addAttribute("boardVO", boardVO);
         model.addAttribute("BbsVO",bbsVO);
 
         return "egovframework/evcar/bbs/info";

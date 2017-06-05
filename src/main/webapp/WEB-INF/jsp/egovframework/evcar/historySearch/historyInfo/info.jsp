@@ -2,7 +2,7 @@
 <html>
 <head>
     <%@ page contentType="text/html;charset=utf-8" language="java" %>
-    <title>EVCAR</title>
+    <title>이력조회</title>
 </head>
     <body>
         <h3 class="sr-only">현재충전상태 입니다.</h3>

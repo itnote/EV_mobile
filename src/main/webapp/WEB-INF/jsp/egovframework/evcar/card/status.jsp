@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>EVCAR</title>
+    <title>카드관리</title>
 </head>
 <body>
 
@@ -25,7 +25,7 @@
 </dl>
 
 <p class="btn-set full">
-    <a class="btn sub half" href="">카드정보변경</a>
+    <a class="btn sub half" href="<c:url value="/card/register.mdo"/>">카드정보변경</a>
     <a class="btn main half" href="">미수금 결제하기</a>
 </p>
 

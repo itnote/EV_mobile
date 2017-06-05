@@ -2,7 +2,7 @@
 <html>
 <head>
     <%@ page contentType="text/html;charset=utf-8" language="java" %>
-    <title>EVCAR</title>
+    <title>이력조회</title>
 </head>
 <body>
 <form name="listForm" action="<c:url value='/evcar/historySearch/list.mdo'/>" method="post" class="search">

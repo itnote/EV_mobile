@@ -1,0 +1,33 @@
+@charset "utf-8";
+
+/* reset */
+body {font-family:'돋움',Dotum ,Arial, Helvetica, sans-serif;margin:0;padding:0;background-color:#fff;-webkit-text-size-adjust:none; }
+hr {display:none;clear:both;}
+ol,ul { list-style : none; }
+img,fieldset {border:0 none;}
+address, caption, cite, code, dfn, em, th, var{ font-style : normal; font-weight : normal; }
+h1,h2,h3,h4,h5,dl,dt,dd,ul,li,ol,th,td,p,blockquote,form,fieldset,legend {margin:0;padding:0;}
+table {border-collapse:collapse;border:0 none;}
+form, p {margin: 0px; }
+button {border:0 none;padding:0;margin:0;background:transparent;*overflow:visible;cursor:pointer;}
+button::-moz-focus-inner {border:0;padding:0;} 
+input {-webkit-tap-highlight-color:rgba(0,0,0,0)}
+
+a:link { color:#4c4c4c; text-decoration:none; }
+a:visited { color:#4c4c4c; text-decoration:none; }
+a:active { color:#4c4c4c; text-decoration:none; }
+a:hover { color:#4c4c4c; text-decoration:none; } 
+
+body,table,th,td,input,select,textarea,div {
+  font-family: "굴림","verdana"; 
+  font-size: 14px;
+  color: #4c4c4c; 
+  font-style: normal; 
+  line-height:1; 
+  margin:0;
+  word-break:break-all;
+}
+
+
+/* skip */
+#accessibility, .skip, hr, legend, caption {visibility: hidden; width: 0; height: 0; overflow: hidden;}

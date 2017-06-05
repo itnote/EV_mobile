@@ -2,7 +2,7 @@
 <html>
 <head>
     <%@ page contentType="text/html;charset=utf-8" language="java" %>
-    <title>EVCAR</title>
+    <title>알림정보</title>
 </head>
 <body>
     <form name="listForm" action="<c:url value='/evcar/alert/list.mdo'/>" method="post" class="search">

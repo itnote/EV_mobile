@@ -3,7 +3,7 @@
 <html>
 <head>
     <%@ page contentType="text/html;charset=utf-8" language="java" %>
-    <title>EVCAR</title>
+    <title>${boardVO.bbsNm}</title>
 </head>
 <body>
 <form name="listForm" action="<c:url value='/evcar/bbs/list.mdo'/>" method="GET" class="search">

@@ -2,7 +2,7 @@
 <html>
 <head>
     <%@ page contentType="text/html;charset=utf-8" language="java" %>
-    <title>EVCAR</title>
+    <title>${boardVO.bbsNm}</title>
 </head>
 <body>
     <h3 class="sr-only">게시판 상세 입니다.</h3>
