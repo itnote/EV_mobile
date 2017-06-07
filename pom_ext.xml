@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>infomind</groupId>
 	<artifactId>evcar_mobile</artifactId>
@@ -9,14 +9,14 @@
 	<name>evcar_mobile</name>
 	<url>http://www.egovframe.go.kr</url>
 
-    <licenses>
-        <license>
-            <name>The Apache Software License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-        </license>
-    </licenses>
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
 
-	<properties>        
+	<properties>
 		<spring.maven.artifact.version>4.1.2.RELEASE</spring.maven.artifact.version>
 		<egovframework.rte.version>3.6.0</egovframework.rte.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -58,39 +58,39 @@
 	</repositories>
 
 	<dependencies>
-        <!-- 실행환경 라이브러리 -->
-        <dependency>
-            <groupId>egovframework.rte</groupId>
-            <artifactId>egovframework.rte.fdl.idgnr</artifactId>
-            <version>${egovframework.rte.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>egovframework.rte</groupId>
-            <artifactId>egovframework.rte.ptl.mvc</artifactId>
-            <version>${egovframework.rte.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>egovframework.rte</groupId>
-            <artifactId>egovframework.rte.fdl.property</artifactId>
-            <version>${egovframework.rte.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>egovframework.rte</groupId>
-            <artifactId>egovframework.rte.fdl.excel</artifactId>
-            <version>${egovframework.rte.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-beanutils</artifactId>
-                    <groupId>commons-beanutils</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>egovframework.rte</groupId>
-            <artifactId>egovframework.rte.fdl.xml</artifactId>
-            <version>${egovframework.rte.version}</version>
-        </dependency>
-        <!-- 실행환경 라이브러리 끝 -->
+		<!-- 실행환경 라이브러리 -->
+		<dependency>
+			<groupId>egovframework.rte</groupId>
+			<artifactId>egovframework.rte.fdl.idgnr</artifactId>
+			<version>${egovframework.rte.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>egovframework.rte</groupId>
+			<artifactId>egovframework.rte.ptl.mvc</artifactId>
+			<version>${egovframework.rte.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>egovframework.rte</groupId>
+			<artifactId>egovframework.rte.fdl.property</artifactId>
+			<version>${egovframework.rte.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>egovframework.rte</groupId>
+			<artifactId>egovframework.rte.fdl.excel</artifactId>
+			<version>${egovframework.rte.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>commons-beanutils</artifactId>
+					<groupId>commons-beanutils</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>egovframework.rte</groupId>
+			<artifactId>egovframework.rte.fdl.xml</artifactId>
+			<version>${egovframework.rte.version}</version>
+		</dependency>
+		<!-- 실행환경 라이브러리 끝 -->
 
 		<dependency>
 			<groupId>commons-dbcp</groupId>
@@ -134,29 +134,29 @@
 			<artifactId>commons-compress</artifactId>
 			<version>1.8.1</version>
 		</dependency>
-        <dependency>
-		    <groupId>org.apache.commons</groupId>
-		    <artifactId>commons-collections4</artifactId>
-		    <version>4.0</version>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
+			<version>4.0</version>
 		</dependency>
 
 		<!-- Scheduling -->
-        <dependency>
-            <groupId>org.quartz-scheduler</groupId>
-            <artifactId>quartz</artifactId>
-            <version>2.1.7</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>slf4j-api</artifactId>
-                    <groupId>org.slf4j</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.quartz-scheduler</groupId>
-            <artifactId>quartz-jobs</artifactId>
-            <version>2.2.1</version>
-        </dependency>
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>2.1.7</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>slf4j-api</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz-jobs</artifactId>
+			<version>2.2.1</version>
+		</dependency>
 		<!-- Scheduling end-->
 
 		<!-- 공통컴포넌트 시작 -->
@@ -196,12 +196,12 @@
 		</dependency>
 
 		<!-- Cross-Site Scripting -->
-        <dependency>
-            <groupId>javax.servlet.jsp</groupId>
-            <artifactId>javax.servlet.jsp-api</artifactId>
-            <version>2.3.1</version>
-            <scope>provided</scope>
-        </dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>javax.servlet.jsp-api</artifactId>
+			<version>2.3.1</version>
+			<scope>provided</scope>
+		</dependency>
 
 		<!-- LDAP SDK -->
 		<dependency>
@@ -216,10 +216,10 @@
 			<artifactId>jodconverter</artifactId>
 			<version>2.2.1</version>
 			<exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-api</artifactId>
-                </exclusion>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
 			</exclusions>
 		</dependency>
 
@@ -251,43 +251,25 @@
 		</dependency>
 
 		<!-- log4jdbc -->
-        <dependency>
-            <groupId>com.googlecode.log4jdbc</groupId>
-            <artifactId>log4jdbc</artifactId>
-            <version>1.2</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-api</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.31</version>
-        </dependency>
-
-		<!-- 3rd party 라이브러리로 별도의 설치 필요 -->
 		<dependency>
-			<groupId>xpg_pay</groupId>
-			<artifactId>xpg_pay</artifactId>
-			<version>0.0.0.02</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/xpg_pay.jar</systemPath>
+			<groupId>com.googlecode.log4jdbc</groupId>
+			<artifactId>log4jdbc</artifactId>
+			<version>1.2</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
-
-
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.31</version>
+		</dependency>
 
 		<!-- 3rd party 라이브러리로 별도의 설치 필요 -->
-
-
-
-
-
-
 		<!-- oracle 10g driver -->
 		<!--
 			<dependency>
@@ -326,38 +308,38 @@
 
 		<!-- 모바일 공통컴포넌트 -->
 		<!-- json lib  -->
-	    <dependency>
-	      <groupId>net.sf.json-lib</groupId>
-	      <artifactId>json-lib</artifactId>
-	      <version>2.4</version>
-	      <classifier>jdk15</classifier>
-	      <exclusions>
-	      	<exclusion>
-	      		<artifactId>commons-logging</artifactId>
-	      		<groupId>commons-logging</groupId>
-	      	</exclusion>
-	      	<exclusion>
-	      	    <artifactId>commons-beanutils</artifactId>
-	      	    <groupId>commons-beanutils</groupId>
-	      	</exclusion>
-	      </exclusions>
-	    </dependency>
-		
 		<dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-            <version>2.5.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-            <version>2.5.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.5.1</version>
-        </dependency>
+			<groupId>net.sf.json-lib</groupId>
+			<artifactId>json-lib</artifactId>
+			<version>2.4</version>
+			<classifier>jdk15</classifier>
+			<exclusions>
+				<exclusion>
+					<artifactId>commons-logging</artifactId>
+					<groupId>commons-logging</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>commons-beanutils</artifactId>
+					<groupId>commons-beanutils</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.5.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.5.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.5.1</version>
+		</dependency>
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
@@ -365,82 +347,71 @@
 		</dependency>
 
 		<dependency>
-		    <groupId>commons-httpclient</groupId>
-		    <artifactId>commons-httpclient</artifactId>
-		    <version>3.1-alpha1</version>
-		    <exclusions>
-		    	<exclusion>
-		    		<artifactId>commons-logging</artifactId>
-		    		<groupId>commons-logging</groupId>
-		    	</exclusion>
-		    </exclusions>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>3.1-alpha1</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>commons-logging</artifactId>
+					<groupId>commons-logging</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
-		    <groupId>org.w3c</groupId>
-		    <artifactId>dom</artifactId>
-		    <version>2.3.0-jaxb-1.0.6</version>
+			<groupId>org.w3c</groupId>
+			<artifactId>dom</artifactId>
+			<version>2.3.0-jaxb-1.0.6</version>
 		</dependency>
 		<dependency>
-		    <groupId>com.sun.xml.rpc</groupId>
-		    <artifactId>jaxrpc-impl</artifactId>
-		    <version>1.1.3_01</version>
+			<groupId>com.sun.xml.rpc</groupId>
+			<artifactId>jaxrpc-impl</artifactId>
+			<version>1.1.3_01</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.apache.servicemix.specs</groupId>
-		    <artifactId>org.apache.servicemix.specs.jaxws-api-2.0</artifactId>
-		    <version>1.0.0</version>
+			<groupId>org.apache.servicemix.specs</groupId>
+			<artifactId>org.apache.servicemix.specs.jaxws-api-2.0</artifactId>
+			<version>1.0.0</version>
 		</dependency>
 		<dependency>
-		    <groupId>soap</groupId>
-		    <artifactId>soap</artifactId>
-		    <version>2.3.1</version>
+			<groupId>soap</groupId>
+			<artifactId>soap</artifactId>
+			<version>2.3.1</version>
 		</dependency>
 		<dependency>
-		    <groupId>xalan</groupId>
-		    <artifactId>xalan</artifactId>
-		    <version>2.6.0</version>
+			<groupId>xalan</groupId>
+			<artifactId>xalan</artifactId>
+			<version>2.6.0</version>
 		</dependency>
 
 		<dependency>
-		    <groupId>com.sun.xml.ws</groupId>
-		    <artifactId>jaxws-rt</artifactId>
-		    <version>2.2.8</version>
+			<groupId>com.sun.xml.ws</groupId>
+			<artifactId>jaxws-rt</artifactId>
+			<version>2.2.8</version>
 		</dependency>
 		<dependency>
-		    <groupId>javax.jms</groupId>
-		    <artifactId>jms-api</artifactId>
-		    <version>1.1-rev-1</version>
+			<groupId>javax.jms</groupId>
+			<artifactId>jms-api</artifactId>
+			<version>1.1-rev-1</version>
 		</dependency>
 		<dependency>
-		    <groupId>javax.xml</groupId>
-		    <artifactId>jaxrpc-api-osgi</artifactId>
-		    <version>1.1-b01</version>
+			<groupId>javax.xml</groupId>
+			<artifactId>jaxrpc-api-osgi</artifactId>
+			<version>1.1-b01</version>
 		</dependency>
 
-		<!-- 대한민국정보포털 검색API -->
+
+
+
+		<!-- 3rd party 라이브러리로 별도의 설치 필요 -->
 		<dependency>
-			<groupId>kr.go.korea</groupId>
-			<artifactId>KoreaGovPortalSearch</artifactId>
-			<version>0.0.1</version>
+			<groupId>xpg_pay</groupId>
+			<artifactId>xpg_pay</artifactId>
+			<version>0.0.0.02</version>
 			<scope>system</scope>
-			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/KoreaGovPortalSearch.jar</systemPath>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/xpg_pay-0.0.0.02.jar</systemPath>
 		</dependency>
-		<!-- MMS -->
-		<dependency>
-			<groupId>kr.go.mgov</groupId>
-			<artifactId>mose-api</artifactId>
-			<version>1.6.1</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/mose-api-1.6.1.jar</systemPath>
-		</dependency>
-		<!-- 기상청 날씨조회 -->
-		<dependency>
-			<groupId>kr.go.kma</groupId>
-			<artifactId>SurfaceService</artifactId>
-			<version>0.0.1</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/SurfaceService.jar</systemPath>
-		</dependency>
+
+
 
 		<!-- sitemesh2  -->
 		<dependency>
@@ -450,6 +421,34 @@
 		</dependency>
 
 		<!-- 기상청 날씨조회를 위한 라이브러리 -->
+
+		<!-- 대한민국정보포털 검색API -->
+		<!--<dependency>-->
+		<!--<groupId>kr.go.korea</groupId>-->
+		<!--<artifactId>KoreaGovPortalSearch</artifactId>-->
+		<!--<version>0.0.1</version>-->
+		<!--<scope>system</scope>-->
+		<!--<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/KoreaGovPortalSearch.jar</systemPath>-->
+		<!--</dependency>-->
+		<!-- MMS -->
+		<!--<dependency>-->
+		<!--<groupId>kr.go.mgov</groupId>-->
+		<!--<artifactId>mose-api</artifactId>-->
+		<!--<version>1.6.1</version>-->
+		<!--<scope>system</scope>-->
+		<!--<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/mose-api-1.6.1.jar</systemPath>-->
+		<!--</dependency>-->
+		<!-- 기상청 날씨조회 -->
+		<!--<dependency>-->
+		<!--<groupId>kr.go.kma</groupId>-->
+		<!--<artifactId>SurfaceService</artifactId>-->
+		<!--<version>0.0.1</version>-->
+		<!--<scope>system</scope>-->
+		<!--<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/SurfaceService.jar</systemPath>-->
+		<!--</dependency>-->
+
+
+
 		<!--
 		<dependency>
 			<groupId>jeus</groupId>
