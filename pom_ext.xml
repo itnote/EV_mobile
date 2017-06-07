@@ -271,9 +271,9 @@
 
 		<!-- 3rd party 라이브러리로 별도의 설치 필요 -->
 		<dependency>
-			<groupId>smack</groupId>
-			<artifactId>smack-custom</artifactId>
-			<version>1.0.0</version>
+			<groupId>xpg_pay</groupId>
+			<artifactId>xpg_pay</artifactId>
+			<version>0.0.0.02</version>
 			<scope>system</scope>
 			<systemPath>${project.basedir}/lib/xpg_pay-0.0.0.02.jar</systemPath>
 		</dependency>
