@@ -399,10 +399,32 @@
 		    <version>1.1-b01</version>
 		</dependency>
 
+		<!-- 대한민국정보포털 검색API -->
+		<dependency>
+			<groupId>kr.go.korea</groupId>
+			<artifactId>KoreaGovPortalSearch</artifactId>
+			<version>0.0.1</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/KoreaGovPortalSearch.jar</systemPath>
+		</dependency>
+		<!-- MMS -->
+		<dependency>
+			<groupId>kr.go.mgov</groupId>
+			<artifactId>mose-api</artifactId>
+			<version>1.6.1</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/mose-api-1.6.1.jar</systemPath>
+		</dependency>
+		<!-- 기상청 날씨조회 -->
+		<dependency>
+			<groupId>kr.go.kma</groupId>
+			<artifactId>SurfaceService</artifactId>
+			<version>0.0.1</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/SurfaceService.jar</systemPath>
+		</dependency>
 
 
-
-		<!-- 3rd party 라이브러리로 별도의 설치 필요 -->
 		<dependency>
 			<groupId>xpg_pay</groupId>
 			<artifactId>xpg_pay</artifactId>
@@ -410,7 +432,6 @@
 			<scope>system</scope>
 			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/xpg_pay-0.0.0.02.jar</systemPath>
 		</dependency>
-
 
 
 		<!-- sitemesh2  -->
@@ -421,34 +442,6 @@
 		</dependency>
 
 		<!-- 기상청 날씨조회를 위한 라이브러리 -->
-
-		<!-- 대한민국정보포털 검색API -->
-		<!--<dependency>-->
-			<!--<groupId>kr.go.korea</groupId>-->
-			<!--<artifactId>KoreaGovPortalSearch</artifactId>-->
-			<!--<version>0.0.1</version>-->
-			<!--<scope>system</scope>-->
-			<!--<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/KoreaGovPortalSearch.jar</systemPath>-->
-		<!--</dependency>-->
-		<!-- MMS -->
-		<!--<dependency>-->
-			<!--<groupId>kr.go.mgov</groupId>-->
-			<!--<artifactId>mose-api</artifactId>-->
-			<!--<version>1.6.1</version>-->
-			<!--<scope>system</scope>-->
-			<!--<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/mose-api-1.6.1.jar</systemPath>-->
-		<!--</dependency>-->
-		<!-- 기상청 날씨조회 -->
-		<!--<dependency>-->
-			<!--<groupId>kr.go.kma</groupId>-->
-			<!--<artifactId>SurfaceService</artifactId>-->
-			<!--<version>0.0.1</version>-->
-			<!--<scope>system</scope>-->
-			<!--<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/SurfaceService.jar</systemPath>-->
-		<!--</dependency>-->
-
-
-
 		<!--
 		<dependency>
 			<groupId>jeus</groupId>
