@@ -275,7 +275,7 @@
 			<artifactId>xpg_pay</artifactId>
 			<version>0.0.0.02</version>
 			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/xpg_pay-0.0.0.02.jar</systemPath>
+			<systemPath>${project.basedir}/lib/xpg_pay.jar</systemPath>
 		</dependency>
 
 
