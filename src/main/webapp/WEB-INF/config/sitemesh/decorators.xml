@@ -4,6 +4,10 @@
 	<excludes>
         <pattern>/ajax/*</pattern>
     </excludes>
+    <excludes>
+        <pattern>/app/*</pattern>
+    </excludes>
+
 
 	<decorator name="main" page="layout.jsp">
         <pattern>/*</pattern>
