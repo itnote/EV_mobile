@@ -39,9 +39,10 @@
         <dl>
             <dt><label for="usrCardList[0].cardSno">카드번호</label></dt>
             <dd><input id="usrCardList[0].cardSno" name="usrCardList[0].cardSno" type="text" placeholder="****-****-****-****"></dd>
-            <dt><label for="usrCardList[0].cardRegYear">발급년월</label></dt>
+            <dt>발급년월</dt>
             <dd>
                 <p class="select">
+                    <label class="sr-only" for="usrCardList[0].cardRegYear">발급년도</label>
                     <select id="usrCardList[0].cardRegYear" name="usrCardList[0].cardRegYear">
                         <option>YYYY</option>
                         <c:forEach var="h" begin="2000" end="2017" step="1">
@@ -51,7 +52,8 @@
                     <i class="fi icon-back"></i>
                 </p>
                 <p class="select">
-                    <select name="usrCardList[0].cardRegMonth">
+                    <label class="sr-only" for="usrCardList[0].cardRegMonth">발급년도</label>
+                    <select id="usrCardList[0].cardRegMonth" name="usrCardList[0].cardRegMonth">
                         <option>YY</option>
                         <c:forEach var="h" begin="1" end="12" step="1">
                             <c:choose>
