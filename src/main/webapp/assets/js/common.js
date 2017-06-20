@@ -10,6 +10,12 @@ $("#sub-menu .close").click(function() {
   $("body").removeAttr("style");
 });
 
+$(".pop-btn").click(function() {
+  var popon = $(this).attr("data");
+
+  $("div#"+ popon).show();
+
+});
 
 
 });

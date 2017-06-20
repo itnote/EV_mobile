@@ -73,11 +73,11 @@ switch (servletPath){
         </c:if>
         <c:if test="${!empty loginVO}">
         <li>
-            <a href="">카드관리</a>
+            <a href="/card/status.mdo">카드관리</a>
         </li>
         </c:if>
         <li>
-            <a href="">충전기정보</a>
+            <a href="/charger/station.mdo">충전기정보</a>
         </li>
         <c:if test="${!empty loginVO}">
         <li>

@@ -17,30 +17,30 @@
         <h4 class="">회원정보</h4>
         <dl>
             <dt><label for="usrId">아이디</label></dt>
-            <dd><input id="usrId" name="usrId" type="text" placeholder="아이디를 입력하세요"></dd>
+            <dd><input id="usrId" name="usrId" type="text" placeholder="아이디를 입력하세요"><i class="essential">필수항목입니다</i></dd>
             <dt><label for="usrPwd">비밀번호</label></dt>
-            <dd><input id="usrPwd" name="usrPwd" type="password" placeholder="비밀번호를 입력하세요"></dd>
+            <dd><input id="usrPwd" name="usrPwd" type="password" placeholder="비밀번호를 입력하세요"><i class="essential">필수항목입니다</i></dd>
             <dt><label for="usrPwd_re">재입력</label></dt>
-            <dd><input id="usrPwd_re" name="usrPwd_re" type="password" placeholder="비밀번호를 입력하세요"></dd>
+            <dd><input id="usrPwd_re" name="usrPwd_re" type="password" placeholder="비밀번호를 입력하세요"><i class="essential">필수항목입니다</i></dd>
         </dl>
 
         <h4 class="">기본정보</h4>
         <dl>
             <dt><label for="usrNm">이름</label></dt>
-            <dd><input id="usrNm" name="usrNm" type="text" placeholder="이름을 입력하세요"></dd>
+            <dd><input id="usrNm" name="usrNm" type="text" placeholder="이름을 입력하세요"><i class="essential">필수항목입니다</i></dd>
             <dt><label for="usrCel">휴대전화</label></dt>
-            <dd><input id="usrCel" name="usrCel" type="text" placeholder="전화번호를 입력하세요"></dd>
+            <dd><input id="usrCel" name="usrCel" type="text" placeholder="전화번호를 입력하세요"><i class="essential">필수항목입니다</i></dd>
             <dt><label for="usrEmail">이메일</label></dt>
-            <dd><input id="usrEmail" name="usrEmail" type="text" placeholder="이메일주소를 입력하세요"></dd>
+            <dd><input id="usrEmail" name="usrEmail" type="text" placeholder="이메일주소를 입력하세요"><i class="essential">필수항목입니다</i></dd>
         </dl>
 
         <h4>티머니카드</h4>
         <input type="hidden" name="usrCardList[0].cardCd" value="tmoney"/>
         <dl>
             <dt><label for="usrCardList[0].cardSno">카드번호</label></dt>
-            <dd><input id="usrCardList[0].cardSno" name="usrCardList[0].cardSno" type="text" placeholder="****-****-****-****"></dd>
+            <dd><input id="usrCardList[0].cardSno" name="usrCardList[0].cardSno" type="text" placeholder="****-****-****-****"><i class="essential">필수항목입니다</i></dd>
             <dt>발급년월</dt>
-            <dd>
+            <dd><i class="essential">필수항목입니다</i>
                 <p class="select">
                     <label class="sr-only" for="usrCardList[0].cardRegYear">발급년도</label>
                     <select id="usrCardList[0].cardRegYear" name="usrCardList[0].cardRegYear">
