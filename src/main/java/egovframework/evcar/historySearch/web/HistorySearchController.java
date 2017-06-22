@@ -40,6 +40,13 @@ public class HistorySearchController  extends BaseController {
     @RequestMapping({ "/list.*" })
     public String HistoryList(HttpServletRequest request, HttpServletResponse response, ModelMap model,
                             @ModelAttribute("SearchVO") BaseVO vo) throws Exception{
+
+        // Start time
+        long startTime = System.currentTimeMillis();
+        System.out.println("====================================");
+        System.out.println("시작=====================>"+startTime);
+        // 수행작업
+
         PaginationInfo paginationInfo = new PaginationInfo();
 
         paginationInfo.setCurrentPageNo(vo.getPageIndex());
@@ -64,11 +71,6 @@ public class HistorySearchController  extends BaseController {
         model.addAttribute("SearchVO", vo);
 
 
-        // Start time
-        long startTime = System.currentTimeMillis();
-        System.out.println("====================================");
-        System.out.println("시작=====================>"+startTime);
-        // 수행작업
         // End time
         long endTime = System.currentTimeMillis();
         System.out.println("종료=====================>"+endTime);
