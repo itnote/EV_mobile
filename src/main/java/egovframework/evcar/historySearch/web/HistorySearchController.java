@@ -63,6 +63,20 @@ public class HistorySearchController  extends BaseController {
         model.addAttribute("historySearchList", historySearchList);
         model.addAttribute("SearchVO", vo);
 
+
+        // Start time
+        long startTime = System.currentTimeMillis();
+        System.out.println("====================================");
+        System.out.println("시작=====================>"+startTime);
+        // 수행작업
+        // End time
+        long endTime = System.currentTimeMillis();
+        System.out.println("종료=====================>"+endTime);
+        // Total time
+        long lTime = endTime - startTime;
+        System.out.println("TIME : " + lTime + "(ms)");
+        System.out.println("====================================");
+
         return "egovframework/evcar/historySearch/list";
     }
     /**
