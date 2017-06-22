@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
 <html>
 <head>
     <%@ page contentType="text/html;charset=utf-8" language="java" %>
@@ -6,6 +7,7 @@
 </head>
 <body>
 <form name="listForm" action="<c:url value='/evcar/historySearch/list.mdo'/>" method="post" class="search">
+    <input name="pageIndex" type="hidden" value="<c:out value='${BbsVO.pageIndex}'/>"/>
 </form>
     <h3 class="sr-only">충전기 목록입니다.</h3>
 
@@ -29,5 +31,14 @@
           </c:forEach>
       <tbody>
     </ul>
+<div class="paging">
+    <ui:pagination paginationInfo = "${paginationInfo}" type="pageImage" jsFunction="paging"/>
+</div>
+<script type="text/javascript">
+    function paging(pageNum) {
+        document.listForm.pageIndex.value = pageNum;
+        document.listForm.submit();
+    }
+</script>
 </body>
 </html>
