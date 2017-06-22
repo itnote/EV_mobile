@@ -21,10 +21,12 @@
 --%>
 
 <div id="map" class="map-area" style="width: 100%;">
-    <%--<ul class="tabs">
+    <%--
+    <ul class="tabs">
         <li><a href="">현재충전기</a></li>
         <li><a class="active" href="">근처충전기</a></li>
-    </ul>--%>
+    </ul>
+    --%>
     <ul class="zoom">
         <li><a href="javascript:;" onclick="map.setLevel('+')">지도확대<i class="fi icon-zoom_plus"></i></a></li>
         <li><a href="javascript:;" onclick="map.setLevel('-')">지도축소<i class="fi icon-zoom_minus"></i></a></li>
@@ -54,17 +56,19 @@ function currentMarker(){
             latitude: config.geolocation.lat,
             longitude: config.geolocation.lon
         });
-        circle = new daum.maps.Circle({
-            center : new daum.maps.LatLng(config.geolocation.lat, config.geolocation.lon),  // 원의 중심좌표 입니다
-            radius: 500, // 미터 단위의 원의 반지름입니다
-            strokeWeight: 1, // 선의 두께입니다
-            strokeColor: '#75B8FA', // 선의 색깔입니다
-            strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
-            fillColor: '#CFE7FF', // 채우기 색깔입니다
-            fillOpacity: 0.2  // 채우기 불투명도 입니다
-        });
-        circle.setMap(map.mapContainer);
+
     }
+
+    circle = new daum.maps.Circle({
+        center : new daum.maps.LatLng(config.geolocation.lat, config.geolocation.lon),  // 원의 중심좌표 입니다
+        radius: 500, // 미터 단위의 원의 반지름입니다
+        strokeWeight: 1, // 선의 두께입니다
+        strokeColor: '#75B8FA', // 선의 색깔입니다
+        strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+        fillColor: '#CFE7FF', // 채우기 색깔입니다
+        fillOpacity: 0.2  // 채우기 불투명도 입니다
+    });
+    circle.setMap(map.mapContainer);
 }
 /** 현재위치 충전소 조회*/
 function currentStationList(){

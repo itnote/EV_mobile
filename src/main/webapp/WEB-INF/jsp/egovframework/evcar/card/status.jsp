@@ -21,7 +21,6 @@
     <dd><c:out value="${loginVO.totChw}" default="0"/>kw</dd>
     <dt>총 미수금액</dt>
     <dd class="red"><c:out value="${loginVO.totUnclAmt}" default="0"/>원/kw</dd>
-
 </dl>
 
 <p class="btn-set full">
