@@ -24,8 +24,11 @@ public class CardServiceImpl implements CardService {
     @Override
     public void changeUsrCard(UsrCardVO usrCardVO) throws Exception {
 
-        // 카드등록
-        cardDAO.insertUserCard(usrCardVO);
+        if(cardDAO.selectUserCardCheck(usrCardVO) > 0) {
+            cardDAO.updateUserCard(usrCardVO);
+        }else{
+            cardDAO.insertUserCard(usrCardVO);
+        }
 
         // 사용자 카드 정보 변경
         evcarUsrDAO.updateUsrCard(usrCardVO);

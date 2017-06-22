@@ -191,7 +191,8 @@
 	<input type="hidden" name="GoodsCnt"			value="1" 											/><%--상품갯수 --%>
 	<input type="hidden" name="GoodsName"			value="빌링키인증" 									/><%--빌링키인증 --%>
 	<input type="hidden" name="Amt"					value="<%=goodsAmt %>" 								/><%--상품가격 --%>
-	<input type="hidden" name="Moid"				value="${smartroKey}" 								/><%--상품주문번호 --%>
+	<input type="hidden" name="Moid"				value="mnoid1234567890" 							/><%--상품주문번호 --%>
+	<%--<input type="hidden" name="Moid"				value="${smartroKey}" 								/>상품주문번호 --%>
 	<input type="hidden" name="MID"					value="<%=MID %>" 									/><%--회원사아이디 --%>
 	<input type="hidden" name="SUB_ID"				value="" 											/><%--서브몰아이디 --%>
 	<input type="hidden" name="ReturnURL"			value="<%=domain %>/card/returnBillPay.mdo" 		/><%--결제결과전송 URL --%>
