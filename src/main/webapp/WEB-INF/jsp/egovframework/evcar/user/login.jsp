@@ -11,10 +11,10 @@
     <fieldset>
         <legend class="sr-only">로그인정보 입력폼 입니다.</legend>
 
-        <label for="usrId">아이디를 입력하세요</label>
+        <label class="sr-only" for="usrId">아이디를 입력하세요</label>
         <input id="usrId" name="usrId" placeholder="아이디" type="text" value="">
 
-        <label for="usrPwd">비밀번호를 입력하세요</label>
+        <label class="sr-only" for="usrPwd">비밀번호를 입력하세요</label>
         <input id="usrPwd" name="usrPwd" placeholder="비밀번호" class="passwd" type="password" value="">
 
         <p class="btn-set">
