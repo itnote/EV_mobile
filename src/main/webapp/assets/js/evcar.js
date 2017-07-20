@@ -8,8 +8,8 @@ var config = {
     ajax: '/ajax',
     geolocation: {
         use: false,
-        lat: '33.50033',
-        lon: '126.5297'
+        lat: '33.36021',
+        lon: '126.7256'
     }
 };
 
