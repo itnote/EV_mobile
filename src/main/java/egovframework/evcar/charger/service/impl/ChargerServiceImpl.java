@@ -24,4 +24,11 @@ public class ChargerServiceImpl implements ChargerService {
     public List<StationInfoVO> selectDistanceStationList(BaseVO baseVO) {
         return chargerDAO.selectDistanceStationList(baseVO);
     }
+
+    @Override
+    public List<?> stationInfo(BaseVO baseVO) throws Exception {
+        return chargerDAO.stationInfo(baseVO);
+    }
+
+
 }

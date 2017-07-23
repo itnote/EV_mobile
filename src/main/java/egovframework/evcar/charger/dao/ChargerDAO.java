@@ -24,4 +24,13 @@ public class ChargerDAO extends EgovComAbstractDAO {
         return (List<StationInfoVO>) list("ChargerDAO.selectDistanceStationList",baseVO);
     }
 
+    /**
+     * 충전기 상세조회
+     * @param baseVO
+     * @return
+     */
+    public List<?> stationInfo(BaseVO baseVO) {
+        return list("ChargerDAO.stationInfo", baseVO);
+    }
+
 }

@@ -49,4 +49,16 @@
         ORDER BY z
     </select>
 
+    <select id="ChargerDAO.stationInfo" parameterClass="BaseVO" resultClass="hashmap">
+        SELECT A.*
+            ,TO_CHAR(TO_DATE(SDT || STM, 'YYYY-MM-DD HH24:MI:SS'), 'YYYY-MM-DD HH24:MI:SS') AS STARTDT
+            ,TO_CHAR(TO_DATE(EDT || ETM, 'YYYY-MM-DD HH24:MI:SS'), 'YYYY-MM-DD HH24:MI:SS') AS ENDDT
+
+        FROM CHARGER_HISTORY A
+        WHERE 1=1
+        AND sid = #searchKeyword#
+
+        ORDER BY CID
+    </select>
+
 </sqlMap>

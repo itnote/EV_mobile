@@ -40,6 +40,64 @@ var getGeolocation = function(callback){
     }
 
 };
+/**
+ * 충전기정보 팝업생성
+ * @param param
+ */
+var getStationInfoPopup = function(param) {
+
+    var $article = $('body article#content');
+
+    var $popup = $('<div />', {
+        class: 'popup',
+        id: 'pop01',
+        style: 'display: block; z-index: 1000;'
+    });
+
+    var $list = $('<ul />', {
+        class: 'pop-info'
+    });
+
+    var $btn = $('<p />')
+        .append(
+            $('<a />', {class: 'btn sub half', text: '저장'})
+        )
+        .append(
+            $('<a />', {class: 'btn half', text: '닫기'}).click(function(){
+                $popup.remove();
+            })
+        )
+    ;
+
+    $.getJSON(config.ajax + '/charger/stationInfo.mdo', {searchKeyword: param.sid}, function (data) {
+        $.each(data, function(e1, e2){
+            var $li = $('<li />');
+
+            $li.append($('<h7 />', {html: '채널 ID <strong>'+ e2.CID +' 충전기</strong>'}));
+            $li.append($('<i />', {html: '시작시간 <strong>'+ e2.STARTDT +'</strong>'}));
+
+            if(e2.EST == 1){
+                $li.append($('<i />', {html: '종료시간 <strong>'+ e2.ENDDT +'</strong>'}));
+                $li.append($('<p />', {class: 'stat complete', text: '완료'}));
+            }else{
+                //$li.append($('<i />', {html: '종료시간 <strong>'+ e2.EDT + ' ' + e2.ETM +'</strong>'}));
+                $li.append($('<p />', {class: 'stat ing', text: '충전중'}));
+            }
+
+            $list.append($li);
+        });
+    });
+
+    $popup.append($('<h5 />', {text: '충전기 정보'}));
+    $popup.append(
+        $('<h6 />', {text: '충전기ID '}).append($('<strong />', {text: param.sid}))
+    );
+    $popup.append($list);
+    $popup.append($btn);
+
+    $article.append($popup);
+};
+
 
 // VALIDATE SETTINGS
 $.validator.setDefaults({

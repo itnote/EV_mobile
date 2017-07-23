@@ -11,4 +11,6 @@ import java.util.List;
 public interface ChargerService {
 
     public List<StationInfoVO> selectDistanceStationList(BaseVO baseVO);
+
+    public List<?> stationInfo(BaseVO baseVO) throws Exception;
 }

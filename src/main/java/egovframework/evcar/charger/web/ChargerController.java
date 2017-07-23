@@ -31,9 +31,13 @@ public class ChargerController extends BaseController {
     }
 
     @RequestMapping("/ajax/charger/station.mdo")
-    public @ResponseBody List<StationInfoVO> stationInfoList(BaseVO baseVO) throws Exception {
+    public @ResponseBody List<StationInfoVO> stationList(BaseVO baseVO) throws Exception {
         return chargerService.selectDistanceStationList(baseVO);
     }
 
+    @RequestMapping("/ajax/charger/stationInfo.mdo")
+    public @ResponseBody List<?> stationInfo(BaseVO baseVO) throws Exception {
+        return chargerService.stationInfo(baseVO);
+    }
 
 }

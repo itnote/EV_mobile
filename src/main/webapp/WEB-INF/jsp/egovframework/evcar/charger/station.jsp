@@ -112,10 +112,16 @@ function locationMove() {
         },
         success: function (data) {
             $.each(data, function(e1,e2){
+                //console.log(e2);
                 var marker = map.addMarker({
                     title: e2.snm,
                     latitude: e2.lat,
                     longitude: e2.lon
+                });
+                daum.maps.event.addListener(marker, 'click', function() {
+                    getStationInfoPopup({
+                        sid: e2.sid
+                    });
                 });
                 markers.push(marker);
             });
