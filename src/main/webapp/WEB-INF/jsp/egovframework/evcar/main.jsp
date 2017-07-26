@@ -70,5 +70,9 @@
     </ul>
 </nav>
 <h2 class="mark">본 사이트는 웹접근성품질인증을 획득하였습니다.</h2>
+<footer id="footer">
+    <address>
+    </address>
+</footer>
 </body>
 </html>
