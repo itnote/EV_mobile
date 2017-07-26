@@ -67,10 +67,8 @@
             <a href="/evcar/bbs/list.mdo?bbsId=BBSMSTR_000000000002">
                 <p>도움말</p><i class="fi icon-help"></i></a>
         </li>
-
-
     </ul>
 </nav>
-
+<h2 class="mark">본 사이트는 웹접근성품질인증을 획득하였습니다.</h2>
 </body>
 </html>
