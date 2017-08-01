@@ -48,12 +48,12 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title> mainPay :: SmilePay </title>
+<title>카드정보등록</title>
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
-<meta name="format-detection" content="telephone=no" />
-<meta name="viewport" content="width=device-width">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="viewport" content="width=device-width">
 
 </head>
 

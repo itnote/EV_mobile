@@ -40,6 +40,7 @@ var getGeolocation = function(callback){
     }
 
 };
+
 /**
  * 충전기정보 팝업생성
  * @param param
@@ -70,27 +71,32 @@ var getStationInfoPopup = function(param) {
     ;
 
     $.getJSON(config.ajax + '/charger/stationInfo.mdo', {searchKeyword: param.sid}, function (data) {
+        //console.log(data);
         $.each(data, function(e1, e2){
             var $li = $('<li />');
 
-            $li.append($('<h7 />', {html: '채널 ID <strong>'+ e2.CID +' 충전기</strong>'}));
-            $li.append($('<i />', {html: '시작시간 <strong>'+ e2.STARTDT +'</strong>'}));
+            $li.append($('<h7 />', {html: '채널 ID <strong>'+ e2.cid +' 충전기</strong>'}));
+            $li.append($('<i />', {html: '최종 변경시간 <strong>' + e2.updatedAt + '</strong>'}));
 
-            if(e2.EST == 1){
-                $li.append($('<i />', {html: '종료시간 <strong>'+ e2.ENDDT +'</strong>'}));
+            if(e2.sts == '99') {
                 $li.append($('<p />', {class: 'stat complete', text: '완료'}));
-            }else{
-                //$li.append($('<i />', {html: '종료시간 <strong>'+ e2.EDT + ' ' + e2.ETM +'</strong>'}));
+            }else if(e2.sts == '1'){
                 $li.append($('<p />', {class: 'stat ing', text: '충전중'}));
+            }else{
+                $li.append($('<p />', {class: 'stat', text: '대기중'}));
             }
-
             $list.append($li);
         });
     });
 
     $popup.append($('<h5 />', {text: '충전기 정보'}));
     $popup.append(
-        $('<h6 />', {text: '충전기ID '}).append($('<strong />', {text: param.sid}))
+        $('<h6 />', {
+            text: '충전기ID ',
+            click: function(){
+                $popup.remove();
+            }
+        }).append($('<strong />', {text: param.sid}))
     );
     $popup.append($list);
     $popup.append($btn);

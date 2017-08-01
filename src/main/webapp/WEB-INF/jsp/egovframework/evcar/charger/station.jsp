@@ -52,6 +52,7 @@ getGeolocation(function(){
 function currentMarker(){
     if(config.geolocation.use){
         current = map.addMarker({
+            type: 'target',
             title: '현재위치',
             latitude: config.geolocation.lat,
             longitude: config.geolocation.lon
@@ -69,6 +70,8 @@ function currentMarker(){
         fillOpacity: 0.2  // 채우기 불투명도 입니다
     });
     circle.setMap(map.mapContainer);
+
+    //currentStationList();
 }
 /** 현재위치 충전소 조회*/
 function currentStationList(){

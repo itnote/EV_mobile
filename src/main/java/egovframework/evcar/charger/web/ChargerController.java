@@ -5,6 +5,7 @@ import egovframework.evcar.charger.vo.StationInfoVO;
 import egovframework.evcar.common.BaseController;
 import egovframework.evcar.common.annotation.LoginCheck;
 import egovframework.evcar.common.vo.BaseVO;
+import egovframework.rte.psl.dataaccess.util.EgovMap;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -36,7 +37,7 @@ public class ChargerController extends BaseController {
     }
 
     @RequestMapping("/ajax/charger/stationInfo.mdo")
-    public @ResponseBody List<?> stationInfo(BaseVO baseVO) throws Exception {
+    public @ResponseBody List<EgovMap> stationInfo(BaseVO baseVO) throws Exception {
         return chargerService.stationInfo(baseVO);
     }
 

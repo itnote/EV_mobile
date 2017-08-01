@@ -91,10 +91,13 @@ function addImgMarker(type){
         imageOption:{offset: new daum.maps.Point(14, 42)}
     };
     switch (type){
-        case 'on':
+        case 'target': // 현재위치
+            image.imageSrc='/assets/images/marker/icon-on.png';
+            break;
+        case 'on': // 충전중
             image.imageSrc='/assets/images/marker/icon-on.png';
             breack;
-        default:
+        default: // 기본/ 충전중이아님
             image.imageSrc='/assets/images/marker/icon-off.png';
             break;
     }

@@ -4,6 +4,7 @@ import egovframework.evcar.charger.dao.ChargerDAO;
 import egovframework.evcar.charger.service.ChargerService;
 import egovframework.evcar.charger.vo.StationInfoVO;
 import egovframework.evcar.common.vo.BaseVO;
+import egovframework.rte.psl.dataaccess.util.EgovMap;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -26,7 +27,7 @@ public class ChargerServiceImpl implements ChargerService {
     }
 
     @Override
-    public List<?> stationInfo(BaseVO baseVO) throws Exception {
+    public List<EgovMap> stationInfo(BaseVO baseVO) throws Exception {
         return chargerDAO.stationInfo(baseVO);
     }
 

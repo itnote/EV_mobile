@@ -2,7 +2,7 @@
 <!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
 
 <sqlMap namespace="ChargerDAO">
-
+    <typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
     <typeAlias alias="BaseVO" type="egovframework.evcar.common.vo.BaseVO"/>
     <typeAlias alias="StationInfoVO" type="egovframework.evcar.charger.vo.StationInfoVO"/>
 
@@ -40,6 +40,7 @@
             )
         WHERE    1=1
         <![CDATA[
+            AND USE_YN = 'Y'
             AND SQRT( POWER((v_x - LAT) * r_x, 2) + POWER((v_y - LON) * r_y, 2) ) <= v_z
             AND LAT BETWEEN v_x  - v_z / r_x
             AND v_x + v_z / r_x
@@ -49,14 +50,35 @@
         ORDER BY z
     </select>
 
-    <select id="ChargerDAO.stationInfo" parameterClass="BaseVO" resultClass="hashmap">
-        SELECT A.*
-            ,TO_CHAR(TO_DATE(SDT || STM, 'YYYY-MM-DD HH24:MI:SS'), 'YYYY-MM-DD HH24:MI:SS') AS STARTDT
-            ,TO_CHAR(TO_DATE(EDT || ETM, 'YYYY-MM-DD HH24:MI:SS'), 'YYYY-MM-DD HH24:MI:SS') AS ENDDT
+    <select id="ChargerDAO.stationInfo" parameterClass="BaseVO" resultClass="egovMap">
+        SELECT  SID,
+                CID,
+                CNM,
+                PMR,
+                PMD,
+                CTP,
+                COT,
+                MDN,
+                EIP,
+                EPT,
+                VIP,
+                VPT,
+                MMR,
+                RMR,
+                STRM,
+                RTRM,
+                CTRM,
+                VTRM,
+                VER,
+                STS,
+                TO_CHAR(CREATED_AT, 'YYYY-MM-DD HH24:MI:SS') CREATED_AT,
+                CREATED_BY,
+                TO_CHAR(UPDATED_AT, 'YYYY-MM-DD HH24:MI:SS') UPDATED_AT,
+                UPDATED_BY
 
-        FROM CHARGER_HISTORY A
+        FROM CHARGER A
         WHERE 1=1
-        AND sid = #searchKeyword#
+        AND SID = #searchKeyword#
 
         ORDER BY CID
     </select>
