@@ -39,6 +39,9 @@ switch (servletPath){
 
     <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=21b110c76efc5127c52ddc183aa80a46"></script>
     <script src="<c:url value="/assets/js/initMap.js"/>"></script>
+
+    <script src="<c:url value="/assets/js/cleave.min.js"/>"></script>
+    <script src="<c:url value="/assets/js/cleave-phone.kr.js"/>"></script>
 </head>
 <body class="<%=bodyClass%>">
 
