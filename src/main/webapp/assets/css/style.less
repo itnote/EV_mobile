@@ -2,12 +2,12 @@
 @import "normalize.css";
 @import "fi.less";
 @import "rem.less";
-@import "default.less";
-/*
+@import "default.less"; /*
 @import "phone.less" screen and (max-width: 360px);
 @import "tablet.less" screen and (min-width: 361px) and (max-width: 480px);
 @import "desktop.less" screen and (min-width: 481px);
 */
+
 .main {
   background: @gray-background;
 
@@ -319,11 +319,27 @@
           background: @white;
           margin: 0 0 1px;
           padding: 1px 0;
+          font-size: 0;
 
           input {
             .remCalc(width, 164);
             .rem(padding, 24 0);
+            .rem(font-size, 22);
             border: none;
+
+            &#user-id {
+              .remCalc(width, 244);
+            }
+          }
+
+          button {
+            .rem(width, 70);
+            .rem(margin-right, 10);
+            .rem(font-size, 14);
+            .rem(padding, 10 0);
+            border-radius: 6px;
+            border: 1px solid #999;
+            background: transparent;
           }
 
           .select {
@@ -331,6 +347,7 @@
             position: relative;
             .rem(padding-right, 20);
             .rem(margin-right, 20);
+            .rem(font-size, 22);
 
             select {
               border: none;
