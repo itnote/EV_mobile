@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="PushDAO">
+
+    <typeAlias  alias="PushVO" type="egovframework.app.push.vo.PushVO"/>
+
+    <select id="PushDAO.checkPush" parameterClass="PushVO" resultClass="int">
+        SELECT COUNT(PUSH_SQ)
+        FROM TB_PUSH
+        WHERE 1=1
+        AND USER_ID = #userId#
+        AND REG_ID = #regId#
+    </select>
+
+    <insert id="PushDAO.insertPush" parameterClass="PushVO">
+        INSERT INTO TB_PUSH (
+            PUSH_SQ
+            ,USER_ID
+            ,PHONE_TYPE
+            ,HAND_PHONE
+            ,REG_ID
+            ,REG_DT
+        ) VALUES (
+            #pushSq#
+            ,#userId#
+            ,#phoneType#
+            ,#handPhone#
+            ,#regId#
+            ,SYSDATE
+        )
+    </insert>
+
+    <select id="PushDAO.selectPushUser" parameterClass="PushVO" resultClass="PushVO">
+        SELECT
+             PUSH_SQ pushSq
+            ,USER_ID userId
+            ,PHONE_TYPE phoneType
+            ,HAND_PHONE handPhone
+            ,REG_ID regId
+            ,REG_DT regDt
+        FROM TB_PUSH
+
+        WHERE 1=1
+
+        <isNotEmpty property="pushSq" prepend="AND">
+            PUSH_SQ = #pushSq#
+        </isNotEmpty>
+
+        <isNotEmpty property="userId" prepend="AND">
+            USER_ID = #userId#
+        </isNotEmpty>
+
+        <isNotEmpty property="regId" prepend="AND">
+            REG_ID = #regId#
+        </isNotEmpty>
+    </select>
+
+</sqlMap>
