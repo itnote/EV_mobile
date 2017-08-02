@@ -23,7 +23,7 @@
                 <a href="/evcar/historySearch/info.mdo?setSno=${history.setSno}&usrSno=${history.usrSno}">
                     <h4>충전기ID <strong><c:out value="${history.cid}" /></strong></h4>
                     <i><c:out value="${history.pdt}" /><c:out value="${history.ptm}" /></i>
-                    <p class="price"><c:out value="${history.cid}" />원/kw</p>
+                    <p class="price"><c:out value="${history.setAmt}" />원/kw</p>
                     <p class="stat standby">결제대기</p>
                 </a>
             </li>
