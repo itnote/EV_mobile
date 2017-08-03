@@ -65,7 +65,7 @@
                 <p>공지사항</p><i class="fi icon-notice"></i></a>
         </li>
         <li>
-            <a href="javascript:test2()">
+            <a href="/evcar/bbs/list.mdo?bbsId=BBSMSTR_000000000002">
                 <p>도움말</p><i class="fi icon-help"></i></a>
         </li>
     </ul>
