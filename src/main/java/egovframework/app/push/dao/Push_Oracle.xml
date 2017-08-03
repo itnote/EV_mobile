@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="PushDAO">
+
+    <typeAlias  alias="PushVO" type="egovframework.app.push.vo.PushVO"/>
+
+    <select id="PushDAO.checkPush" parameterClass="PushVO" resultClass="int">
+        SELECT COUNT(*)
+        FROM TB_PUSH
+        WHERE 1=1
+        AND REG_ID = #regId#
+    </select>
+
+    <insert id="PushDAO.insertPush" parameterClass="PushVO">
+        INSERT INTO TB_PUSH (
+            USER_ID
+            ,PHONE_TYPE
+            ,HAND_PHONE
+            ,REG_ID
+            ,REG_DT
+        ) VALUES (
+            #userId#
+            ,#phoneType#
+            ,#handPhone#
+            ,#regId#
+            ,SYSDATE
+        )
+    </insert>
+
+    <update id="PushDAO.updatePush" parameterClass="PushVO">
+        UPDATE TB_PUSH SET
+             USER_ID = #userId#
+            ,PHONE_TYPE = #phoneType#
+            ,HAND_PHONE = #handPhone#
+            ,REG_ID = #regId#
+            ,REG_DT = SYSDATE
+
+        WHERE 1=1
+        AND REG_ID = #regId#
+    </update>
+
+    <select id="PushDAO.selectPushUser" parameterClass="PushVO" resultClass="PushVO">
+        SELECT
+            USER_ID userId
+            ,PHONE_TYPE phoneType
+            ,HAND_PHONE handPhone
+            ,REG_ID regId
+            ,REG_DT regDt
+        FROM TB_PUSH
+
+        WHERE 1=1
+
+        <isNotEmpty property="userId" prepend="AND">
+            USER_ID = #userId#
+        </isNotEmpty>
+
+        <isNotEmpty property="regId" prepend="AND">
+            REG_ID = #regId#
+        </isNotEmpty>
+    </select>
+
+    <insert id="PushDAO.insertPushMessage" parameterClass="PushVO">
+        INSERT INTO TB_PUSH_MESSAGE (
+              PUSH_SQ,
+              MSG,
+              USER_ID,
+              SEND_DT
+       ) VALUES (
+               #pushSq#
+              ,#msg#
+              ,#userId#
+              ,SYSDATE
+       )
+    </insert>
+
+</sqlMap>

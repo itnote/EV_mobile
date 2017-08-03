@@ -1,8 +1,11 @@
 package egovframework.evcar.user.web;
 
+import egovframework.app.push.service.PushService;
+import egovframework.app.push.vo.PushVO;
 import egovframework.evcar.common.BaseController;
 import egovframework.evcar.user.service.EvcarUsrService;
 import egovframework.evcar.user.vo.EvcarUsrVO;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,6 +27,9 @@ public class EvcarUsrController extends BaseController {
 
     @Resource(name="EvcarUserService")
     private EvcarUsrService evcarUsrService;
+
+    @Resource(name="PushService")
+    private PushService pushService;
 
     /**
      * 사용자 로그인 페이지
@@ -61,6 +67,13 @@ public class EvcarUsrController extends BaseController {
         EvcarUsrVO resultVO = this.evcarUsrService.loginAction(evcarUsrVO);
 
         if (resultVO != null && resultVO.getUsrId() != null && !resultVO.getUsrPwd().equals("")) {
+
+            String pushType = request.getParameter("pushType");
+            String pushKey = request.getParameter("pushKey");
+
+            if(StringUtils.isNotEmpty(pushType)&& StringUtils.isNotEmpty(pushKey))
+                pushService.insertPush(new PushVO(request));
+
             // 2-1. 로그인 정보를 세션에 저장
             request.getSession().setAttribute("loginVO", resultVO);
 

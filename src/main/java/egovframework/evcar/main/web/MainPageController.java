@@ -4,6 +4,8 @@ import egovframework.evcar.common.BaseController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created by dongguk on 2017-05-30.
  */
@@ -11,9 +13,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainPageController extends BaseController {
 
     @RequestMapping(value = "/main.mdo")
-    public String view(){
+    public String view(HttpServletRequest request){
+
+
+        System.out.println("-----------");
+        System.out.println("-----------");
+        System.out.println("-----------");
+        System.out.println("ses:" + request.getSession().getAttribute("PUSHKEY"));
+
+        logRequest(request);
 
         return "egovframework/evcar/main";
+
+
+
     }
 
 }

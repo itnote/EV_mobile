@@ -1,10 +1,31 @@
+<%@ page import="org.apache.xpath.SourceTree" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>메인</title>
+    <script type="text/javascript">
+        function test() {
+                alert("test");
+        }
+    </script>
+
 </head>
 <body>
+
+
+<%
+
+    System.out.println("*Main*");
+    System.out.println("*Main*");
+    System.out.println("*Main*");
+    System.out.println("*Main*");
+    System.out.println("*Main*");
+    System.out.println("*Main*");
+    System.out.println("*Main*");
+
+
+%>
 
 <nav id="main_menu">
     <ul>
@@ -64,10 +85,34 @@
                 <p>공지사항</p><i class="fi icon-notice"></i></a>
         </li>
         <li>
-            <a href="/evcar/bbs/list.mdo?bbsId=BBSMSTR_000000000002">
+            <a href="javascript:test2()">
                 <p>도움말</p><i class="fi icon-help"></i></a>
         </li>
     </ul>
+
+    <script type="text/javascript">
+        function test2() {
+            alert("test");
+
+
+
+            //MYEV.callAndroid();
+
+
+           var a =  MYEV.callGetId();
+           alert(a);
+        }
+
+        function setRegID(reg){
+            alert("reg:" + reg);
+        }
+
+        function settest( ){
+            alert("aaaaaaaa");
+        }
+
+    </script>
+
 </nav>
 <h2 class="mark">본 사이트는 웹접근성품질인증을 획득하였습니다.</h2>
 <footer id="footer">
