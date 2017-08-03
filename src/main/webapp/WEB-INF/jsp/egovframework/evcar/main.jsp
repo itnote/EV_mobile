@@ -4,28 +4,8 @@
 <html>
 <head>
     <title>메인</title>
-    <script type="text/javascript">
-        function test() {
-                alert("test");
-        }
-    </script>
-
 </head>
 <body>
-
-
-<%
-
-    System.out.println("*Main*");
-    System.out.println("*Main*");
-    System.out.println("*Main*");
-    System.out.println("*Main*");
-    System.out.println("*Main*");
-    System.out.println("*Main*");
-    System.out.println("*Main*");
-
-
-%>
 
 <nav id="main_menu">
     <ul>
@@ -89,30 +69,6 @@
                 <p>도움말</p><i class="fi icon-help"></i></a>
         </li>
     </ul>
-
-    <script type="text/javascript">
-        function test2() {
-            alert("test");
-
-
-
-            //MYEV.callAndroid();
-
-
-           var a =  MYEV.callGetId();
-           alert(a);
-        }
-
-        function setRegID(reg){
-            alert("reg:" + reg);
-        }
-
-        function settest( ){
-            alert("aaaaaaaa");
-        }
-
-    </script>
-
 </nav>
 <h2 class="mark">본 사이트는 웹접근성품질인증을 획득하였습니다.</h2>
 <footer id="footer">

@@ -37,6 +37,7 @@
             }
         });
 
+        // 안드로이드 체크
         if(typeof(MYEV) !== 'undefined') {
             alert(MYEV.callGetId());
             document.user.pushType.value = 'ANDROID';
