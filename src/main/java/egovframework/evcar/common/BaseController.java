@@ -1,7 +1,6 @@
 package egovframework.evcar.common;
 
 
-import egovframework.com.cmm.ComDefaultVO;
 import egovframework.com.cmm.EgovMessageSource;
 import egovframework.evcar.common.vo.BaseVO;
 import egovframework.evcar.user.vo.EvcarUsrVO;
@@ -17,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Enumeration;
 
 /**
  * Created by dongguk on 2017-05-30.
@@ -139,4 +139,32 @@ public class BaseController {
     protected static final String encodeMD5HexBase64(String pw) {
         return new String(Base64.encodeBase64(DigestUtils.md5Hex(pw).getBytes()));
     }
+
+    protected void logRequest( HttpServletRequest req ){
+
+        Enumeration paramNames = request.getParameterNames();
+        while(paramNames.hasMoreElements()){
+            String name = (String)paramNames.nextElement();
+            String value = request.getHeader(name);
+            System.out.println(name + " : " + value  );
+        }
+
+
+
+
+
+    }
+
+    protected void logHeadRequest( HttpServletRequest req ){
+
+        Enumeration headerNames = request.getHeaderNames();
+        while(headerNames.hasMoreElements()){
+            String name = (String)headerNames.nextElement();
+            String value = request.getHeader(name);
+            System.out.println(name + " : " + value );
+        }
+
+    }
+
+
 }
