@@ -37,6 +37,13 @@
             }
         });
 
+        if(typeof(MYEV) !== 'undefined') {
+            alert(MYEV.callGetId());
+            document.user.pushType.value = 'ANDROID';
+            document.user.pushKey.value = MYEV.callGetId();
+        }
+
+
         $('form#user').validate({
             rules: {
                 usrId: {required: true},
@@ -47,12 +54,6 @@
                 usrPwd: {required: '비밀번호를 입력하세요.'}
             },
             submitHandler: function (frm) {
-
-                // 안드로이드 앱 체크
-                if(typeof(MYEV) == 'undefined') {
-                    frm.pushType.value = 'ANDORID';
-                    frm.pushKey.value = MYEV.callGetId();
-                }
 
                 frm.submit();
             },

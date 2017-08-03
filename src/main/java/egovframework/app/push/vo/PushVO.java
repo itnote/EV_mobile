@@ -13,7 +13,7 @@ public class PushVO {
 
     public PushVO(HttpServletRequest req) {
         this.userId = req.getParameter("usrId");
-        this.pushType = req.getParameter("pushType");
+        this.phoneType = req.getParameter("pushType");
         this.regId = req.getParameter("pushKey");
     }
 
