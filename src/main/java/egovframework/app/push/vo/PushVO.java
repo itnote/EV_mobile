@@ -105,4 +105,22 @@ public class PushVO {
     public void setParam2(String param2) {
         this.param2 = param2;
     }
+
+
+    @Override
+    public String toString() {
+        return "PushVO{" +
+                "pushSq='" + pushSq + '\'' +
+                ", userId='" + userId + '\'' +
+                ", phoneType='" + phoneType + '\'' +
+                ", handPhone='" + handPhone + '\'' +
+                ", regId='" + regId + '\'' +
+                ", regDt='" + regDt + '\'' +
+                ", msg='" + msg + '\'' +
+                ", jobOfferNo='" + jobOfferNo + '\'' +
+                ", pushType='" + pushType + '\'' +
+                ", param1='" + param1 + '\'' +
+                ", param2='" + param2 + '\'' +
+                '}';
+    }
 }

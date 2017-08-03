@@ -3,8 +3,6 @@ package egovframework.app.push.web;
 import egovframework.app.push.service.PushService;
 import egovframework.app.push.vo.PushVO;
 import egovframework.evcar.common.BaseController;
-import egovframework.evcar.common.vo.BaseVO;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,8 +32,17 @@ public class PushController extends BaseController {
      * @return
      * @throws Exception
      */
-    @RequestMapping({ "/insert.do" })
+    @RequestMapping({ "/insertPush.do" })
     public @ResponseBody String insertPush(PushVO vo) throws Exception {
+
+        System.out.println("vo:" + vo.toString());
+        return pushService.insertPush(vo);
+    }
+
+    @RequestMapping({ "/insert.do" })
+    public @ResponseBody String insert(PushVO vo) throws Exception {
+
+        System.out.println("vo:" + vo.toString());
         return pushService.insertPush(vo);
     }
 
