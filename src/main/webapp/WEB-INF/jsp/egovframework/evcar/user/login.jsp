@@ -8,6 +8,8 @@
 <body>
 
 <form id="user" name="user" method="POST" action="/user/loginAct.mdo" onsubmit="">
+    <input type="hidden" id="pushKey" name="pushKey"/>
+    <input type="hidden" id="pushType" name="pushType"/>
     <fieldset>
         <legend class="sr-only">로그인정보 입력폼 입니다.</legend>
 
@@ -45,6 +47,13 @@
                 usrPwd: {required: '비밀번호를 입력하세요.'}
             },
             submitHandler: function (frm) {
+
+                // 안드로이드 앱 체크
+                if(typeof(MYEV) == 'undefined') {
+                    frm.pushType.value = 'ANDORID';
+                    frm.pushKey.value = MYEV.callGetId();
+                }
+
                 frm.submit();
             },
             success: function (e) {

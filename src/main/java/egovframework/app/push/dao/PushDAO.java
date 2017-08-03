@@ -20,8 +20,16 @@ public class PushDAO extends EgovComAbstractDAO {
         insert("PushDAO.insertPush", vo);
     }
 
+    public void updatePush(PushVO vo) {
+        update("PushDAO.updatePush", vo);
+    }
+
     public List<PushVO> selectPushUser(PushVO vo) {
         return (List<PushVO>) list("PushDAO.selectPushUser", vo);
+    }
+
+    public void insertPushMessage(PushVO vo){
+        insert("PushDAO.insertPushMessage", vo);
     }
 
 }

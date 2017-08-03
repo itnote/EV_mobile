@@ -1,9 +1,21 @@
 package egovframework.app.push.vo;
 
+import egovframework.evcar.user.vo.EvcarUsrVO;
+
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created by jodongguk on 2017-08-02.
  */
 public class PushVO {
+
+    public PushVO() {}
+
+    public PushVO(HttpServletRequest req) {
+        this.userId = req.getParameter("usrId");
+        this.pushType = req.getParameter("pushType");
+        this.regId = req.getParameter("pushKey");
+    }
 
     private String pushSq;
     private String userId;
@@ -110,8 +122,7 @@ public class PushVO {
     @Override
     public String toString() {
         return "PushVO{" +
-                "pushSq='" + pushSq + '\'' +
-                ", userId='" + userId + '\'' +
+                "userId='" + userId + '\'' +
                 ", phoneType='" + phoneType + '\'' +
                 ", handPhone='" + handPhone + '\'' +
                 ", regId='" + regId + '\'' +

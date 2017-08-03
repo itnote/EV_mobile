@@ -36,13 +36,11 @@ public class PushServiceImpl implements PushService {
 
         String regId = vo.getRegId();
 
-        String key = "0";
-        if(regId != null && !"".equals(regId) && pushDAO.checkPush(vo) < 1) {
-            key = pushKeyIdGnrService.getNextStringId();
-            vo.setPushSq(key);
-            pushDAO.insertPush(vo);
+        if(regId != null && !"".equals(regId)) {
+            if(pushDAO.checkPush(vo) < 1) pushDAO.insertPush(vo);
+            else pushDAO.updatePush(vo);
         }
-        return key;
+        return regId;
     }
 
     @Override
@@ -66,7 +64,7 @@ public class PushServiceImpl implements PushService {
                         .delayWhileIdle(SHOW_ON_IDLE)
                         .timeToLive(LIVE_TIME)
 
-                        .addData("key",pvo.getPushSq())
+                        .addData("key",pvo.getRegId())
                         .addData("msg",msg)
                         //.addData("param1",nullTrim(param1))
                         //.addData("param2",nullTrim(param2))
@@ -81,6 +79,10 @@ public class PushServiceImpl implements PushService {
 
         }
 
+        // 메시지 로깅
+        vo.setPushSq(pushKeyIdGnrService.getNextStringId());
+        vo.setMsg(msg);
+        pushDAO.insertPushMessage(vo);
     }
 
     private String nullTrim(String str) {

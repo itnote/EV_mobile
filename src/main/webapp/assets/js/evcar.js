@@ -81,6 +81,8 @@ var getStationInfoPopup = function(param) {
             if(e2.sts == '99') {
                 $li.append($('<p />', {class: 'stat complete', text: '완료'}));
             }else if(e2.sts == '1'){
+                $li.append($('<p />', {class: 'stat ing', text: '충전시작'}));
+            }else if(e2.sts == '2'){
                 $li.append($('<p />', {class: 'stat ing', text: '충전중'}));
             }else{
                 $li.append($('<p />', {class: 'stat', text: '대기중'}));
