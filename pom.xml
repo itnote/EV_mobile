@@ -210,6 +210,14 @@
 			<version>4.1</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+
+
 		<!-- PDF변환용 라이브러리 -->
 		<dependency>
 			<groupId>com.artofsolving</groupId>
@@ -362,11 +370,11 @@
 		    <artifactId>dom</artifactId>
 		    <version>2.3.0-jaxb-1.0.6</version>
 		</dependency>
-		<dependency>
-		    <groupId>com.sun.xml.rpc</groupId>
-		    <artifactId>jaxrpc-impl</artifactId>
-		    <version>1.1.3_01</version>
-		</dependency>
+		<!--<dependency>-->
+		    <!--<groupId>com.sun.xml.rpc</groupId>-->
+		    <!--<artifactId>jaxrpc-impl</artifactId>-->
+		    <!--<version>1.1.3_01</version>-->
+		<!--</dependency>-->
 		<dependency>
 		    <groupId>org.apache.servicemix.specs</groupId>
 		    <artifactId>org.apache.servicemix.specs.jaxws-api-2.0</artifactId>
@@ -441,6 +449,8 @@
 			<version>2.4.2</version>
 		</dependency>
 
+
+
 		<!-- 기상청 날씨조회를 위한 라이브러리 -->
 		<!--
 		<dependency>
@@ -498,10 +508,10 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.1</version>
+
 					<configuration>
-						<source>1.7</source>
-						<target>1.7</target>
+						<source>1.8</source>
+						<target>1.8</target>
 						<encoding>UTF-8</encoding>
 						<maxmem>1024m</maxmem>
 					</configuration>
@@ -527,17 +537,7 @@
 					</dependencies>
 				</plugin>
 				<!-- EMMA -->
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>emma-maven-plugin</artifactId>
-					<version>1.0-alpha-1</version>
-				</plugin>
-				<!-- PMD manven plugin -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-pmd-plugin</artifactId>
-					<version>2.4</version>
-				</plugin>
+
 			</plugins>
 		</pluginManagement>
 		<plugins>
@@ -582,68 +582,6 @@
 			</resource>
 		</resources>
 	</build>
-	<reporting>
-		<outputDirectory>${basedir}/target/site</outputDirectory>
-		<plugins>
-			<plugin>
-				<artifactId>maven-project-info-reports-plugin</artifactId>
-				<version>2.0.1</version>
-				<reportSets>
-					<reportSet>
-						<id>sunlink</id>
-						<reports>
-							<report>javadoc</report>
-						</reports>
-						<inherited>true</inherited>
-						<configuration>
-							<links>
-								<link>http://docs.oracle.com/javase/6/docs/api/</link>
-							</links>
-						</configuration>
-					</reportSet>
-				</reportSets>
-			</plugin>
-			<!-- JUnit Test Results & EMMA Coverage Reporting -->
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>emma-maven-plugin</artifactId>
-				<inherited>true</inherited>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>surefire-report-maven-plugin</artifactId>
-				<inherited>true</inherited>
-				<reportSets>
-					<reportSet>
-						<reports>
-							<report>report-only</report>
-						</reports>
-					</reportSet>
-				</reportSets>
-			</plugin>
-			<!-- Generating JavaDoc Report -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<configuration>
-					<minmemory>128m</minmemory>
-					<maxmemory>512m</maxmemory>
-					<encoding>${encoding}</encoding>
-					<docencoding>${encoding}</docencoding>
-					<charset>${encoding}</charset>
-				</configuration>
-			</plugin>
-			<!-- Generating Java Source in HTML -->
-			<plugin>
-				<artifactId>maven-jxr-plugin</artifactId>
-				<configuration>
-					<inputEncoding>${encoding}</inputEncoding>
-					<outputEncoding>${encoding}</outputEncoding>
-					<linkJavadoc>true</linkJavadoc>
-					<javadocDir>apidocs</javadocDir>
-				</configuration>
-			</plugin>
-		</plugins>
-	</reporting>
+
 
 </project>

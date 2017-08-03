@@ -2,58 +2,58 @@ package kr.co.smartro.xpg_pay.urlsample;
 
 public class Dto {
 	
-	public String PayMethod=""; 						// ÁöºÒ¼ö´Ü CARDBILL:½Å¿ëÄ«µå
-	public String ediDate=""; 							// Àü¹®»ý¼ºÀÏ½Ã
-	public String GoodsCnt="";						// °áÁ¦ »óÇ° Ç°¸ñ °³¼ö
-	public String GoodsName="";						// °Å·¡ »óÇ°¸í	
-	public String Amt="";								// °Å·¡ ±Ý¾×	
-	public String Moid="";								// »óÇ°ÁÖ¹®¹øÈ£	
-	public String MID="";								// »óÁ¡¾ÆÀÌµð
-	public String ChannelType="";					// Ã¤³ÎÀ¯Çü	
-	public String MallIP="";							// »óÁ¡¼­¹öIP
-	public String MallReserved="";					// »óÁ¡¿¹ºñÁ¤º¸	
-	public String MallUserID="";					    // È¸¿ø»ç°í°´ID	
-	public String BuyerName="";					    // ±¸¸ÅÀÚ¸í
-	public String BuyerTel="";					    	// ±¸¸ÅÀÚ¿¬¶ôÃ³
-	public String BuyerEmail="";					    // ±¸¸ÅÀÚ¸ÞÀÏÁÖ¼Ò
-	public String ParentEmail="";					    // º¸È£ÀÚ¸ÞÀÏÁÖ¼Ò »ç¿ë¾ÈÇÔ
-	public String BuyerAddr="";					    // ¹è¼ÛÁöÁÖ¼Ò
-	public String BuyerPostNo="";					// ¿ìÆí¹øÈ£
-	public String UserIP="";					        // È¸¿ø»ç°í°´ IP
-	public String Language=""; 						// KR EN ÀÀ´ä¸Þ½ÃÁö ¿µ¹® ,ÇÑ±Û ±¸ºÐ
-	public String VERIFY_V="";							// °ËÁõ°ª	EncryptData  °°Àº¿ëµµ
-	public String ReturnURL="";						// »óÁ¡ °áÁ¦°á°ú Àü¼Û URL	 Ãß°¡20140408
-	public String RetryURL	="";						// »óÁ¡ °áÁ¦°á°ú Retry URL Ãß°¡20140408	
-	public String SUB_ID="";							// ¼­ºê¾ÆÀÌµð                 Ãß°¡20140408	
+	public String PayMethod=""; 						// ï¿½ï¿½ï¿½Ò¼ï¿½ï¿½ï¿½ CARDBILL:ï¿½Å¿ï¿½Ä«ï¿½ï¿½
+	public String ediDate=""; 							// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï½ï¿½
+	public String GoodsCnt="";						// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç° Ç°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	public String GoodsName="";						// ï¿½Å·ï¿½ ï¿½ï¿½Ç°ï¿½ï¿½	
+	public String Amt="";								// ï¿½Å·ï¿½ ï¿½Ý¾ï¿½	
+	public String Moid="";								// ï¿½ï¿½Ç°ï¿½Ö¹ï¿½ï¿½ï¿½È£	
+	public String MID="";								// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½
+	public String ChannelType="";					// Ã¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½	
+	public String MallIP="";							// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IP
+	public String MallReserved="";					// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½	// È¸ï¿½ï¿½ï¿½ï¿½ï¿½ID
+	public String MallUserID="";
+	public String BuyerName="";					    // ï¿½ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½
+	public String BuyerTel="";					    	// ï¿½ï¿½ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½Ã³
+	public String BuyerEmail="";					    // ï¿½ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½
+	public String ParentEmail="";					    // ï¿½ï¿½È£ï¿½Ú¸ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	public String BuyerAddr="";					    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½
+	public String BuyerPostNo="";					// ï¿½ï¿½ï¿½ï¿½ï¿½È£
+	public String UserIP="";					        // È¸ï¿½ï¿½ï¿½ï¿½ï¿½ IP
+	public String Language=""; 						// KR EN ï¿½ï¿½ï¿½ï¿½Þ½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ,ï¿½Ñ±ï¿½ ï¿½ï¿½ï¿½ï¿½
+	public String VERIFY_V="";							// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½	EncryptData  ï¿½ï¿½ï¿½ï¿½ï¿½ëµµ
+	public String ReturnURL="";						// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ URL	 ï¿½ß°ï¿½20140408
+	public String RetryURL	="";						// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Retry URL ï¿½ß°ï¿½20140408	
+	public String SUB_ID="";							// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½                 ï¿½ß°ï¿½20140408	
 	
-	//ÈÞ´ëÆù ºô¸µ Àü¿ë
+	//ï¿½Þ´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-	public String GoodsCl="";							// °áÁ¦±¸ºÐ ½Ç¹° =1 ,ÄÁÅÙÃ÷=0 Ãß°¡20140609	
+	public String GoodsCl="";							// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¹ï¿½ =1 ,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½=0 ï¿½ß°ï¿½20140609	
 	
-	//ºô¸µÅ° Àü¿ë
-	public String BL_TID="";							// ¼­ºê¾ÆÀÌµð
-	public String CardQuota="";						// 	ÇÒºÎ±â°£
+	//ï¿½ï¿½ï¿½ï¿½Å° ï¿½ï¿½ï¿½ï¿½
+	public String BL_TID="";							// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½
+	public String CardQuota="";						// 	ï¿½ÒºÎ±â°£
 	
-	//Çö±Ý¿µ¼öÁõ Àü¿ë
-	public String ReceiptSupplyAmt ="";         // Çö±Ý¿µ¼öÁõ °ø±Þ°¡¾×			Ãß°¡20140408	
-	public String ReceiptVAT ="";               // Çö±Ý¿µ¼öÁõ ºÎ°¡¼¼			Ãß°¡20140408	
-	public String ReceiptServiceAmt ="";        // Çö±Ý¿µ¼öÁõ ºÀ»ç·á			Ãß°¡20140408	
-	public String ReceiptIdentity ="";  		// Çö±Ý¿µ¼öÁõ ¹ß±Þ¹øÈ£			Ãß°¡20140408	
-	public String CashReceiptType ="";			// Çö±Ý¿µ¼öÁõ ¿ëµµ±¸ºÐ	 1 : ¹ßÇà(°³ÀÎ ¼Òµæ°øÁ¦), 2 : ¹ßÇà(»ç¾÷ÀÚ ÁöÃâÁõºù)		Ãß°¡20140408
-	public String ReceiptAmt = "";				// Çö±Ý¿µ¼öÁõ ÃÑ±Ý¾×
+	//ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	public String ReceiptSupplyAmt ="";         // ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Þ°ï¿½ï¿½ï¿½			ï¿½ß°ï¿½20140408	
+	public String ReceiptVAT ="";               // ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î°ï¿½ï¿½ï¿½			ï¿½ß°ï¿½20140408	
+	public String ReceiptServiceAmt ="";        // ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½			ï¿½ß°ï¿½20140408	
+	public String ReceiptIdentity ="";  		// ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß±Þ¹ï¿½È£			ï¿½ß°ï¿½20140408	
+	public String CashReceiptType ="";			// ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ëµµï¿½ï¿½ï¿½ï¿½	 1 : ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ ï¿½Òµï¿½ï¿½ï¿½ï¿½), 2 : ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)		ï¿½ß°ï¿½20140408
+	public String ReceiptAmt = "";				// ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ±Ý¾ï¿½
 	public String ReceiptType = "";
 	
-	//¾ÏÈ£È­ ¸ðµå
-	public String ReturnType ="";				// ÀÀ´äÀ¯ÇüPSOT ,TEXT			Ãß°¡20140408	
-	public String BillKeyMode="";				// ÇÊµå ¾ÏÈ£È­ ¿©ºÎ (ÃÖÃÊ ºô¸µÅ° Àü¿ëÀÌ¾úÀ¸³ª ¸ðµâ ÅëÇÕÀ¸·Î ÀÇ¹Ì º¯°æ)
+	//ï¿½ï¿½È£È­ ï¿½ï¿½ï¿½
+	public String ReturnType ="";				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½PSOT ,TEXT			ï¿½ß°ï¿½20140408	
+	public String BillKeyMode="";				// ï¿½Êµï¿½ ï¿½ï¿½È£È­ ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å° ï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¹ï¿½ ï¿½ï¿½ï¿½ï¿½)
 	
-	public String CardPoint = "";               //Ä«µå Æ÷ÀÎÆ® Ãß°¡ 20151217
+	public String CardPoint = "";               //Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ß°ï¿½ 20151217
 	
 	
-	//°¡»ó°èÁÂ 
-	public String VbankBankCode = "";			// °¡»ó°èÁÂÀºÇàÄÚµå
-	public String VbankExpDate = "";			// ÀÔ±Ý¿¹Á¤ÀÏ
-	public String TransType = "";				// °Å·¡ÇüÅÂ(04 = ÀÏ°ý Ã¤¹ø)
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
+	public String VbankBankCode = "";			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½
+	public String VbankExpDate = "";			// ï¿½Ô±Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½
+	public String TransType = "";				// ï¿½Å·ï¿½ï¿½ï¿½ï¿½ï¿½(04 = ï¿½Ï°ï¿½ Ã¤ï¿½ï¿½)
 	
 	
 	

@@ -15,8 +15,18 @@ public class MainPageController extends BaseController {
     @RequestMapping(value = "/main.mdo")
     public String view(HttpServletRequest request){
 
+
+        System.out.println("-----------");
+        System.out.println("-----------");
+        System.out.println("-----------");
+        System.out.println("ses:" + request.getSession().getAttribute("PUSHKEY"));
+
         logRequest(request);
+
         return "egovframework/evcar/main";
+
+
+
     }
 
 }

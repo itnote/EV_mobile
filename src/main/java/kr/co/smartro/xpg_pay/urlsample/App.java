@@ -42,26 +42,26 @@ public class App
 			buffer.append("BuyerAddr").append("=").append(dtos.getBuyerAddr()).append("&"); 
 			buffer.append("BuyerPostNo").append("=").append(dtos.getBuyerPostNo()).append("&"); 
 			buffer.append("UserIP").append("=").append(dtos.getUserIP()).append("&"); 
-			buffer.append("ReturnURL").append("=").append(dtos.getReturnURL()).append("&");  //Ãß°¡20140408
-			buffer.append("RetryURL").append("=").append(dtos.getRetryURL()).append("&");  //Ãß°¡20140408		
-			buffer.append("SUB_ID").append("=").append(dtos.getSUB_ID()).append("&");  //Ãß°¡20140408
+			buffer.append("ReturnURL").append("=").append(dtos.getReturnURL()).append("&");  //ï¿½ß°ï¿½20140408
+			buffer.append("RetryURL").append("=").append(dtos.getRetryURL()).append("&");  //ï¿½ß°ï¿½20140408		
+			buffer.append("SUB_ID").append("=").append(dtos.getSUB_ID()).append("&");  //ï¿½ß°ï¿½20140408
 			
-			buffer.append("ReceiptSupplyAmt").append("=").append(dtos.getReceiptSupplyAmt()).append("&");  //Çö±Ý ¿µ¼öÁõ Àü¿ë Ãß°¡20140408
-			buffer.append("ReceiptVAT").append("=").append(dtos.getReceiptVAT()).append("&");  //Çö±Ý ¿µ¼öÁõ Àü¿ë Ãß°¡20140408
-			buffer.append("ReceiptServiceAmt").append("=").append(dtos.getReceiptServiceAmt()).append("&");  //Çö±Ý ¿µ¼öÁõ Àü¿ë Ãß°¡20140408
-			buffer.append("ReceiptIdentity").append("=").append(dtos.getReceiptIdentity()).append("&");  //Çö±Ý ¿µ¼öÁõ Àü¿ë Ãß°¡20140408
-			buffer.append("CashReceiptType").append("=").append(dtos.getCashReceiptType()).append("&");  //Çö±Ý ¿µ¼öÁõ Àü¿ë Ãß°¡20140408
+			buffer.append("ReceiptSupplyAmt").append("=").append(dtos.getReceiptSupplyAmt()).append("&");  //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½20140408
+			buffer.append("ReceiptVAT").append("=").append(dtos.getReceiptVAT()).append("&");  //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½20140408
+			buffer.append("ReceiptServiceAmt").append("=").append(dtos.getReceiptServiceAmt()).append("&");  //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½20140408
+			buffer.append("ReceiptIdentity").append("=").append(dtos.getReceiptIdentity()).append("&");  //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½20140408
+			buffer.append("CashReceiptType").append("=").append(dtos.getCashReceiptType()).append("&");  //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½20140408
 			
-			buffer.append("GoodsCl").append("=").append(dtos.getGoodsCl()).append("&");  //ÈÞ´ëÆù ºô¸µ Àü¿ë Ãß°¡20140609
+			buffer.append("GoodsCl").append("=").append(dtos.getGoodsCl()).append("&");  //ï¿½Þ´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½20140609
 			
-			buffer.append("ReturnType").append("=").append(dtos.getReturnType()).append("&");  //Ãß°¡20140408	
+			buffer.append("ReturnType").append("=").append(dtos.getReturnType()).append("&");  //ï¿½ß°ï¿½20140408	
 			buffer.append("CardPoint").append("=").append(dtos.getCardPoint()).append("&"); 
 
-			buffer.append("VbankBankCode").append("=").append(dtos.getVbankBankCode()).append("&"); //Ãß°¡ 20160121 
-			buffer.append("VbankExpDate").append("=").append(dtos.getVbankExpDate()).append("&"); //Ãß°¡ 20160121
-			buffer.append("TransType").append("=").append(dtos.getTransType()).append("&"); //Ãß°¡ 20160121
-			buffer.append("ReceiptAmt").append("=").append(dtos.getReceiptAmt()).append("&"); //Ãß°¡ 20160121
-			buffer.append("ReceiptType").append("=").append(dtos.getReceiptType()).append("&"); //Ãß°¡ 20160121
+			buffer.append("VbankBankCode").append("=").append(dtos.getVbankBankCode()).append("&"); //ï¿½ß°ï¿½ 20160121 
+			buffer.append("VbankExpDate").append("=").append(dtos.getVbankExpDate()).append("&"); //ï¿½ß°ï¿½ 20160121
+			buffer.append("TransType").append("=").append(dtos.getTransType()).append("&"); //ï¿½ß°ï¿½ 20160121
+			buffer.append("ReceiptAmt").append("=").append(dtos.getReceiptAmt()).append("&"); //ï¿½ß°ï¿½ 20160121
+			buffer.append("ReceiptType").append("=").append(dtos.getReceiptType()).append("&"); //ï¿½ß°ï¿½ 20160121
 
 			
 			buffer.append("BillKeyMode").append("=").append(dtos.getBillKeyMode()); 
@@ -75,12 +75,12 @@ public class App
 			connection.setDoOutput(true);
 			connection.setRequestProperty("Content-Type", "application/json");
 			System.out.println(" OutputStreamWriter start UrlCall ");
-			OutputStreamWriter wr = new OutputStreamWriter(connection.getOutputStream(), "EUC-KR"); // ¼­¹ö´Â  "EUC-KR" ÀÔ´Ï´Ù º¯°æÇÏÁö ¸¶¼¼¿ä..
+			OutputStreamWriter wr = new OutputStreamWriter(connection.getOutputStream(), "EUC-KR"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  "EUC-KR" ï¿½Ô´Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½..
 			System.out.println(" OutputStreamWriter  buffer "+buffer.toString());
 			//wr.write(buffer.toString());
 			wr.flush();
 			System.out.println(" OutputStreamWriter flush UrlCall ");
-			BufferedReader rd = new BufferedReader(new InputStreamReader( connection.getInputStream()));  // ¼­¹ö´Â  "EUC-KR" ÀÔ´Ï´Ù ÇÊ¿ä½Ã UTF-8 ÇüÀ¸·Î º¯°æÇÏ¼¼¿ä.
+			BufferedReader rd = new BufferedReader(new InputStreamReader( connection.getInputStream()));  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  "EUC-KR" ï¿½Ô´Ï´ï¿½ ï¿½Ê¿ï¿½ï¿½ UTF-8 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½.
 			System.out.println(" BufferedReader UrlCall ");
 			String result = "";
 			String line;
@@ -102,7 +102,7 @@ public class App
 	}
 	
     /**
-     * ÇöÀç³¯Â¥¸¦ YYYYMMDDHHMMSS·Î ¸®ÅÏ
+     * ï¿½ï¿½ï¿½ç³¯Â¥ï¿½ï¿½ YYYYMMDDHHMMSSï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
      */
     public  final synchronized String getyyyyMMddHHmmss(){
     	/** yyyyMMddHHmmss Date Format */
