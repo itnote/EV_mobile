@@ -10,4 +10,9 @@ public interface EvcarUsrService {
     public EvcarUsrVO loginAction(EvcarUsrVO evcarUsrVO) throws Exception;
 
     public EvcarUsrVO joinUserData(EvcarUsrVO evcarUsrVO) throws Exception;
+
+    public int IdCheck(EvcarUsrVO vo)throws Exception;
+
+    public int CardCheck(EvcarUsrVO vo)throws Exception;
+
 }

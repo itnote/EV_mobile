@@ -5,8 +5,10 @@ import egovframework.evcar.user.service.EvcarUsrService;
 import egovframework.evcar.user.vo.EvcarUsrVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.Resource;
@@ -14,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * 사용자
- * Created by dongguk on 2017-05-30.
+ * Created by dongguk&doum on 2017-05-30.
  */
 @Controller
 @RequestMapping(value = "/user")
@@ -45,7 +47,6 @@ public class EvcarUsrController extends BaseController {
         model.addAttribute("message", egovMessageSource.getMessage("fail.request.msg"));
         return "egovframework/evcar/user/login";
     }
-
     /**
      * 사용자 로그인 처리 POST
      * @param request
@@ -127,5 +128,22 @@ public class EvcarUsrController extends BaseController {
         redirectAttr.addFlashAttribute("message", egovMessageSource.getMessage("cop.request.msg"));
         return "redirect:/user/login.mdo";
     }
-
+    /***
+     * 회원가입 로그인ID 중복체크
+     * @throws Exception
+     */
+    @RequestMapping(value="/ajax/IdCheck.*")
+    @ResponseBody
+    public int IdCheck(@ModelAttribute("EvcarUsrVO") EvcarUsrVO vo) throws Exception{
+        return evcarUsrService.IdCheck(vo);
+    }
+    /***
+     * 회원가입 티머니-카드 중복체크
+     * @throws Exception
+     */
+    @RequestMapping(value="/ajax/CardCheck.*")
+    @ResponseBody
+    public int CardCheck(@ModelAttribute("EvcarUsrVO") EvcarUsrVO vo) throws Exception{
+        return evcarUsrService.CardCheck(vo);
+    }
 }

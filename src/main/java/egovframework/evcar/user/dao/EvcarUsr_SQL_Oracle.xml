@@ -66,12 +66,22 @@
             ,#createdBy#
         )
     </insert>
-
     <update id="EvcarUsrDAO.updateUsrCard" parameterClass="UsrCardVO">
         UPDATE USR_ATH
             SET USR_CARD = #cardSno#
         WHERE 1=1
             AND USR_SNO = #usrSno#
     </update>
-
+    <select id="EvcarUsrDAO.IdCheck" resultClass="int" parameterClass="EvcarUsrVO">
+        SELECT COUNT(*)
+        FROM USR_ATH
+        WHERE USR_ID = #usrId#
+    </select>
+    <select id="EvcarUsrDAO.CardCheck" resultClass="int" parameterClass="EvcarUsrVO">
+        SELECT COUNT(*)
+        FROM USR_CARD
+        WHERE 1=1
+        AND CARD_CD = #cardCd#
+        AND CARD_SNO =#cardSno#
+    </select>
 </sqlMap>

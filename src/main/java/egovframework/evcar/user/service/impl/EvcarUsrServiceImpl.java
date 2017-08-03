@@ -2,10 +2,10 @@ package egovframework.evcar.user.service.impl;
 
 import egovframework.com.utl.sim.service.EgovFileScrty;
 import egovframework.evcar.card.dao.CardDAO;
+import egovframework.evcar.card.vo.UsrCardVO;
 import egovframework.evcar.user.dao.EvcarUsrDAO;
 import egovframework.evcar.user.service.EvcarUsrService;
 import egovframework.evcar.user.vo.EvcarUsrVO;
-import egovframework.evcar.card.vo.UsrCardVO;
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -66,5 +66,22 @@ public class EvcarUsrServiceImpl implements EvcarUsrService {
         }
 
         return evcarUsrVO;
+    }
+
+    @Override
+    public int IdCheck(EvcarUsrVO vo) throws Exception{
+        // TODO Auto-generated method stub
+
+        int cnt =evcarUserDAO.IdCheck(vo);
+
+        return cnt;
+    }
+    @Override
+    public int CardCheck(EvcarUsrVO vo) throws Exception{
+        // TODO Auto-generated method stub
+
+        int cnt =evcarUserDAO.CardCheck(vo);
+
+        return cnt;
     }
 }

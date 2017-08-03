@@ -30,6 +30,24 @@ public class EvcarUsrVO {
     private String createdBy;
     private String updatedAt;
     private String updatedBy;
+    private String cardCd;
+    private String cardSno;
+
+    public String getCardSno() {
+        return cardSno;
+    }
+
+    public void setCardSno(String cardSno) {
+        this.cardSno = cardSno;
+    }
+
+    public String getCardCd() {
+        return cardCd;
+    }
+
+    public void setCardCd(String cardCd) {
+        this.cardCd = cardCd;
+    }
 
     private List<UsrCardVO> usrCardList;
 

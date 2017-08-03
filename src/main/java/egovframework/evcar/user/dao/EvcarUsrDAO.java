@@ -23,4 +23,13 @@ public class EvcarUsrDAO extends EgovComAbstractDAO {
     public void updateUsrCard(UsrCardVO vo) {
         update("EvcarUsrDAO.updateUsrCard", vo);
     }
+
+    public int IdCheck(EvcarUsrVO vo){
+        Object value = this.getSqlMapClientTemplate().queryForObject("EvcarUsrDAO.IdCheck", vo);
+        return value == null ? 1 : ((Integer) value).intValue();
+    }
+    public int CardCheck(EvcarUsrVO vo){
+        Object value = this.getSqlMapClientTemplate().queryForObject("EvcarUsrDAO.CardCheck", vo);
+        return value == null ? 1 : ((Integer) value).intValue();
+    }
 }

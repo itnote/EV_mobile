@@ -16,7 +16,11 @@
             <h4 class="">회원정보</h4>
             <dl>
                 <dt><label for="usrId">아이디</label></dt>
-                <dd><input id="usrId" name="usrId" type="text" placeholder="아이디를 입력하세요"><i class="essential">필수항목입니다</i></dd>
+                <dd>
+                    <input id="usrId" name="usrId" type="text" placeholder="아이디를 입력하세요" onkeypress="isIdCheck=false;" >
+                    <button type="button" onclick="IdCheck()">중복체크</button>
+                    <i class="essential">필수항목입니다</i>
+                </dd>
                 <dt><label for="usrPwd">비밀번호</label></dt>
                 <dd><input id="usrPwd" name="usrPwd" type="password" placeholder="비밀번호를 입력하세요"><i class="essential">필수항목입니다</i></dd>
                 <dt><label for="usrPwd_re">재입력</label></dt>
@@ -31,12 +35,14 @@
                 <dt><label for="usrEmail">이메일</label></dt>
                 <dd><input id="usrEmail" name="usrEmail" type="text" placeholder="이메일주소를 입력하세요"><i class="essential">필수항목입니다</i></dd>
             </dl>
-
             <h4>티머니카드</h4>
             <input type="hidden" name="usrCardList[0].cardCd" value="tmoney"/>
             <dl>
                 <dt><label for="usrCardList[0].cardSno">카드번호</label></dt>
-                <dd><input class="input-card quantity" id="usrCardList[0].cardSno" name="usrCardList[0].cardSno" type="text" placeholder="****-****-****-****"><i class="essential">필수항목입니다</i></dd>
+                <dd><input class="input-card quantity" id="usrCardList[0].cardSno" name="usrCardList[0].cardSno" type="text" placeholder="****-****-****-****" onkeypress="isCardCheck=false;">
+                    <button type="button" onclick="CardCheck()">중복체크</button>
+                    <i class="essential">필수항목입니다</i>
+                </dd>
                 <dt>발급년월</dt>
                 <dd><i class="essential">필수항목입니다</i>
                     <p class="select">
@@ -108,12 +114,16 @@
             submitHandler: function (frm) {
                 var cel = $('input[id^=usrCel]').val();
                 var card = $('input[id^=usrCardList]').val();
-                if(cel ==''){
+                if(isCardCheck==false){
+                    alert('카드 중복 체크를 하시오.');
+                }
+                else if(isIdCheck==false){
+                    alert('ID 중복 체크를 하시오.');
+                }else if(cel ==''){
                     alert('전화 번호를 입력하시오.');
                 }else if(card ==''){
                     alert("카드 번호를 입력하시오.");
                 }else{
-                    card.replace('-','');
                     frm.submit();
                 }
             },
@@ -121,6 +131,60 @@
             }
         });
     });
+
+    var isIdCheck = false;
+    function IdCheck() {
+        $.ajax({
+            type:"POST",
+            url:"<c:url value='/user/ajax/IdCheck.do'/>",
+            data:{
+                usrId:$('#usrId').val()
+            },
+            success : function (data) {
+                if(data > 0){
+                    alert("이미 존재하는 ID 입니다.");
+                    isIdCheck = false;
+                    return false;
+                }else{
+                    alert("사용 가능 합니다.");
+                    isIdCheck = true;
+                    return false;
+                }
+            },
+            error:function (request,status,error) {
+                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+            }
+        });
+
+    }
+    var isCardCheck = false;
+    function CardCheck() {
+        $.ajax({
+            type:"POST",
+            url:"<c:url value='/user/ajax/CardCheck.do'/>",
+            data:{
+                cardSno:$('input[id^=usrCardList]').val(),
+                cardCd:'tmoney'
+            },
+            success : function (data) {
+                if(data > 0){
+                    alert("이미 존재하는 카드 입니다.");
+                    isCardCheck = false;
+                    return false;
+                }else{
+                    alert("사용 가능 합니다.");
+                    isCardCheck = true;
+                    return false;
+                }
+            },
+            error:function (request,status,error) {
+                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+            }
+        });
+
+    }
+
+
     //핸드폰 번호 formatting
     var cleavePhone = new Cleave('.input-phone', {
         delimiter: '-',
