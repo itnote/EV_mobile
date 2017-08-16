@@ -46,8 +46,8 @@
                 <dt>발급년월</dt>
                 <dd><i class="essential">필수항목입니다</i>
                     <p class="select">
-                        <label class="sr-only" for="usrCardList[0].cardRegYear">발급년도</label>
-                        <select id="usrCardList[0].cardRegYear" name="usrCardList[0].cardRegYear">
+                        <label class="sr-only" for="cardRegYear">발급년도</label>
+                        <select id="cardRegYear" name="usrCardList[0].cardRegYear">
                             <option>YYYY</option>
                             <c:forEach var="h" begin="2000" end="2017" step="1">
                                 <option value="${h}">${h}</option>
@@ -56,8 +56,8 @@
                         <i class="fi icon-back"></i>
                     </p>
                     <p class="select">
-                        <label class="sr-only" for="usrCardList[0].cardRegMonth">발급년도</label>
-                        <select id="usrCardList[0].cardRegMonth" name="usrCardList[0].cardRegMonth">
+                        <label class="sr-only" for="cardRegMonth">발급년도</label>
+                        <select id="cardRegMonth" name="usrCardList[0].cardRegMonth">
                             <option>MM</option>
                             <c:forEach var="h" begin="1" end="12" step="1">
                                 <c:choose>
@@ -116,8 +116,7 @@
                 var card = $('input[id^=usrCardList]').val();
                 if(isCardCheck==false){
                     alert('카드 중복 체크를 하시오.');
-                }
-                else if(isIdCheck==false){
+                }else if(isIdCheck==false){
                     alert('ID 중복 체크를 하시오.');
                 }else if(cel ==''){
                     alert('전화 번호를 입력하시오.');
@@ -131,17 +130,25 @@
             }
         });
     });
-
     var isIdCheck = false;
     function IdCheck() {
+        var usrId = $('#usrId').val();
+        var pattern = /^\s+|\s+$/g;
         $.ajax({
             type:"POST",
             url:"<c:url value='/user/ajax/IdCheck.do'/>",
             data:{
-                usrId:$('#usrId').val()
+                usrId:usrId
             },
             success : function (data) {
-                if(data > 0){
+                if(usrId == ""){
+                    alert("아이디를 입력해 주세요.");
+                    isIdCheck = false;
+                    return false;
+                }else if( $('#usrId').val().replace(/\s/g,"").length == 0){
+                    alert('공백을 제거해 주세요');
+                    return false;
+                }else if(data > 0){
                     alert("이미 존재하는 ID 입니다.");
                     isIdCheck = false;
                     return false;
@@ -155,19 +162,23 @@
                 alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
             }
         });
-
     }
     var isCardCheck = false;
     function CardCheck() {
+        var usrCard = $('input[id^=usrCardList]').val();
         $.ajax({
             type:"POST",
             url:"<c:url value='/user/ajax/CardCheck.do'/>",
             data:{
-                cardSno:$('input[id^=usrCardList]').val(),
+                cardSno:usrCard,
                 cardCd:'tmoney'
             },
             success : function (data) {
-                if(data > 0){
+                if(usrCard == ""){
+                    alert("카드 번호를 입력해 주세요.");
+                    isCardCheck = false;
+                    return false;
+                }else if(data > 0){
                     alert("이미 존재하는 카드 입니다.");
                     isCardCheck = false;
                     return false;
@@ -183,8 +194,6 @@
         });
 
     }
-
-
     //핸드폰 번호 formatting
     var cleavePhone = new Cleave('.input-phone', {
         delimiter: '-',
