@@ -28,11 +28,21 @@
 @gray-light: #999;
 @gray-lighter: #eee;
 @gray-background: #f7f7f7;
+
 @green: #118444;
 @green-darker: #00522d;
 @green-dark: #598560;
 @green-light: #439e37;
 @green-lighter: #67a855;
+
+
+@blue: #356db5;
+@blue-darker: #0d3d7c;
+@blue-dark: #3a5b86;
+@blue-light: #6f9bd1;
+
+
+
 @red: #cc0000;
 @red-darker: #a93229;
 @border-normal: 1px solid #eee;
@@ -160,11 +170,11 @@ a {
      background:@gray-darker;
 
     &.main {
-        background: @green;
+        background: @blue-darker;
     }
 
     &.sub {
-        background: @green-lighter;
+        background: @blue;
     }
 }
 
@@ -200,11 +210,14 @@ a {
         color: @gray;
         width: 36px;
         height: 36px;
-        line-height: 36px;
+        line-height: 34px;
+        border-radius:4px;
 
         &.arrow {
             font-size: 0;
             border-color: transparent;
+            background:@blue;
+            color:@white;
 
             i {
                 font-style: normal;
@@ -219,8 +232,9 @@ a {
         width: 36px;
         height: 36px;
         line-height: 36px;
-        background: @green-darker;
+        background: @blue-darker;
         color: #fff;
+        border-radius:4px;
     }
 }
 /*font*/
