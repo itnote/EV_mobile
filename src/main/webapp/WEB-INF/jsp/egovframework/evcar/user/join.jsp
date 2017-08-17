@@ -8,7 +8,7 @@
     <title>회원가입</title>
 </head>
 <body>
-    <form name="user" id="user" action="<c:url value="/user/joinAct.mdo"/>" method="POST">
+    <form name="user" id="user" action="<c:url value="/user/joinAct.mdo"/>" onsubmit="return dosubmit(this)" method="POST">
         <fieldset class="sign">
             <legend class="sr-only">회원정보를 입력하세요</legend>
             <h3 class="sr-only">회원가입 폼</h3>
@@ -81,55 +81,71 @@
         </fieldset>
     </form>
 <script type="text/javascript">
-    $(document).ready(function(){
-        $('form#user').validate({
-            rules: {
-                usrId: {
-                    required: true,
-                    minlength: 4
-                },
-                usrPwd: {required: true},
-                usrPwd_re: {
-                    equalTo: "#usrPwd"
-                },
-                usrNm: {required: true},
-                usrEmail: {
-                    required: true,
-                    email: true
-                }
-            },
-            messages: {
-                usrId: {
-                    required: '아이디를 입력하세요.',
-                    minlength: $.validator.format("아이디는 {0}자 이상 입력하셔야합니다.")
-                },
-                usrPwd: {required: '비밀번호를 입력하세요.'},
-                usrPwd_re: {equalTo: "비밀번호를 다시 확인하세요."},
-                usrNm: {required: '이름을 입력하여주시기 바랍니다.'},
-                usrEmail: {
-                    required: "이메일주소를 입력하시오.",
-                    email: "올바른 이메일주소를 입력하시오."
-                }
-            },
-            submitHandler: function (frm) {
-                var cel = $('input[id^=usrCel]').val();
-                var card = $('input[id^=usrCardList]').val();
-                if(isCardCheck==false){
-                    alert('카드 중복 체크를 하시오.');
-                }else if(isIdCheck==false){
-                    alert('ID 중복 체크를 하시오.');
-                }else if(cel ==''){
-                    alert('전화 번호를 입력하시오.');
-                }else if(card ==''){
-                    alert("카드 번호를 입력하시오.");
-                }else{
-                    frm.submit();
-                }
-            },
-            success: function (e) {
-            }
-        });
-    });
+    function dosubmit(frm) {
+
+        var usrId = $('input[id^=usrId]').val();
+        var usrPwd = $('input[id^=usrPwd]').val();
+        var usrPwd_re = $('input[id^=usrPwd_re]').val();
+        var usrNm = $('input[id^=usrNm]').val();
+        var cel = $('input[id^=usrCel]').val();
+        var usrEmail = $('input[id^=usrEmail]').val();
+        var card = $('input[id^=usrCardList]').val();
+
+        //핸드폰 번호 정규식
+        var regCel = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+        //이메일 정규식
+        var regEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+        //아이디 정규식
+        var regId = /^[A-Za-z0-9_-]{4,12}$/;
+
+        if(usrId ==''){
+            alert("아이디를 입력하세요.");
+            return false;
+        }else if(isIdCheck==false){
+            alert('ID 중복 체크를 하세요.');
+            return false;
+        }else if(usrPwd == '') {
+            alert('비밀번호를 입력하세요.');
+            return false;
+        }else if(!/^[a-zA-Z0-9!@#$%^&*()?_~]{6,15}$/.test(usrPwd)) {
+            alert("비밀번호는 숫자, 영문, 특수문자 조합으로 6~15자리를 사용해야 합니다.");
+            $('#usrPwd').val('');
+            $('#usrPwd_re').val('');
+            return false;
+        }else if(usrPwd_re == ''){
+            alert('비밀번호를 재입력 입력하세요.');
+            return false;
+        }else if(usrPwd_re != usrPwd){
+            alert('비밀번호를 다시 입력하세요.');
+            $('#usrPwd_re').val('');
+            return false;
+        }else if(usrNm ==''){
+            alert('이름을 입력하세요.');
+            return false;
+        }else if(cel ==''){
+            alert('휴대전화를 입력하세요.');
+            return false;
+        }else if ( !regCel.test( $('#usrCel').val())) {
+            alert("잘못된 휴대폰 번호입니다. 숫자만 입력하세요.");
+            $('#usrCel').val('');
+            return false
+        }else if(usrEmail ==''){
+            alert('이메일 주소를 입력하세요.');
+            return false;
+        }else if( !regEmail.test( $('#usrEmail').val())) {
+            alert('올바른 이메일 주소를 입력하세요.');
+            $('#usrEmail').val('');
+            return false;
+        }else if(card == ''){
+            alert('카드번호를 입력하세요.');
+            return false;
+        }else if(isCardCheck==false){
+            alert('카드 중복 체크를 하세요.');
+            return false;
+        }else{
+            return true;
+        }
+    }
     var isIdCheck = false;
     function IdCheck() {
         var usrId = $('#usrId').val();
@@ -146,10 +162,12 @@
                     isIdCheck = false;
                     return false;
                 }else if( $('#usrId').val().replace(/\s/g,"").length == 0){
-                    alert('공백을 제거해 주세요');
+                    alert('공백이 들어갈 수 없습니다.');
+                    $('#usrId').val('');
                     return false;
                 }else if(data > 0){
                     alert("이미 존재하는 ID 입니다.");
+                    $('#usrId').val('');
                     isIdCheck = false;
                     return false;
                 }else{
@@ -180,6 +198,7 @@
                     return false;
                 }else if(data > 0){
                     alert("이미 존재하는 카드 입니다.");
+                    $('input[id^=usrCardList]').val('');
                     isCardCheck = false;
                     return false;
                 }else{
@@ -192,7 +211,6 @@
                 alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
             }
         });
-
     }
     //핸드폰 번호 formatting
     var cleavePhone = new Cleave('.input-phone', {
@@ -222,3 +240,40 @@
 </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
