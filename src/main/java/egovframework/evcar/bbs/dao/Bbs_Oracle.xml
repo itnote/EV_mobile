@@ -7,21 +7,21 @@
     <typeAlias alias="BbsVO" type="egovframework.evcar.bbs.BbsVO" />
 
     <select id="BbsDAO.selectBbsMaster" parameterClass="String" resultClass="BbsMasterVO">
-        SELECT   BBS_ID AS bbsId
-               , BBS_NM AS bbsNm
-               , BBS_INTRCN AS bbsIntrcn
-               , BBS_TY_CODE AS bbsTyCode
-               , BBS_ATTRB_CODE AS bbsAttrbCode
-               , REPLY_POSBL_AT AS replyPosblAt
-               , FILE_ATCH_POSBL_AT AS fileAtchPosblAt
-               , ATCH_POSBL_FILE_NUMBER AS atchPosblFileNumber
-               , ATCH_POSBL_FILE_SIZE AS atchPosblFileSize
-               , USE_AT AS useAt
-               , TMPLAT_ID AS tmplatId
-               , FRST_REGISTER_ID AS frstRegisterId
-               , FRST_REGIST_PNTTM AS frstRegistPnttm
-               , LAST_UPDUSR_ID AS lastUpdusrId
-               , LAST_UPDT_PNTTM AS lastUpdtPnttm
+        SELECT   BBS_ID  bbsId
+               , BBS_NM  bbsNm
+               , BBS_INTRCN  bbsIntrcn
+               , BBS_TY_CODE  bbsTyCode
+               , BBS_ATTRB_CODE  bbsAttrbCode
+               , REPLY_POSBL_AT  replyPosblAt
+               , FILE_ATCH_POSBL_AT  fileAtchPosblAt
+               , ATCH_POSBL_FILE_NUMBER  atchPosblFileNumber
+               , ATCH_POSBL_FILE_SIZE  atchPosblFileSize
+               , USE_AT  useAt
+               , TMPLAT_ID  tmplatId
+               , FRST_REGISTER_ID  frstRegisterId
+          ct id="BbST_REGIST_PNTTM  frstRegistPnttm
+               , LAST_UPDUSR_ID  lastUpdusrId
+               , LAST_UPDT_PNTTM  lastUpdtPnttm
       FROM COMTNBBSMASTER
 
       WHERE 1=1
