@@ -52,7 +52,7 @@
 			INSERT INTO COMTNFILE
 			(ATCH_FILE_ID, CREAT_DT, USE_AT)
 			VALUES
-			( #atchFileId#, SYSDATE(), 'Y')			
+			( #atchFileId#, NOW(), 'Y')
 		]]>
 	</insert>
 	
@@ -167,6 +167,6 @@
 				a.USE_AT = 'Y'				
 			ORDER BY b.FILE_SN	
  		]]>
- 	</select>	
+ 	</select>
  	
 </sqlMap>

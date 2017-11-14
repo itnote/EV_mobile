@@ -18,8 +18,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * 사용자
- * Created by dongguk&doum on 2017-05-30.
+ * Created by doum on 20171114.
  */
 @Controller
 @RequestMapping(value = "/user")

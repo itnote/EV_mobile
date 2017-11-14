@@ -62,10 +62,11 @@
             ,#usrCel#
             ,#usrEmail#
             ,'Y'
-            ,SYSDATE
+            ,NOW()
             ,#createdBy#
         )
-    </insert>
+    </in
+              ert>
     <update id="EvcarUsrDAO.updateUsrCard" parameterClass="UsrCardVO">
         UPDATE USR_ATH
             SET USR_CARD = #cardSno#

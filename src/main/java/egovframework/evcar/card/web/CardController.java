@@ -160,7 +160,7 @@ public class CardController extends BaseController {
                 VerifyValue = resultArray[16];
             }
 
-            System.out.println("PayMethod:"+PayMethod);
+           /* System.out.println("PayMethod:"+PayMethod);
             System.out.println("MID:"+MID);
             System.out.println("Amt:"+Amt);
             System.out.println("Name:"+Name);
@@ -177,8 +177,7 @@ public class CardController extends BaseController {
             System.out.println("fn_name:"+fn_name);
             System.out.println("BuyerEmail:"+BuyerEmail);
             System.out.println("VerifyValue:"+VerifyValue);
-            System.out.println("VerifyValue:"+app.encodeMD5HexBase64(MID+merchantKey+AuthDate+AuthCode+Amt+BL_TID));
-
+            System.out.println("VerifyValue:"+app.encodeMD5HexBase64(MID+merchantKey+AuthDate+AuthCode+Amt+BL_TID));*/
         } catch (Exception e) {
             System.out.println(" Exception:"+ e);
         }
@@ -220,7 +219,6 @@ public class CardController extends BaseController {
         String VerifyValue		= getParamToString("VerifyValue");
         String BillKeyMode     	= getParamToString("BillKeyMode");
 
-
         String merchantKey = EgovProperties.getProperty("EVCAR.PAY.MERCHANTKEY");
         String VerifySignValue = encodeMD5HexBase64(TID.substring(0, 10) + ResultCode +TID.substring(10, 15) + merchantKey +TID.substring(15, TID.length()));
         String VerifyBillKValue ="";
@@ -246,7 +244,6 @@ public class CardController extends BaseController {
         }else {
             VerifyBillKValue = encodeMD5Base64(MID+merchantKey+AuthDate+AuthCode+Amt+BillTid);
         }
-
         UsrCardVO usrCardVO = new UsrCardVO();
         usrCardVO.setUseYn("Y");
         usrCardVO.setCardCd("card");
@@ -271,8 +268,5 @@ public class CardController extends BaseController {
     @RequestMapping("/stopUrl.mdo")
     public String stopUrl(HttpServletRequest request){
         return "redirect:/card/status.mdo";
-        //return "egovframework/evcar/card/stopUrl";
     }
-
-
 }

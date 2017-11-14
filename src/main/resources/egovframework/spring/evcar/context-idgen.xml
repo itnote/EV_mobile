@@ -8,7 +8,7 @@
 		<property name="strategy"   ref="userAthKeyStrategy" />
 		<property name="blockSize" 	value="10"/>
 		<property name="table"	   	value="COMTECOPSEQ"/>
-		<property name="tableName"	value="USR_ATH"/>
+		<property name="tableName"	value="USER_M"/>
 	</bean>
 	<bean name="userAthKeyStrategy" class="egovframework.rte.fdl.idgnr.impl.strategy.EgovIdGnrStrategyImpl">
 		<property name="prefix"   value="USR_" />
