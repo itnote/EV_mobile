@@ -6,83 +6,103 @@
     <typeAlias alias="EvcarUsrVO" type="egovframework.evcar.user.vo.EvcarUsrVO"/>
     <typeAlias alias="UsrCardVO" type="egovframework.evcar.card.vo.UsrCardVO"/>
 
+    <!--로그인 액션-->
     <select id="EvcarUsrDAO.loginAction" resultClass="EvcarUsrVO" parameterClass="EvcarUsrVO">
         SELECT
-          USR_SNO as usrSno
-        , USR_CARD as usrCard
-        , ATH as ath
-        , USR as usr
-        , USR_NM as usrNm
-        , USR_ID as usrId
-        , USR_PWD as usrPwd
-        , CAMT as camt
-        , CWH as cwh
-        , PYN as pyn
-        , TOT_UNCL_AMT as totUnclAmt
-        , TOT_SETAMT as totSetamt
-        , TOT_CHW as totChw
-        , USE_YN as useYn
-        , USR_CEL as usrCel
-        , USR_EMAIL as usrEmail
-        , TOT_CHW as totChw
-        , CREATED_AT as createdAt
-        , CREATED_BY as createdBy
-        , UPDATED_AT as updatedAt
-        , UPDATED_BY as updatedBy
+            ACRD_CRD_NO AS acrdCrdNo
+           ,USER_NM AS userNm
+           ,USER_ID AS userId
+           ,PWD_NO AS pwdNo
+           ,USER_EMAIL AS userEmail
+           ,ADDR1 AS addr1
+           ,ADDR1_DTL AS addr1Dtl
+           ,TEL_NO AS telNo
+           ,TEL_NO2 AS telNo2
+           ,CAR_CD AS carCd
+           ,CAR_YEAR AS carYear
+           ,CAR_NO AS carNo
+           ,ENTRY_DD AS entryDd
+           ,CRD_ISSUE_DD AS crdIssueDd
+           ,CRD_REG_DD AS crdRegDd
+           ,CRD_ACPT_DD AS crdAcptDd
+           ,USE_YN AS useYn
+           ,REG_DT AS regDt
+           ,MOD_DT AS modDt
+           ,CUST_ID AS custId
 
-        FROM USR_ATH
-
-        WHERE 1=1
-        AND USE_YN = 'Y'
-        AND USR_ID = #usrId#
-        AND USR_PWD = #usrPwd#
+            FROM CHARGE_USER
+            WHERE 1=1
+            AND USE_YN = 'Y'
+            AND USER_ID = #userId#
+            AND PWD_NO = #pwdNo#
     </select>
-
+    <!--회원가입-->
     <insert id="EvcarUsrDAO.joinUserData" parameterClass="EvcarUsrVO">
         INSERT
-        INTO USR_ATH (
-             USR_SNO
-            ,ATH
-            ,USR_NM
-            ,USR_ID
-            ,USR_PWD
-            ,USR_CEL
-            ,USR_EMAIL
+        INTO CHARGE_USER (
+             ACRD_CRD_NO
+            ,USER_NM
+            ,USER_ID
+            ,PWD_NO
+            ,USER_EMAIL
+            ,ADDR1
+            ,ADDR1_DTL
+            ,TEL_NO
+            ,TEL_NO2
+            ,CAR_CD
+            ,CAR_YEAR
+            ,CAR_NO
+            ,ENTRY_DD
+            ,CRD_ISSUE_DD
+            ,CRD_REG_DD
+            ,CRD_ACPT_DD
             ,USE_YN
-            ,CREATED_AT
-            ,CREATED_BY
+            ,REG_DT
+            ,CUST_ID
         )
         VALUES
         (
-             #usrSno#
-            ,'2'
-            ,#usrNm#
-            ,#usrId#
-            ,#usrPwd#
-            ,#usrCel#
-            ,#usrEmail#
+             #acrdCrdNo#
+            ,#userNm#
+            ,#userId#
+            ,#pwdNo#
+            ,#userEmail#
+            ,#addr1#
+            ,#addr1Dtl#
+            ,#telNo#
+            ,#telNo2#
+            ,#carCd#
+            ,#carYear#
+            ,#carNo#
+            ,NOW()
+            ,#crdIssueDd#
+            ,#crdRegDd#
+            ,#crdAcptDd#
             ,'Y'
             ,NOW()
-            ,#createdBy#
+            ,#custId#
         )
-    </in
-              ert>
+    </insert>
+    <!--카드정보-->
     <update id="EvcarUsrDAO.updateUsrCard" parameterClass="UsrCardVO">
         UPDATE USR_ATH
             SET USR_CARD = #cardSno#
         WHERE 1=1
             AND USR_SNO = #usrSno#
     </update>
+
+    <!--아이디 중복체크-->
     <select id="EvcarUsrDAO.IdCheck" resultClass="int" parameterClass="EvcarUsrVO">
         SELECT COUNT(*)
-        FROM USR_ATH
-        WHERE USR_ID = #usrId#
+        FROM CHARGE_USER
+        WHERE USER_ID = #userId#
     </select>
+
+    <!--카드번호 중복체크-->
     <select id="EvcarUsrDAO.CardCheck" resultClass="int" parameterClass="EvcarUsrVO">
         SELECT COUNT(*)
-        FROM USR_CARD
+        FROM CHARGE_USER
         WHERE 1=1
-        AND CARD_CD = #cardCd#
-        AND CARD_SNO =#cardSno#
+        AND ACRD_CRD_NO = #acrdCrdNo#
     </select>
 </sqlMap>

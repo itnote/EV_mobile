@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 
 /**
- * Created by dongguk on 2017-05-30.
+ * Created by doum on 2017-11-20.
  */
 @Service("EvcarUserService")
 public class EvcarUsrServiceImpl implements EvcarUsrService {
@@ -35,8 +35,8 @@ public class EvcarUsrServiceImpl implements EvcarUsrService {
     public EvcarUsrVO loginAction(EvcarUsrVO evcarUsrVO) throws Exception {
 
         // 입력한 비밀번호를 암호화한다.
-        String enpassword = EgovFileScrty.encryptPassword(evcarUsrVO.getUsrPwd(), evcarUsrVO.getUsrId());
-        evcarUsrVO.setUsrPwd(enpassword);
+        String enpassword = EgovFileScrty.encryptPassword(evcarUsrVO.getPwdNo(), evcarUsrVO.getUserId());
+        evcarUsrVO.setPwdNo(enpassword);
 
         evcarUsrVO = evcarUserDAO.loginAction(evcarUsrVO);
 
@@ -46,42 +46,27 @@ public class EvcarUsrServiceImpl implements EvcarUsrService {
     @Override
     public EvcarUsrVO joinUserData(EvcarUsrVO evcarUsrVO) throws Exception {
 
-        // 고유키 발급
-        String userUniqKey = userAthKey.getNextStringId();
-        evcarUsrVO.setUsrSno(userUniqKey);
+        evcarUsrVO.setAcrdCrdNo(evcarUsrVO.getAcrdCrdNo().replace("-", ""));
 
         // 입력한 비밀번호를 암호화한다.
-        String enpassword = EgovFileScrty.encryptPassword(evcarUsrVO.getUsrPwd(), evcarUsrVO.getUsrId());
-        evcarUsrVO.setUsrPwd(enpassword);
+        String enpassword = EgovFileScrty.encryptPassword(evcarUsrVO.getPwdNo(), evcarUsrVO.getUserId());
+        evcarUsrVO.setPwdNo(enpassword);
 
         evcarUserDAO.joinUserData(evcarUsrVO);
-
-        for (UsrCardVO vo : evcarUsrVO.getUsrCardList()) {
-            if(StringUtils.isEmpty(vo.getCardSno())){
-                logger.debug("카드번호가 없습니다.");
-                break;
-            }
-            vo.setUsrSno(userUniqKey);
-            cardDAO.insertUserCard(vo);
-        }
-
         return evcarUsrVO;
     }
 
+
+    //idCheck
     @Override
     public int IdCheck(EvcarUsrVO vo) throws Exception{
-        // TODO Auto-generated method stub
-
         int cnt =evcarUserDAO.IdCheck(vo);
-
         return cnt;
     }
+    //CardCheck
     @Override
     public int CardCheck(EvcarUsrVO vo) throws Exception{
-        // TODO Auto-generated method stub
-
         int cnt =evcarUserDAO.CardCheck(vo);
-
         return cnt;
     }
 }

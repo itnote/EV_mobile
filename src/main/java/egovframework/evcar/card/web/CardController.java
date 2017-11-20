@@ -250,7 +250,7 @@ public class CardController extends BaseController {
         usrCardVO.setCardSno(CardNum);
         usrCardVO.setFnCode(fn_cd);
         usrCardVO.setFnName(fn_name);
-        usrCardVO.setUsrSno(getLoginUserVO().getUsrSno());
+        usrCardVO.setUsrSno(getLoginUserVO().getAcrdCrdNo());
         usrCardVO.setBilKey(BillTid);
 
         cardService.changeUsrCard(usrCardVO);

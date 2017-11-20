@@ -13,41 +13,18 @@
             <legend class="sr-only">회원정보를 입력하세요</legend>
             <h3 class="sr-only">회원가입 폼</h3>
 
-            <h4 class="">회원정보</h4>
+            <h4>인증카드정보</h4>
             <dl>
-                <dt><label for="usrId">아이디</label></dt>
-                <dd>
-                    <input id="usrId" name="usrId" type="text" placeholder="아이디를 입력하세요" onkeypress="isIdCheck=false;" >
-                    <button type="button" onclick="IdCheck()">중복체크</button>
-                    <i class="essential">필수항목입니다</i>
-                </dd>
-                <dt><label for="usrPwd">비밀번호</label></dt>
-                <dd><input id="usrPwd" name="usrPwd" type="password" placeholder="비밀번호를 입력하세요"><i class="essential">필수항목입니다</i></dd>
-                <dt><label for="usrPwd_re">재입력</label></dt>
-                <dd><input id="usrPwd_re" name="usrPwd_re" type="password" placeholder="비밀번호를 입력하세요"><i class="essential">필수항목입니다</i></dd>
-            </dl>
-            <h4 class="">기본정보</h4>
-            <dl>
-                <dt><label for="usrNm">이름</label></dt>
-                <dd><input id="usrNm" name="usrNm" type="text" placeholder="이름을 입력하세요"><i class="essential">필수항목입니다</i></dd>
-                <dt><label for="usrCel">휴대전화</label></dt>
-                <dd><input class="input-phone quantity" id="usrCel" name="usrCel" type="text" placeholder="전화번호를 입력하세요"><i class="essential">필수항목입니다</i></dd>
-                <dt><label for="usrEmail">이메일</label></dt>
-                <dd><input id="usrEmail" name="usrEmail" type="text" placeholder="이메일주소를 입력하세요"><i class="essential">필수항목입니다</i></dd>
-            </dl>
-            <h4>티머니카드</h4>
-            <input type="hidden" name="usrCardList[0].cardCd" value="tmoney"/>
-            <dl>
-                <dt><label for="usrCardList[0].cardSno">카드번호</label></dt>
-                <dd><input class="input-card quantity" id="usrCardList[0].cardSno" name="usrCardList[0].cardSno" type="text" placeholder="****-****-****-****" onkeypress="isCardCheck=false;">
+                <dt><label for="acrdCrdNo">카드번호</label></dt>
+                <dd><input class="input-card quantity" id="acrdCrdNo" name="acrdCrdNo" type="text" placeholder="****-****-****-****" onkeypress="isCardCheck=false;">
                     <button type="button" onclick="CardCheck()">중복체크</button>
                     <i class="essential">필수항목입니다</i>
                 </dd>
                 <dt>발급년월</dt>
                 <dd><i class="essential">필수항목입니다</i>
                     <p class="select">
-                        <label class="sr-only" for="cardRegYear">발급년도</label>
-                        <select id="cardRegYear" name="usrCardList[0].cardRegYear">
+                        <label class="sr-only" for="crdIssueYear">발급년도</label>
+                        <select id="crdIssueYear" name="crdIssueYear">
                             <option>YYYY</option>
                             <c:forEach var="h" begin="2000" end="2017" step="1">
                                 <option value="${h}">${h}</option>
@@ -56,8 +33,8 @@
                         <i class="fi icon-back"></i>
                     </p>
                     <p class="select">
-                        <label class="sr-only" for="cardRegMonth">발급년도</label>
-                        <select id="cardRegMonth" name="usrCardList[0].cardRegMonth">
+                        <label class="sr-only" for="crdIssueMonth">발급년도</label>
+                        <select id="crdIssueMonth" name="crdIssueMonth">
                             <option>MM</option>
                             <c:forEach var="h" begin="1" end="12" step="1">
                                 <c:choose>
@@ -75,6 +52,30 @@
                     </p>
                 </dd>
             </dl>
+
+            <h4 class="">회원정보</h4>
+            <dl>
+                <dt><label for="userId">아이디</label></dt>
+                <dd>
+                    <input id="userId" name="userId" type="text" placeholder="아이디를 입력하세요" onkeypress="isIdCheck=false;" >
+                    <button type="button" onclick="IdCheck()">중복체크</button>
+                    <i class="essential">필수항목입니다</i>
+                </dd>
+                <dt><label for="pwdNo">비밀번호</label></dt>
+                <dd><input id="pwdNo" name="pwdNo" type="password" placeholder="비밀번호를 입력하세요"><i class="essential">필수항목입니다</i></dd>
+                <dt><label for="pwdNo_re">재입력</label></dt>
+                <dd><input id="pwdNo_re" name="pwdNo_re" type="password" placeholder="비밀번호를 입력하세요"><i class="essential">필수항목입니다</i></dd>
+            </dl>
+            <h4 class="">기본정보</h4>
+            <dl>
+                <dt><label for="userNm">이름</label></dt>
+                <dd><input id="userNm" name="userNm" type="text" placeholder="이름을 입력하세요"><i class="essential">필수항목입니다</i></dd>
+                <dt><label for="telNo">휴대전화</label></dt>
+                <dd><input class="input-phone quantity" id="telNo" name="telNo" type="text" placeholder="전화번호를 입력하세요"><i class="essential">필수항목입니다</i></dd>
+                <dt><label for="userEmail">이메일</label></dt>
+                <dd><input id="userEmail" name="userEmail" type="text" placeholder="이메일주소를 입력하세요"><i class="essential">필수항목입니다</i></dd>
+            </dl>
+
             <p class="btn-set full">
                 <a class="btn sub" href="javascript:;" onclick="join()">회원가입</a>
             </p>
@@ -83,12 +84,12 @@
 <script type="text/javascript">
     function dosubmit(frm) {
 
-        var usrId = $('input[id^=usrId]').val();
-        var usrPwd = $('input[id^=usrPwd]').val();
-        var usrPwd_re = $('input[id^=usrPwd_re]').val();
-        var usrNm = $('input[id^=usrNm]').val();
-        var cel = $('input[id^=usrCel]').val();
-        var usrEmail = $('input[id^=usrEmail]').val();
+        var userId = $('input[id^=userId]').val();
+        var pwdNo = $('input[id^=pwdNo]').val();
+        var pwdNo_re = $('input[id^=pwdNo_re]').val();
+        var userNm = $('input[id^=userNm]').val();
+        var cel = $('input[id^=telNo]').val();
+        var userEmail = $('input[id^=userEmail]').val();
         var card = $('input[id^=usrCardList]').val();
 
         //핸드폰 번호 정규식
@@ -98,43 +99,43 @@
         //아이디 정규식
         var regId = /^[A-Za-z0-9_-]{4,12}$/;
 
-        if(usrId ==''){
+        if(userId ==''){
             alert("아이디를 입력하세요.");
             return false;
         }else if(isIdCheck==false){
             alert('ID 중복 체크를 하세요.');
             return false;
-        }else if(usrPwd == '') {
+        }else if(pwdNo == '') {
             alert('비밀번호를 입력하세요.');
             return false;
-        }else if(!/^[a-zA-Z0-9!@#$%^&*()?_~]{6,15}$/.test(usrPwd)) {
+        }else if(!/^[a-zA-Z0-9!@#$%^&*()?_~]{6,15}$/.test(pwdNo)) {
             alert("비밀번호는 숫자, 영문, 특수문자 조합으로 6~15자리를 사용해야 합니다.");
-            $('#usrPwd').val('');
-            $('#usrPwd_re').val('');
+            $('#pwdNo').val('');
+            $('#pwdNo_re').val('');
             return false;
-        }else if(usrPwd_re == ''){
+        }else if(pwdNo_re == ''){
             alert('비밀번호를 재입력 입력하세요.');
             return false;
-        }else if(usrPwd_re != usrPwd){
+        }else if(pwdNo_re != pwdNo){
             alert('비밀번호를 다시 입력하세요.');
-            $('#usrPwd_re').val('');
+            $('#pwdNo_re').val('');
             return false;
-        }else if(usrNm ==''){
+        }else if(userNm ==''){
             alert('이름을 입력하세요.');
             return false;
         }else if(cel ==''){
             alert('휴대전화를 입력하세요.');
             return false;
-        }else if ( !regCel.test( $('#usrCel').val())) {
+        }else if ( !regCel.test( $('#telNo').val())) {
             alert("잘못된 휴대폰 번호입니다. 숫자만 입력하세요.");
-            $('#usrCel').val('');
+            $('#telNo').val('');
             return false
-        }else if(usrEmail ==''){
+        }else if(userEmail ==''){
             alert('이메일 주소를 입력하세요.');
             return false;
-        }else if( !regEmail.test( $('#usrEmail').val())) {
+        }else if( !regEmail.test( $('#userEmail').val())) {
             alert('올바른 이메일 주소를 입력하세요.');
-            $('#usrEmail').val('');
+            $('#userEmail').val('');
             return false;
         }else if(card == ''){
             alert('카드번호를 입력하세요.');
@@ -148,26 +149,26 @@
     }
     var isIdCheck = false;
     function IdCheck() {
-        var usrId = $('#usrId').val();
+        var userId = $('#userId').val();
         var pattern = /^\s+|\s+$/g;
         $.ajax({
             type:"POST",
             url:"<c:url value='/user/ajax/IdCheck.do'/>",
             data:{
-                usrId:usrId
+                userId:userId
             },
             success : function (data) {
-                if(usrId == ""){
+                if(userId == ""){
                     alert("아이디를 입력해 주세요.");
                     isIdCheck = false;
                     return false;
-                }else if( $('#usrId').val().replace(/\s/g,"").length == 0){
+                }else if( $('#userId').val().replace(/\s/g,"").length == 0){
                     alert('공백이 들어갈 수 없습니다.');
-                    $('#usrId').val('');
+                    $('#userId').val('');
                     return false;
                 }else if(data > 0){
                     alert("이미 존재하는 ID 입니다.");
-                    $('#usrId').val('');
+                    $('#userId').val('');
                     isIdCheck = false;
                     return false;
                 }else{
@@ -183,7 +184,7 @@
     }
     var isCardCheck = false;
     function CardCheck() {
-        var usrCard = $('input[id^=usrCardList]').val();
+        var usrCard = $('#acrdCrdNo').val();
         $.ajax({
             type:"POST",
             url:"<c:url value='/user/ajax/CardCheck.do'/>",
@@ -198,7 +199,7 @@
                     return false;
                 }else if(data > 0){
                     alert("이미 존재하는 카드 입니다.");
-                    $('input[id^=usrCardList]').val('');
+                    $('#acrdCrdNo').val('');
                     isCardCheck = false;
                     return false;
                 }else{

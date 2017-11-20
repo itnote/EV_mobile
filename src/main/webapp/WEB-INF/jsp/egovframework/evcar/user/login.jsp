@@ -13,11 +13,11 @@
     <fieldset>
         <legend class="sr-only">로그인정보 입력폼 입니다.</legend>
 
-        <label class="sr-only" for="usrId">아이디를 입력하세요</label>
-        <input id="usrId" name="usrId" placeholder="아이디" type="text" value="">
+        <label class="sr-only" for="userId">아이디를 입력하세요</label>
+        <input id="userId" name="userId" placeholder="아이디" type="text" value="">
 
-        <label class="sr-only" for="usrPwd">비밀번호를 입력하세요</label>
-        <input id="usrPwd" name="usrPwd" placeholder="비밀번호" class="passwd" type="password" value="">
+        <label class="sr-only" for="pwdNo">비밀번호를 입력하세요</label>
+        <input id="pwdNo" name="pwdNo" placeholder="비밀번호" class="passwd" type="password" value="">
 
         <p class="btn-set">
             <a class="btn main" href="javascript:;" onclick="loginAct()">로그인</a>
@@ -47,12 +47,12 @@
 
         $('form#user').validate({
             rules: {
-                usrId: {required: true},
-                usrPwd: {required: true}
+                userId: {required: true},
+                pwdNo: {required: true}
             },
             messages: {
-                usrId: {required: '아이디를 입력하세요.'},
-                usrPwd: {required: '비밀번호를 입력하세요.'}
+                userId: {required: '아이디를 입력하세요.'},
+                pwdNo: {required: '비밀번호를 입력하세요.'}
             },
             submitHandler: function (frm) {
 

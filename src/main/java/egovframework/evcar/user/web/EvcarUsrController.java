@@ -2,6 +2,7 @@ package egovframework.evcar.user.web;
 
 import egovframework.app.push.service.PushService;
 import egovframework.app.push.vo.PushVO;
+import egovframework.com.utl.sim.service.EgovFileScrty;
 import egovframework.evcar.common.BaseController;
 import egovframework.evcar.user.service.EvcarUsrService;
 import egovframework.evcar.user.vo.EvcarUsrVO;
@@ -18,7 +19,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Created by doum on 20171114.
+ * Created by doum on 2017-11-14.
  */
 @Controller
 @RequestMapping(value = "/user")
@@ -65,7 +66,7 @@ public class EvcarUsrController extends BaseController {
 
         EvcarUsrVO resultVO = this.evcarUsrService.loginAction(evcarUsrVO);
 
-        if (resultVO != null && resultVO.getUsrId() != null && !resultVO.getUsrPwd().equals("")) {
+        if (resultVO != null && resultVO.getUserId() != null && !resultVO.getPwdNo().equals("")) {
 
             String pushType = request.getParameter("pushType");
             String pushKey = request.getParameter("pushKey");

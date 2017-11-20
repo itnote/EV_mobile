@@ -5,211 +5,202 @@ import egovframework.evcar.card.vo.UsrCardVO;
 import java.util.List;
 
 /**
- * Created by dongguk on 20170530.
+ * Created by doum on 20171120.
  */
 public class EvcarUsrVO {
 
-    private String usrSno;
-    private String usrCard;
-    private String ath;
-    private String usr;
-    private String usrNm;
-    private String usrId;
-    private String usrPwd;
-    private String usrCel;
-    private String usrEmail;
+    private String acrdCrdNo;
+    private String userNm;
+    private String userId;
+    private String pwdNo;
+    private String userEmail;
+    private String addr1;
+    private String addr1Dtl;
+    private String telNo;
+    private String telNo2;
+    private String carCd;
+    private String carYear;
+    private String carNo;
+    private String entryDd;
+    private String crdIssueDd;
+    private String crdRegDd;
+    private String crdAcptDd;
+    private String regDt;
+    private String modDt;
+    private String custId;
 
-    private String camt;
-    private String cwh;
-    private String pyn;
-    private String totUnclAmt;
-    private String totSetamt;
-    private String totChw;
-    private String useYn;
-    private String createdAt;
-    private String createdBy;
-    private String updatedAt;
-    private String updatedBy;
-    private String cardCd;
-    private String cardSno;
+    private String crdIssueYear;
+    private String crdIssueMonth;
 
-    public String getCardSno() {
-        return cardSno;
+    public String getCrdIssueYear() {
+        return crdIssueYear;
     }
 
-    public void setCardSno(String cardSno) {
-        this.cardSno = cardSno;
+    public void setCrdIssueYear(String crdIssueYear) {
+        this.crdIssueYear = crdIssueYear;
     }
 
-    public String getCardCd() {
-        return cardCd;
+    public String getCrdIssueMonth() {
+        return crdIssueMonth;
     }
 
-    public void setCardCd(String cardCd) {
-        this.cardCd = cardCd;
+    public void setCrdIssueMonth(String crdIssueMonth) {
+        this.crdIssueMonth = crdIssueMonth;
+    }
+
+    public String getAcrdCrdNo() {
+        return acrdCrdNo;
+    }
+
+    public void setAcrdCrdNo(String acrdCrdNo) {
+        this.acrdCrdNo = acrdCrdNo;
+    }
+
+    public String getUserNm() {
+        return userNm;
+    }
+
+    public void setUserNm(String userNm) {
+        this.userNm = userNm;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getPwdNo() {
+        return pwdNo;
+    }
+
+    public void setPwdNo(String pwdNo) {
+        this.pwdNo = pwdNo;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
+    public String getAddr1() {
+        return addr1;
+    }
+
+    public void setAddr1(String addr1) {
+        this.addr1 = addr1;
+    }
+
+    public String getAddr1Dtl() {
+        return addr1Dtl;
+    }
+
+    public void setAddr1Dtl(String addr1Dtl) {
+        this.addr1Dtl = addr1Dtl;
+    }
+
+    public String getTelNo() {
+        return telNo;
+    }
+
+    public void setTelNo(String telNo) {
+        this.telNo = telNo;
+    }
+
+    public String getTelNo2() {
+        return telNo2;
+    }
+
+    public void setTelNo2(String telNo2) {
+        this.telNo2 = telNo2;
+    }
+
+    public String getCarCd() {
+        return carCd;
+    }
+
+    public void setCarCd(String carCd) {
+        this.carCd = carCd;
+    }
+
+    public String getCarYear() {
+        return carYear;
+    }
+
+    public void setCarYear(String carYear) {
+        this.carYear = carYear;
+    }
+
+    public String getCarNo() {
+        return carNo;
+    }
+
+    public void setCarNo(String carNo) {
+        this.carNo = carNo;
+    }
+
+    public String getEntryDd() {
+        return entryDd;
+    }
+
+    public void setEntryDd(String entryDd) {
+        this.entryDd = entryDd;
+    }
+
+    public String getCrdIssueDd() {
+        return crdIssueDd;
+    }
+
+    public void setCrdIssueDd(String crdIssueDd) {
+        this.crdIssueDd = crdIssueDd;
+    }
+
+    public String getCrdRegDd() {
+        return crdRegDd;
+    }
+
+    public void setCrdRegDd(String crdRegDd) {
+        this.crdRegDd = crdRegDd;
+    }
+
+    public String getCrdAcptDd() {
+        return crdAcptDd;
+    }
+
+    public void setCrdAcptDd(String crdAcptDd) {
+        this.crdAcptDd = crdAcptDd;
+    }
+
+    public String getRegDt() {
+        return regDt;
+    }
+
+    public void setRegDt(String regDt) {
+        this.regDt = regDt;
+    }
+
+    public String getModDt() {
+        return modDt;
+    }
+
+    public void setModDt(String modDt) {
+        this.modDt = modDt;
+    }
+
+    public String getCustId() {
+        return custId;
+    }
+
+    public void setCustId(String custId) {
+        this.custId = custId;
     }
 
     private List<UsrCardVO> usrCardList;
-
-    public String getUsrSno() {
-        return usrSno;
-    }
-
-    public void setUsrSno(String usrSno) {
-        this.usrSno = usrSno;
-    }
-
-    public String getUsrCard() {
-        return usrCard;
-    }
-
-    public void setUsrCard(String usrCard) {
-        this.usrCard = usrCard;
-    }
-
-    public String getAth() {
-        return ath;
-    }
-
-    public void setAth(String ath) {
-        this.ath = ath;
-    }
-
-    public String getUsr() {
-        return usr;
-    }
-
-    public void setUsr(String usr) {
-        this.usr = usr;
-    }
-
-    public String getUsrNm() {
-        return usrNm;
-    }
-
-    public void setUsrNm(String usrNm) {
-        this.usrNm = usrNm;
-    }
-
-    public String getUsrId() {
-        return usrId;
-    }
-
-    public void setUsrId(String usrId) {
-        this.usrId = usrId;
-    }
-
-    public String getUsrPwd() {
-        return usrPwd;
-    }
-
-    public void setUsrPwd(String usrPwd) {
-        this.usrPwd = usrPwd;
-    }
-
-    public String getUsrCel() {
-        return usrCel;
-    }
-
-    public void setUsrCel(String usrCel) {
-        this.usrCel = usrCel;
-    }
-
-    public String getUsrEmail() {
-        return usrEmail;
-    }
-
-    public void setUsrEmail(String usrEmail) {
-        this.usrEmail = usrEmail;
-    }
-
-    public String getCamt() {
-        return camt;
-    }
-
-    public void setCamt(String camt) {
-        this.camt = camt;
-    }
-
-    public String getCwh() {
-        return cwh;
-    }
-
-    public void setCwh(String cwh) {
-        this.cwh = cwh;
-    }
-
-    public String getPyn() {
-        return pyn;
-    }
-
-    public void setPyn(String pyn) {
-        this.pyn = pyn;
-    }
-
-    public String getTotUnclAmt() {
-        return totUnclAmt;
-    }
-
-    public void setTotUnclAmt(String totUnclAmt) {
-        this.totUnclAmt = totUnclAmt;
-    }
-
-    public String getTotSetamt() {
-        return totSetamt;
-    }
-
-    public void setTotSetamt(String totSetamt) {
-        this.totSetamt = totSetamt;
-    }
-
-    public String getTotChw() {
-        return totChw;
-    }
-
-    public void setTotChw(String totChw) {
-        this.totChw = totChw;
-    }
-
-    public String getUseYn() {
-        return useYn;
-    }
-
-    public void setUseYn(String useYn) {
-        this.useYn = useYn;
-    }
-
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public String getUpdatedBy() {
-        return updatedBy;
-    }
-
-    public void setUpdatedBy(String updatedBy) {
-        this.updatedBy = updatedBy;
-    }
 
     public List<UsrCardVO> getUsrCardList() {
         return usrCardList;
