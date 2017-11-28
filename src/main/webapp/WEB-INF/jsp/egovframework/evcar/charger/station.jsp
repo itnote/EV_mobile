@@ -35,109 +35,183 @@
 </div>
 
 <script type="text/javascript">
-var map, current, markers= [], circle;
-getGeolocation(function(){
-    map = new initDaumMap('map', {
-        lat: config.geolocation.lat,
-        lng: config.geolocation.lon,
-        dragend: function(lat, lon) {
-            locationMove(lat, lon)
+    var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+    var options = { //지도를 생성할 때 필요한 기본 옵션
+        center: new daum.maps.LatLng(33.3616666, 126.52916660000005), //지도의 중심좌표.
+        level: 10 //지도의 레벨(확대, 축소 정도)
+    };
+    var map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
+    var markers = [], overray=[], selectedMarker = null;
+    var func = {
+        chargerType: function(type) {
+            var msg = '충전기';
+            switch(type){
+                case 1:
+                    msg = '급속';
+                    break;
+                case 2:
+                    msg = '완속';
+                    break;
+                default:
+                    break;
+            }
+            return msg;
+        },
+        chargerStat: function(chargerStat) {
+            var type = '4', msg = '오류';
+            switch(chargerStat) {
+                case '0'://알수없음
+                    type = '3', msg = '알수없음';
+                    break;
+                case '1'://대기중
+                    type = '2', msg = '대기중';
+                    break;
+                case '2'://충전중
+                    type = '1', msg = '충전중';
+                    break;
+                default:
+                    type = '4', msg = '오류';
+                    break;
+            }
+
+            var $i = $('<i />', {class: 'stat'+type, text: msg});
+
+            return $i;
         }
-    });
-    currentMarker();
-    currentStationList();
-});
-
-/** 현재위치 마커생성*/
-function currentMarker(){
-    if(config.geolocation.use){
-        current = map.addMarker({
-            type: 'target',
-            title: '현재위치',
-            latitude: config.geolocation.lat,
-            longitude: config.geolocation.lon
-        });
-
     }
-
-    circle = new daum.maps.Circle({
-        center : new daum.maps.LatLng(config.geolocation.lat, config.geolocation.lon),  // 원의 중심좌표 입니다
-        radius: 500, // 미터 단위의 원의 반지름입니다
-        strokeWeight: 1, // 선의 두께입니다
-        strokeColor: '#75B8FA', // 선의 색깔입니다
-        strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
-        fillColor: '#CFE7FF', // 채우기 색깔입니다
-        fillOpacity: 0.2  // 채우기 불투명도 입니다
-    });
-    circle.setMap(map.mapContainer);
-
-    //currentStationList();
-}
-/** 현재위치 충전소 조회*/
-function currentStationList(){
-    $.each(markers, function(e1,e2){
-        e2.setMap(null);
-    });
-    markers = [];
-    $.ajax({
-        url: config.ajax+'/charger/station.mdo',
-        method: 'POST',
-        data: {
-            lat: config.geolocation.lat,
-            lon: config.geolocation.lon
-        },
-        success: function (data) {
-            $.each(data, function(e1,e2){
-                var marker = map.addMarker({
-                    title: e2.snm,
-                    latitude: e2.lat,
-                    longitude: e2.lon
-                });
-                markers.push(marker);
-            });
-        }
-    });
-}
-/** 중심좌표 충전소 조회*/
-function locationMove() {
-    var latlng = map.mapContainer.getCenter();
-    $.each(markers, function(e1,e2){
-        e2.setMap(null);
-    });
-    markers = [];
-    circle.setPosition(new daum.maps.LatLng(latlng.getLat(), latlng.getLng()));
-    $.ajax({
-        url: config.ajax+'/charger/station.mdo',
-        method: 'POST',
-        data: {
-            lat: latlng.getLat(),
-            lon: latlng.getLng()
-        },
-        success: function (data) {
-            $.each(data, function(e1,e2){
-                //console.log(e2);
-                var marker = map.addMarker({
-                    title: e2.snm,
-                    latitude: e2.lat,
-                    longitude: e2.lon
-                });
-                daum.maps.event.addListener(marker, 'click', function() {
-                    getStationInfoPopup({
-                        sid: e2.sid
+    var ACTION = {
+        loadMarker: function(){
+            // /api/v1/stationinfo
+            var result = [];
+            $.ajax({
+                async: false,
+                type: 'GET',
+                url: '/ajax/charger/station.mdo',
+                data: {},
+                beforeSend: function(){},
+                success: function(args){
+                    args.forEach(function(value, index){
+                        result.push({
+                            address: value.address,
+                            csNm: value.csNm,
+                            csId: value.csId,
+                            tel: value.tel,
+                            latlng: new daum.maps.LatLng(parseFloat(value.lat), parseFloat(value.lon)),
+                            content: value.csId,
+                            charging: value.charging
+                        });
                     });
-                });
-                markers.push(marker);
+                },
+                error: function(args){
+                }
+            });
+            return result;
+        },
+        loadCharger: function(args, marker) {
+            var param = args;
+            $.ajax({
+                async: false,
+                type: 'GET',
+                url: '/charger/'+param.csId+'/stat.mdo',
+                //url: '/api/v1/charger/'+id,
+                beforeSend: function(){},
+                success: function(args){
+                    if(args.length < 1) {
+                        alert('충전기가 없습니다');
+                        return;
+                    }
+
+                    var $info = $('<div />', {class: 'map-pops'}), infowindow, overlay;
+                    $info.append(
+                        $('<h2 />', {text: '충전소 운영 현황'}).append(
+                            $('<small />', {text: param.csNm}).append(
+                                $('<strong>', {class:'address', text: param.address})
+                            )
+                        )
+                    );
+
+                    $info.append($('<table />').append(
+                        $('<thead />').append(
+                            $('<tr />').append(
+                                $('<th />', {text: '구분'}),
+                                $('<th />', {text: '충전기 타입'}),
+                                $('<th />', {text: '운전 상태'})
+                            )
+                        )
+                        )
+                    );
+
+                    args.forEach(function(value, index){
+                        $info.find('table').append(
+                            $('<tr />')
+                                .append($('<td style="text-align:center;"/>').text( value[0] + ' / ' + value[1] ))
+                                .append($('<td style="text-align:center;"/>').text(this.func.chargerType(value[2])))
+                                .append($('<td style="text-align:center;"/>').append(
+                                    this.func.chargerStat(value[3])
+                                ))
+                        )
+                    });
+                    $info.append(
+                        $('<button />', {text: 'X'}).click(function(){closeOverlay()})
+                    );
+
+                    var iwContent = $info.get(0), // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+                        iwPosition = marker.getPosition(), //인포윈도우 표시 위치입니다
+                        iwRemoveable = false; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+
+                    // 인포윈도우를 생성하고 지도에 표시합니다
+                    overlay = new daum.maps.CustomOverlay({
+                        map: map, // 인포윈도우가 표시될 지도
+                        position : iwPosition,
+                        content : iwContent,
+                        xAnchor: 1,
+                        yAnchor: 1.1,
+                        removable : iwRemoveable
+                    });
+                    this.overray.push(overlay);
+                    function closeOverlay() {
+                        overlay.setMap(null);
+                        this.overray.forEach(function(e1,e2){
+                            e2.setMap(null);
+                        });
+                    }
+                },
+                error: function(args) {
+                }
             });
         }
+    };
+
+    $(document).ready(function(){
+        // marker 생성
+        markers = ACTION.loadMarker();
+        $.each(markers, function(e1, e2){
+            //var pos = e2;
+
+            var markerImage;
+            if(e2.charging > 0)
+                markerImage = new daum.maps.MarkerImage(
+                    '/assets/images/map-marker-2-red.png',
+                    new daum.maps.Size(32, 32),
+                    {offset: new daum.maps.Point(16, 32)});
+            else
+                markerImage = new daum.maps.MarkerImage(
+                    '/assets/images/map-marker-2-blue.png',
+                    new daum.maps.Size(32, 32),
+                    {offset: new daum.maps.Point(16, 32)});
+            // 마커를 생성합니다
+            var marker = new daum.maps.Marker({
+                image: markerImage,
+                map: map, // 마커를 표시할 지도
+                position: e2.latlng, // 마커의 위치
+                title: e2.content
+            });
+
+            daum.maps.event.addListener(marker, 'click', function(){
+                ACTION.loadCharger(e2, marker);
+            });
+        });
     });
-}
-/** 현재위치 확인*/
-function setCenter() {
-    getGeolocation(function() {
-        map.setCenterView(config.geolocation.lat, config.geolocation.lon);
-        locationMove();
-    });
-}
 </script>
 
 </body>

@@ -21,8 +21,8 @@ public class ChargerDAO extends EgovComAbstractDAO {
      * @param baseVO
      * @return
      */
-    public List<StationInfoVO> selectDistanceStationList(BaseVO baseVO) {
-        return (List<StationInfoVO>) list("ChargerDAO.selectDistanceStationList",baseVO);
+    public List<EgovMap> selectDistanceStationList(BaseVO baseVO) {
+        return (List<EgovMap>) list("ChargerDAO.selectDistanceStationList",baseVO);
     }
 
     /**
@@ -34,4 +34,7 @@ public class ChargerDAO extends EgovComAbstractDAO {
         return (List<EgovMap>) list("ChargerDAO.stationInfo", baseVO);
     }
 
+    public List<EgovMap> getId(String id) {
+        return (List<EgovMap>) list("ChargerDAO.getId", id);
+    }
 }

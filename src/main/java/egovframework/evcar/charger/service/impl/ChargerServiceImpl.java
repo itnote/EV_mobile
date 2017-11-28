@@ -22,13 +22,18 @@ public class ChargerServiceImpl implements ChargerService {
 
 
     @Override
-    public List<StationInfoVO> selectDistanceStationList(BaseVO baseVO) {
+    public List<EgovMap> selectDistanceStationList(BaseVO baseVO) {
         return chargerDAO.selectDistanceStationList(baseVO);
     }
 
     @Override
     public List<EgovMap> stationInfo(BaseVO baseVO) throws Exception {
         return chargerDAO.stationInfo(baseVO);
+    }
+
+    @Override
+    public List<EgovMap> getId(String id) {
+        return chargerDAO.getId( id);
     }
 
 

@@ -7,47 +7,34 @@
     <typeAlias alias="StationInfoVO" type="egovframework.evcar.charger.vo.StationInfoVO"/>
 
     <!-- 근처 거리 충전기 위치 조회 -->
-    <select id="ChargerDAO.selectDistanceStationList" parameterClass="BaseVO" resultClass="StationInfoVO">
+    <select id="ChargerDAO.selectDistanceStationList" parameterClass="BaseVO" resultClass="egovMap">
         SELECT
-              SID AS sid
-            , SNM AS snm
-            , POST AS post
-            , ADDRESS AS address
-            , TEL AS tel
-            , LAT AS lat
-            , LON AS lon
-            , MANAGER AS manager
-            , USE_YN AS useYn
-            , CREATED_AT AS createdAt
-            , CREATED_BY AS createdBy
-            , UPDATED_AT AS updatedAt
-            , UPDATED_BY AS updatedBy
-            , SQRT(
-                POWER(( #lat# - LAT) * 110979.309, 2) +
-                POWER(( #lon# - LON) * 88907.949, 2)
-            ) z
-
-        FROM
-            STATION_INFO ,
-            (
-                SELECT
-                  #lat# v_x
-                , #lon# v_y
-                , 110979.309 r_x
-                , 88907.949 r_y
-                , #distance# v_z
-                FROM    dual
-            )
-        WHERE    1=1
-        <![CDATA[
-            AND USE_YN = 'Y'
-            AND SQRT( POWER((v_x - LAT) * r_x, 2) + POWER((v_y - LON) * r_y, 2) ) <= v_z
-            AND LAT BETWEEN v_x  - v_z / r_x
-            AND v_x + v_z / r_x
-            AND LON BETWEEN v_y  - v_z / r_y
-            AND v_y + v_z / r_y
-        ]]>
-        ORDER BY z
+         CS_ID
+        ,CS_NM
+        ,POST
+        ,ADDRESS
+        ,TEL
+        ,LAT
+        ,LON
+        ,MANAGER
+        ,USE_YN
+        ,CREATED_AT
+        ,CREATED_BY
+        ,UPDATED_AT
+        ,UPDATED_BY
+        FROM STATION_INFO
+        WHERE 1=1
+    </select>
+    <!-- 근처 거리 충전기 위치 조회 -->
+    <select id="ChargerDAO.getId" parameterClass="String" resultClass="egovMap">
+     SELECT
+         CHARGER_GRP_ID as chargerGrpId
+        ,CHARGER_ID as chargerId
+        ,CTP as ctp
+        ,STS as sts
+         FROM CHARGER A
+         WHERE 1=1
+         AND  A.CS_ID = #id#
     </select>
 
     <select id="ChargerDAO.stationInfo" parameterClass="BaseVO" resultClass="egovMap">
