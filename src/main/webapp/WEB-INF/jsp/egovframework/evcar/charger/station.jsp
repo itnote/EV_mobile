@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>충전기정보</title>
+
 </head>
 <body>
 
@@ -41,7 +42,7 @@
         level: 10 //지도의 레벨(확대, 축소 정도)
     };
     var map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
-    var markers = [], overray=[], selectedMarker = null;
+    var markers = [], overrays=[], selectedMarker = null;
     var func = {
         chargerType: function(type) {
             var msg = '충전기';
@@ -144,10 +145,10 @@
                     args.forEach(function(value, index){
                         $info.find('table').append(
                             $('<tr />')
-                                .append($('<td style="text-align:center;"/>').text( value[0] + ' / ' + value[1] ))
-                                .append($('<td style="text-align:center;"/>').text(this.func.chargerType(value[2])))
+                                .append($('<td style="text-align:center;"/>').text( value.chargerGrpId + ' / ' + value.chargerId ))
+                                .append($('<td style="text-align:center;"/>').text(this.func.chargerType(value.ctp)))
                                 .append($('<td style="text-align:center;"/>').append(
-                                    this.func.chargerStat(value[3])
+                                    this.func.chargerStat(value.sts)
                                 ))
                         )
                     });
@@ -168,11 +169,11 @@
                         yAnchor: 1.1,
                         removable : iwRemoveable
                     });
-                    this.overray.push(overlay);
+                    overrays.push(overlay);
                     function closeOverlay() {
                         overlay.setMap(null);
-                        this.overray.forEach(function(e1,e2){
-                            e2.setMap(null);
+                        overrays.forEach(function(e1,e2){
+                            e1.setMap(null);
                         });
                     }
                 },
@@ -208,11 +209,140 @@
             });
 
             daum.maps.event.addListener(marker, 'click', function(){
+                overrays.forEach(function(e1,e2){
+                    e1.setMap(null);
+                });
                 ACTION.loadCharger(e2, marker);
             });
         });
     });
 </script>
+<style type="text/css">
+    div.map-pops {
+        position: absolute;
+        background: #fff;
+        width: 380px;
+        height: auto;
+        border: 2px solid #303d49;
+        text-align: center !important;
+    }
 
+    div.map-pops::after {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        margin-left: -20px;
+        width: 0;
+        height: 0;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-top: 20px solid #303d49;
+    }
+
+    div.map-pops h2 {
+        background: #303d49;
+        margin: 0;
+        color: #fff;
+        font-weight: normal;
+        padding-top: 10px;
+        font-size: 20px;
+    }
+
+    div.map-pops h2 small {
+        display: block;
+        position: relative;
+        font-size: 26px;
+        text-align: left;
+        background: #456dde;
+        margin-top: 10px;
+        padding: 10px;
+        color: #fff;
+    }
+
+    div.map-pops h2 strong {
+        display: inline-block;
+        font-weight: normal;
+        font-size: 16px;
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+
+        background: #2f51b4;
+        padding: 4px 10px;
+        border-radius: 5px;
+        color: #fff;
+    }
+
+    div.map-pops h2 strong.address {
+        display: block;
+        font-weight: normal;
+        font-size: 12px;
+        position: initial;
+
+        background: #2f51b4;
+        padding: 4px 10px;
+        border-radius: 5px;
+        margin-top: 5px;
+        color: #fff;
+    }
+
+    div.map-pops table {
+        width: 100%;
+        border-spacing: 0;
+    }
+
+    div.map-pops table th,
+    div.map-pops table td {
+        border-right: 1px solid #999;
+        border-bottom: 1px solid #999;
+        padding: 10px 0;
+    }
+
+    div.map-pops table th:last-child,
+    div.map-pops table td:last-child {
+        border-right: none;
+    }
+
+    div.map-pops table th {
+        background: #ccc;
+    }
+
+    div.map-pops table td i {
+        display: inline-block;
+        font-style: normal;
+        background: #bbb;
+        color: #fff;
+        padding: 4px 0;
+        width: 80px;
+        border-radius: 7px;
+    }
+
+    div.map-pops table td i.stat1 {
+        background: #456dde;
+    }
+
+    div.map-pops table td i.stat2 {
+        background: #99cc33;
+    }
+
+    div.map-pops table td i.stat4 {
+        background: #cc3333;
+    }
+
+
+    div.map-pops button {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        background: #000;
+        border: none;
+        color: #fff;
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+    }
+</style>
 </body>
 </html>
