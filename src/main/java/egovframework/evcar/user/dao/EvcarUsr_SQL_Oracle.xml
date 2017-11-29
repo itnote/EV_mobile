@@ -102,7 +102,6 @@
     <select id="EvcarUsrDAO.CardCheck" resultClass="int" parameterClass="EvcarUsrVO">
         SELECT COUNT(*)
         FROM CHARGE_USER
-        WHERE 1=1
-        AND ACRD_CRD_NO = #acrdCrdNo#
+        WHERE ACRD_CRD_NO = #acrdCrdNo#
     </select>
 </sqlMap>

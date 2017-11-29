@@ -189,7 +189,7 @@
             type:"POST",
             url:"<c:url value='/user/ajax/CardCheck.do'/>",
             data:{
-                cardSno:usrCard,
+                acrdCrdNo:usrCard,
                 cardCd:'tmoney'
             },
             success : function (data) {

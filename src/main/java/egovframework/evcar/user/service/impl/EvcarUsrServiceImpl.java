@@ -13,7 +13,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-
 /**
  * Created by doum on 2017-11-20.
  */
@@ -66,6 +65,7 @@ public class EvcarUsrServiceImpl implements EvcarUsrService {
     //CardCheck
     @Override
     public int CardCheck(EvcarUsrVO vo) throws Exception{
+        vo.setAcrdCrdNo(vo.getAcrdCrdNo().replace("-", ""));
         int cnt =evcarUserDAO.CardCheck(vo);
         return cnt;
     }
