@@ -2,10 +2,8 @@
 <html>
 <head>
     <title>충전기정보</title>
-
 </head>
 <body>
-
 <h3 class="sr-only">충전기 목록입니다.</h3>
 <%--
 <div class="map-info">
@@ -20,7 +18,6 @@
     <p class="price">요금 <strong>30,200원/kw</strong></p>
 </div>
 --%>
-
 <div id="map" class="map-area" style="width: 100%;">
     <%--
     <ul class="tabs">
@@ -34,7 +31,6 @@
     </ul>
     <p class="location"><a href="javascript:;" onclick="setCenter()">현재위치<i class="fi icon-location"></i></a></p>
 </div>
-
 <script type="text/javascript">
     var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
     var options = { //지도를 생성할 때 필요한 기본 옵션
@@ -190,16 +186,25 @@
             //var pos = e2;
 
             var markerImage;
+
+
+            console.log(e2);
+            console.log(e1);
             if(e2.charging > 0)
                 markerImage = new daum.maps.MarkerImage(
-                    '/assets/images/map-marker-2-red.png',
+                    '/assets/images/marker_red.png',
                     new daum.maps.Size(32, 32),
                     {offset: new daum.maps.Point(16, 32)});
             else
                 markerImage = new daum.maps.MarkerImage(
-                    '/assets/images/map-marker-2-blue.png',
+                    '/assets/images/marker_blue.png',
                     new daum.maps.Size(32, 32),
                     {offset: new daum.maps.Point(16, 32)});
+
+
+
+
+
             // 마커를 생성합니다
             var marker = new daum.maps.Marker({
                 image: markerImage,

@@ -18,7 +18,7 @@
         ,A.LON
         ,A.MANAGER
         ,A.USE_YN
-        ,(SELECT SUM(IF(B.STS=2, 1, 0)) FROM CHARGER B WHERE 1=1 AND  B.CS_ID = CS_ID) CHARGING
+        ,(SELECT SUM(IF(B.STS=2, 1, 0)) FROM CHARGER B WHERE 1=1 AND  B.CS_ID = A.CS_ID) CHARGING
         ,A.CREATED_AT
         ,A.CREATED_BY
         ,A.UPDATED_AT
