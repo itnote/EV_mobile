@@ -46,7 +46,7 @@ public class EvcarUsrServiceImpl implements EvcarUsrService {
     public EvcarUsrVO joinUserData(EvcarUsrVO evcarUsrVO) throws Exception {
 
         evcarUsrVO.setAcrdCrdNo(evcarUsrVO.getAcrdCrdNo().replace("-", ""));
-
+        evcarUsrVO.setCrdIssueDd(evcarUsrVO.getCrdIssueYear()+evcarUsrVO.getCrdIssueMonth());
         // 입력한 비밀번호를 암호화한다.
         String enpassword = EgovFileScrty.encryptPassword(evcarUsrVO.getPwdNo(), evcarUsrVO.getUserId());
         evcarUsrVO.setPwdNo(enpassword);
