@@ -30,6 +30,19 @@
         <li><a href="javascript:;" onclick="map.setLevel('-')">지도축소<i class="fi icon-zoom_minus"></i></a></li>
     </ul>
     <p class="location"><a href="javascript:;" onclick="setCenter()">현재위치<i class="fi icon-location"></i></a></p>
+        <div class="filter">
+            <a href="#">필터선택<i class="fi icon-filter"></i></a>
+            <button>필터닫기<i class="fi icon-close"></i></button>
+
+            <ul class="check">
+                <li><input id="stat01" type="checkbox" checked><label class="stat01" for="stat01">충전중</label>
+                <li><input id="stat02" type="checkbox" checked><label class="stat02" for="stat02">충전가능</label>
+                <li><input id="stat03" type="checkbox"><label class="stat03" for="stat03">점검중/통신장애</label>
+                <li><input id="stat04" type="checkbox"><label class="stat04" for="stat04">운영중지</label>
+                <li><input id="stat05" type="checkbox"><label class="stat05" for="stat05">시범운영</label>
+                <li><input id="stat06" type="checkbox"><label class="stat06" for="stat06">기타(상태미확인)</label>
+            </ul>
+        </div>
 </div>
 <script type="text/javascript">
     var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스

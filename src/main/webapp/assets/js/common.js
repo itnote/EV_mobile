@@ -17,5 +17,14 @@ $(".pop-btn").click(function() {
 
 });
 
+$(".filter a").click(function() {
+  $(".filter").addClass("active");
+});
+
+$(".filter button").click(function() {
+  $(".filter").removeClass("active");
+});
+
+
 
 });

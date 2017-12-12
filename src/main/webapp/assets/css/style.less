@@ -503,7 +503,7 @@
               display: block;
               font-weight: @font-normal;
               color: @blue;
-              .rem (padding, 0 0 10px);
+              .rem(padding, 0 0 10);
             }
           }
 
@@ -811,6 +811,147 @@
           }
         }
       }
+
+      .filter {
+        position: absolute;
+        z-index: 600;
+        .pad0-mag0;
+        .rem(left, 12);
+        .rem(bottom, 12);
+
+        a {
+          font-size: 0;
+          display: inline-block;
+          .rem(width, 68);
+          .rem(height, 68);
+          border-radius:50%;
+          .rem(padding-top, 10);
+          background: @white;
+          border: 1px solid @gray-lighter;
+          text-align: center;
+          color: #0d3d7c;
+
+          i {
+            .rem(font-size, 44);
+          }
+        }
+
+        button {
+          display:none;
+        }
+
+
+        .check {
+          display:none;
+        }
+
+        &.active {
+          background:@white;
+          .rem(border-radius, 20);
+          width:50%;
+          height:60%;
+
+          a {
+            display:none;
+          }
+          button {
+            position: absolute;
+            z-index: 600;
+            .rem(right, 2);
+            .rem(bottom, 12);
+   
+              font-size: 0;
+              display: inline-block;
+              background: none;
+              border: none;
+              text-align: center;
+              color: #555;
+    
+              i {
+                .rem(font-size, 34);
+              }
+          }
+
+          .check {
+            display:block;
+            .rem(padding, 20);
+            margin:0;
+
+            li {
+              display:block;
+              .rem(margin-bottom, 10);
+              .rem(padding, 10 0);
+
+              label {
+                color:#999;
+
+                &:before {
+                  content:"";
+                  display:inline-block;
+                  .rem(width, 20);
+                  .rem(height, 20);
+                  .rem(margin-right, 6);
+                  .rem(border-radius, 3);
+                  background:#ccc;
+                }
+              }
+
+              input {
+                display:none;
+              }
+
+              input:checked + label {
+                font-weight:bold;
+                color:#333;
+
+
+
+                &.stat01 {
+                  &:before {
+                    background:#7dc981;
+                  }
+                }
+  
+                &.stat02 {
+                  &:before {
+                    background:#528ce2;
+                  }
+                }
+  
+                &.stat03 {
+                  &:before {
+                    background:#7e7e7e;
+                  }
+                }
+  
+                &.stat04 {
+                  &:before {
+                    background:#d4573e;
+                  }
+                }
+  
+                &.stat05 {
+                  &:before {
+                    background:#957bca;
+                  }
+                }
+  
+                &.stat06 {
+                  &:before {
+                    background:#ca9f7c;
+                  }
+                }
+
+              }
+
+            
+            }
+            
+          }
+        }
+      }
+
+
     }
 
     .alert-list {
