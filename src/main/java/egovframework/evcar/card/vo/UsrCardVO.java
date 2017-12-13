@@ -1,10 +1,11 @@
 package egovframework.evcar.card.vo;
 
-/**
- * Created by dongguk on 2017-05-31.
+import egovframework.evcar.user.vo.EvcarUsrVO; /**
+ * Created by doum on 2017-12-12.
  */
 public class UsrCardVO {
 
+    private String acrdCrdNo;
     private String usrSno;
     private String cardCd;
     private String cardSno;
@@ -17,12 +18,26 @@ public class UsrCardVO {
     private String fnName;
     private String bilKey;
 
+    public UsrCardVO(){}
+
+    public UsrCardVO(EvcarUsrVO loginVO) {
+        this.acrdCrdNo = loginVO.getAcrdCrdNo();
+    }
+
     public String getUsrSno() {
         return usrSno;
     }
 
     public void setUsrSno(String usrSno) {
         this.usrSno = usrSno;
+    }
+
+    public String getAcrdCrdNo() {
+        return acrdCrdNo;
+    }
+
+    public void setAcrdCrdNo(String acrdCrdNo) {
+        this.acrdCrdNo = acrdCrdNo;
     }
 
     public String getCardCd() {

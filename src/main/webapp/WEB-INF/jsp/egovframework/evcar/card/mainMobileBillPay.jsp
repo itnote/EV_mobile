@@ -229,15 +229,15 @@
 		<dl>
 			<dt><label for="BuyerName">이름</label></dt>
 			<dd>
-				<input id="BuyerName" name="BuyerName" type="text" placeholder="이름을 입력하세요" value="${loginVO.usrNm}">
+				<input id="BuyerName" name="BuyerName" type="text" placeholder="이름을 입력하세요" value="${loginVO.userNm}">
 			</dd>
 			<dt><label for="BuyerTel">연락처</label></dt>
 			<dd>
-				<input id="BuyerTel" name="BuyerTel" type="text" placeholder="연락처를 입력하세요" value="${loginVO.usrCel}">
+				<input id="BuyerTel" name="BuyerTel" type="text" placeholder="연락처를 입력하세요" value="${loginVO.telNo}">
 			</dd>
 			<dt><label for="BuyerEmail">이메일</label></dt>
 			<dd>
-				<input id="BuyerEmail" name="BuyerEmail" type="text" placeholder="이메일을 입력하세요" value="${loginVO.usrEmail}">
+				<input id="BuyerEmail" name="BuyerEmail" type="text" placeholder="이메일을 입력하세요" value="${loginVO.userEmail}">
 			</dd>
 		</dl>
 

@@ -5,17 +5,20 @@ import egovframework.evcar.card.service.CardService;
 import egovframework.evcar.card.vo.UsrCardVO;
 import egovframework.evcar.common.BaseController;
 import egovframework.evcar.common.annotation.LoginCheck;
+import egovframework.evcar.user.vo.EvcarUsrVO;
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 import kr.co.smartro.xpg_pay.urlsample.App;
 import kr.co.smartro.xpg_pay.urlsample.Dto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  * Created by dongguk on 2017-06-01.
@@ -32,6 +35,9 @@ public class CardController extends BaseController {
     @Resource(name = "CardService")
     private CardService cardService;
 
+    @Autowired
+    private HttpSession httpSession;
+
     /**
      * 카드 결제 정보
      * @param request
@@ -39,8 +45,11 @@ public class CardController extends BaseController {
      */
     @LoginCheck
     @RequestMapping("/status.mdo")
-    public String listView(HttpServletRequest request, ModelMap model){
+    public String listView(HttpServletRequest request, ModelMap model) throws Exception {
 
+        EvcarUsrVO loginVO = (EvcarUsrVO) httpSession.getAttribute("loginVO");
+
+        model.addAttribute("cardList", cardService.selectUserCardList(new UsrCardVO(loginVO)));
         return "egovframework/evcar/card/status";
     }
 
@@ -52,6 +61,7 @@ public class CardController extends BaseController {
     @LoginCheck
     @RequestMapping("/register.mdo")
     public String registerView(HttpServletRequest request, ModelMap model) throws Exception{
+
 
         model.addAttribute("smartroKey", smartroKeyIdGnrService.getNextStringId());
         return "egovframework/evcar/card/mainMobileBillPay";
@@ -191,7 +201,7 @@ public class CardController extends BaseController {
     @LoginCheck
     @RequestMapping("/returnBillPay.mdo")
     public String returnBillPay(HttpServletRequest request) throws Exception {
-
+        request.setCharacterEncoding("UTF-8");
         String PayMethod		= getParamToString("PayMethod");
         String MID				= getParamToString("MID");
         String Amt				= getParamToString("Amt");
@@ -250,7 +260,7 @@ public class CardController extends BaseController {
         usrCardVO.setCardSno(CardNum);
         usrCardVO.setFnCode(fn_cd);
         usrCardVO.setFnName(fn_name);
-        usrCardVO.setUsrSno(getLoginUserVO().getAcrdCrdNo());
+        usrCardVO.setAcrdCrdNo(getLoginUserVO().getAcrdCrdNo());
         usrCardVO.setBilKey(BillTid);
 
         cardService.changeUsrCard(usrCardVO);

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -92,8 +93,11 @@ public class BaseController {
      * @param name
      * @return
      */
-    protected String getParamToString(String name){
+    protected String getParamToString(String name) throws UnsupportedEncodingException {
         String result = request.getParameter(name)==null?"":request.getParameter(name);
+        //String result = java.net.URLDecoder.decode(request.getParameter(name), "UTF-8");
+
+        result = new String(result .getBytes("8859_1"), "UTF-8");
         return result;
     }
 

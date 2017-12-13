@@ -7,6 +7,7 @@ import egovframework.evcar.user.dao.EvcarUsrDAO;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by dongguk on 2017-06-02.
@@ -20,6 +21,10 @@ public class CardServiceImpl implements CardService {
     @Resource(name = "EvcarUsrDAO")
     private EvcarUsrDAO evcarUsrDAO;
 
+    @Override
+    public List<UsrCardVO> selectUserCardList(UsrCardVO usrCardVO) throws Exception {
+        return cardDAO.selectUserCardList(usrCardVO);
+    }
 
     @Override
     public void changeUsrCard(UsrCardVO usrCardVO) throws Exception {
@@ -29,10 +34,7 @@ public class CardServiceImpl implements CardService {
         }else{
             cardDAO.insertUserCard(usrCardVO);
         }
-
         // 사용자 카드 정보 변경
         evcarUsrDAO.updateUsrCard(usrCardVO);
-
     }
-
 }

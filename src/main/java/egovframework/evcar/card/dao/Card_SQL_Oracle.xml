@@ -2,28 +2,43 @@
 <!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
 
 <sqlMap namespace="CardDAO">
-
     <typeAlias alias="UsrCardVO" type="egovframework.evcar.card.vo.UsrCardVO"/>
+
+    <select id="CardDAO.selectUserCardList" resultClass="UsrCardVO" parameterClass="UsrCardVO">
+        SELECT
+              CARD_SNO cardSno
+            , CARD_CD cardCd
+            , ACRD_CRD_NO acrdCrdNo
+            , USE_YN useYn
+            , CARD_REG_YMD cardRegYmd
+            , RES_PAY_YMD resPayYmd
+            , FN_CODE fnCode
+            , FN_NAME fnName
+            , BIL_KEY bilKey
+        FROM USR_CARD
+
+        WHERE 1=1
+        AND ACRD_CRD_NO = #acrdCrdNo#
+        AND USE_YN='Y'
+    </select>
 
     <select id="CardDAO.selectUserCardCheck" resultClass="int" parameterClass="UsrCardVO">
         SELECT COUNT(CARD_SNO)
         FROM USR_CARD
         WHERE 1=1
-
         <isNotEmpty prepend="AND" property="cardCd">
             CARD_CD = #cardCd#
         </isNotEmpty>
         <isNotEmpty prepend="AND" property="usrSno">
-            USR_SNO = #usrSno#
+            ACRD_CRD_NO = #acrdCrdNo#
         </isNotEmpty>
     </select>
-
     <insert id="CardDAO.insertUserCard" parameterClass="UsrCardVO">
         INSERT
         INTO USR_CARD (
              CARD_SNO
             ,CARD_CD
-            ,USR_SNO
+            ,ACRD_CRD_NO
             ,USE_YN
             ,CARD_REG_YMD
             ,RES_PAY_YMD
@@ -33,7 +48,7 @@
         ) VALUES (
              #cardSno#
             ,#cardCd#
-            ,#usrSno#
+            ,#acrdCrdNo#
             ,'Y'
             ,#cardRegYear# || '/' ||#cardRegMonth#
             ,#resPayYmd#
@@ -42,12 +57,12 @@
             ,#bilKey#
         )
     </insert>
-
     <update id="CardDAO.updateUserCard" parameterClass="UsrCardVO">
         UPDATE USR_CARD
-        SET  CARD_SNO = #cardSno#
+        SET
+             CARD_SNO = #cardSno#
             ,CARD_CD = #cardCd#
-            ,USR_SNO = #usrSno#
+            ,ACRD_CRD_NO = #acrdCrdNo#
             ,USE_YN = #useYn#
             ,CARD_REG_YMD = #cardRegYmd#
             ,RES_PAY_YMD = #resPayYmd#
@@ -58,7 +73,6 @@
         WHERE 1=1
         AND CARD_SNO = #cardSno#
         AND CARD_CD = #cardCd#
-        AND USR_SNO = #usrSno#
+        AND ACRD_CRD_NO = #acrdCrdNo#
     </update>
-
 </sqlMap>
