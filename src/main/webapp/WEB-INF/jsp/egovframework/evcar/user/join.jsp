@@ -20,6 +20,8 @@
                     <button type="button" onclick="CardCheck()">중복체크</button>
                     <i class="essential">필수항목입니다</i>
                 </dd>
+
+                <%--
                 <dt>발급년월</dt>
                 <dd><i class="essential">필수항목입니다</i>
                     <p class="select">
@@ -51,6 +53,7 @@
                         <i class="fi icon-back"></i>
                     </p>
                 </dd>
+                --%>
             </dl>
 
             <h4 class="">회원정보</h4>
