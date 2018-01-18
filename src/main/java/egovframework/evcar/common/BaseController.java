@@ -5,6 +5,7 @@ import egovframework.com.cmm.EgovMessageSource;
 import egovframework.evcar.common.vo.BaseVO;
 import egovframework.evcar.user.vo.EvcarUsrVO;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import kr.co.smartro.xpg_pag.util.Tool;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -97,7 +98,7 @@ public class BaseController {
         String result = request.getParameter(name)==null?"":request.getParameter(name);
         //String result = java.net.URLDecoder.decode(request.getParameter(name), "UTF-8");
 
-        result = new String(result .getBytes("8859_1"), "UTF-8");
+        result = Tool.convertTo8859_1NEuckr(request.getParameter(name));
         return result;
     }
 

@@ -54,12 +54,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
 	<meta name="format-detection" content="telephone=no" />
 	<meta name="viewport" content="width=device-width">
-
 </head>
 
 <body onunload="">
 
 <script type="text/javascript" src="/assets/smartro/js/incMobileMerchant.js"></script>
+<script>
+    alert('<%=MID%>');
+    alert('<%=MID%>');
+</script>
 <script>
     /**
      * URL 숨기기
