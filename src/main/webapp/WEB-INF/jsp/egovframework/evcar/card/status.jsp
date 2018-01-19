@@ -24,8 +24,8 @@
             </c:forEach>
         </dl>
         <p class="btn-set full">
-            <a class="btn sub half" href="<c:url value="/card/register.mdo"/>">카드정보등록</a>
-            <a class="btn main half" href="">미수금 결제하기</a>
+            <a class="btn sub full" href="<c:url value="/card/register.mdo"/>">카드정보등록</a>
+            <%--<a class="btn main half" href="">미수금 결제하기</a>--%>
         </p>
     </body>
 </html>

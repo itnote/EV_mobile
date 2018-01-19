@@ -60,10 +60,6 @@
 
 <script type="text/javascript" src="/assets/smartro/js/incMobileMerchant.js"></script>
 <script>
-    alert('<%=MID%>');
-    alert('<%=MID%>');
-</script>
-<script>
     /**
      * URL 숨기기
      */
