@@ -26,9 +26,6 @@
         SELECT COUNT(CARD_SNO)
         FROM USR_CARD
         WHERE 1=1
-        <isNotEmpty prepend="AND" property="cardSno">
-            CARD_SNO = #cardSno#
-        </isNotEmpty>
         <isNotEmpty prepend="AND" property="cardCd">
             CARD_CD = #cardCd#
         </isNotEmpty>
