@@ -29,7 +29,7 @@
         <isNotEmpty prepend="AND" property="cardCd">
             CARD_CD = #cardCd#
         </isNotEmpty>
-        <isNotEmpty prepend="AND" property="usrSno">
+        <isNotEmpty prepend="AND" property="acrdCrdNo">
             ACRD_CRD_NO = #acrdCrdNo#
         </isNotEmpty>
     </select>
@@ -72,7 +72,6 @@
             ,BIL_KEY = #bilKey#
 
         WHERE 1=1
-        AND CARD_SNO = #cardSno#
         AND CARD_CD = #cardCd#
         AND ACRD_CRD_NO = #acrdCrdNo#
     </update>
