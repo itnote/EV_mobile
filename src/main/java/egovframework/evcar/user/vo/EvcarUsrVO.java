@@ -8,7 +8,7 @@ import java.util.List;
  * Created by doum on 20171120.
  */
 public class EvcarUsrVO {
-
+    private int userSno;
     private String acrdCrdNo;
     private String userNm;
     private String userId;
@@ -29,8 +29,26 @@ public class EvcarUsrVO {
     private String modDt;
     private String custId;
 
+    private String chgDt;
+
     private String crdIssueYear;
     private String crdIssueMonth;
+
+    public String getChgDt() {
+        return chgDt;
+    }
+
+    public void setChgDt(String chgDt) {
+        this.chgDt = chgDt;
+    }
+
+    public int getUserSno() {
+        return userSno;
+    }
+
+    public void setUserSno(int userSno) {
+        this.userSno = userSno;
+    }
 
     public String getCrdIssueYear() {
         return crdIssueYear;

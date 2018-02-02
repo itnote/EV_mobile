@@ -5,11 +5,11 @@
 
     <typeAlias alias="EvcarUsrVO" type="egovframework.evcar.user.vo.EvcarUsrVO"/>
     <typeAlias alias="UsrCardVO" type="egovframework.evcar.card.vo.UsrCardVO"/>
-
     <!--로그인 액션-->
     <select id="EvcarUsrDAO.loginAction" resultClass="EvcarUsrVO" parameterClass="EvcarUsrVO">
         SELECT
-            ACRD_CRD_NO AS acrdCrdNo
+            USER_SNO AS userSno
+           ,ACRD_CRD_NO AS acrdCrdNo
            ,USER_NM AS userNm
            ,USER_ID AS userId
            ,PWD_NO AS pwdNo
@@ -30,17 +30,19 @@
            ,MOD_DT AS modDt
            ,CUST_ID AS custId
 
-            FROM CHARGE_USER
+            FROM CHARGER_USER
             WHERE 1=1
             AND USE_YN = 'Y'
             AND USER_ID = #userId#
             AND PWD_NO = #pwdNo#
     </select>
+
     <!--회원가입-->
     <insert id="EvcarUsrDAO.joinUserData" parameterClass="EvcarUsrVO">
         INSERT
-        INTO CHARGE_USER (
-             ACRD_CRD_NO
+        INTO CHARGER_USER (
+             USER_SNO
+            ,ACRD_CRD_NO
             ,USER_NM
             ,USER_ID
             ,PWD_NO
@@ -62,7 +64,8 @@
         )
         VALUES
         (
-             #acrdCrdNo#
+             #userSno#
+            ,#acrdCrdNo#
             ,#userNm#
             ,#userId#
             ,#pwdNo#
@@ -83,6 +86,21 @@
             ,#custId#
         )
     </insert>
+
+    <!--회원정보로그-->
+    <insert id="EvcarUsrDAO.acrdUserData" parameterClass="EvcarUsrVO">
+        INSERT INTO CHARGER_ACRD(
+         USER_SNO
+        ,CHG_DT
+        ,ACRD_CRD_NO
+        )
+        VALUES(
+         #userSno#
+        ,NOW()
+        ,#acrdCrdNo#
+        )
+    </insert>
+
     <!--카드정보-->
     <update id="EvcarUsrDAO.updateUsrCard" parameterClass="UsrCardVO">
         UPDATE USR_ATH
@@ -94,14 +112,23 @@
     <!--아이디 중복체크-->
     <select id="EvcarUsrDAO.IdCheck" resultClass="int" parameterClass="EvcarUsrVO">
         SELECT COUNT(*)
-        FROM CHARGE_USER
+        FROM CHARGER_USER
         WHERE USER_ID = #userId#
     </select>
 
     <!--카드번호 중복체크-->
     <select id="EvcarUsrDAO.CardCheck" resultClass="int" parameterClass="EvcarUsrVO">
-        SELECT COUNT(*)
-        FROM CHARGE_USER
-        WHERE ACRD_CRD_NO = #acrdCrdNo#
+        SELECT
+            COUNT(TAB1.ACRD_CRD_NO)
+            FROM CHARGER_ACRD TAB1
+            INNER JOIN (
+            SELECT
+            MAX(CHG_DT) CHG_DT,
+            ACRD_CRD_NO
+            FROM CHARGER_ACRD T2
+            GROUP BY ACRD_CRD_NO
+            ) TAB2 ON TAB1.CHG_DT = TAB2.CHG_DT
+            WHERE 1=1
+            AND TAB1.ACRD_CRD_NO = #acrdCrdNo#
     </select>
 </sqlMap>

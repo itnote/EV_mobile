@@ -19,6 +19,9 @@ public class EvcarUsrDAO extends EgovComAbstractDAO {
         insert("EvcarUsrDAO.joinUserData", evcarUsrVO);
     }
 
+    public void acrdUserData(EvcarUsrVO evcarUsrVO) {
+        insert("EvcarUsrDAO.acrdUserData", evcarUsrVO);
+    }
 
     public void updateUsrCard(UsrCardVO vo) {
         update("EvcarUsrDAO.updateUsrCard", vo);

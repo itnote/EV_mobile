@@ -30,6 +30,9 @@ public class EvcarUsrServiceImpl implements EvcarUsrService {
     @Resource(name="userAthKeyIdGnrService")
     private EgovIdGnrService userAthKey;
 
+    @Resource(name="userSnoIdgnr")
+    private EgovIdGnrService userSnoIdgnr;
+
     @Override
     public EvcarUsrVO loginAction(EvcarUsrVO evcarUsrVO) throws Exception {
 
@@ -45,6 +48,7 @@ public class EvcarUsrServiceImpl implements EvcarUsrService {
     @Override
     public EvcarUsrVO joinUserData(EvcarUsrVO evcarUsrVO) throws Exception {
 
+        evcarUsrVO.setUserSno(userSnoIdgnr.getNextIntegerId());
         evcarUsrVO.setAcrdCrdNo(evcarUsrVO.getAcrdCrdNo().replace("-", ""));
         evcarUsrVO.setCrdIssueDd(evcarUsrVO.getCrdIssueYear()+evcarUsrVO.getCrdIssueMonth());
         // 입력한 비밀번호를 암호화한다.
@@ -52,9 +56,9 @@ public class EvcarUsrServiceImpl implements EvcarUsrService {
         evcarUsrVO.setPwdNo(enpassword);
 
         evcarUserDAO.joinUserData(evcarUsrVO);
+        evcarUserDAO.acrdUserData(evcarUsrVO);
         return evcarUsrVO;
     }
-
 
     //idCheck
     @Override

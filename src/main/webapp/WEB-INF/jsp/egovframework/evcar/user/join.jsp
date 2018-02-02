@@ -13,49 +13,14 @@
             <legend class="sr-only">회원정보를 입력하세요</legend>
             <h3 class="sr-only">회원가입 폼</h3>
 
-            <h4>인증카드정보</h4>
+            <h4>T-머니 인증카드 정보</h4>
             <dl>
                 <dt><label for="acrdCrdNo">카드번호</label></dt>
                 <dd><input class="input-card quantity" id="acrdCrdNo" name="acrdCrdNo" type="text" placeholder="****-****-****-****" onkeypress="isCardCheck=false;">
                     <button type="button" onclick="CardCheck()">중복체크</button>
                     <i class="essential">필수항목입니다</i>
                 </dd>
-
-                <%--
-                <dt>발급년월</dt>
-                <dd><i class="essential">필수항목입니다</i>
-                    <p class="select">
-                        <label class="sr-only" for="crdIssueYear">발급년도</label>
-                        <select id="crdIssueYear" name="crdIssueYear">
-                            <option>YYYY</option>
-                            <c:forEach var="h" begin="2000" end="2017" step="1">
-                                <option value="${h}">${h}</option>
-                            </c:forEach>
-                        </select>
-                        <i class="fi icon-back"></i>
-                    </p>
-                    <p class="select">
-                        <label class="sr-only" for="crdIssueMonth">발급년도</label>
-                        <select id="crdIssueMonth" name="crdIssueMonth">
-                            <option>MM</option>
-                            <c:forEach var="h" begin="1" end="12" step="1">
-                                <c:choose>
-                                    <c:when test="${h < 10}">
-                                        <c:set var="brthMM" value="0${h}"/>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <c:set var="brthMM" value="${h}"/>
-                                    </c:otherwise>
-                                </c:choose>
-                                <option value="<c:if test="${h < 10}">0</c:if>${h}" <c:if test="${fn:substring(Emplyrinfo.brth, 4, 6) ==  brthMM}">selected</c:if>><c:if test="${h < 10}">0</c:if>${h}</option>
-                            </c:forEach>
-                        </select>
-                        <i class="fi icon-back"></i>
-                    </p>
-                </dd>
-                --%>
             </dl>
-
             <h4 class="">회원정보</h4>
             <dl>
                 <dt><label for="userId">아이디</label></dt>
@@ -78,7 +43,6 @@
                 <dt><label for="userEmail">이메일</label></dt>
                 <dd><input id="userEmail" name="userEmail" type="text" placeholder="이메일주소를 입력하세요"><i class="essential">필수항목입니다</i></dd>
             </dl>
-
             <p class="btn-set full">
                 <a class="btn sub" href="javascript:;" onclick="join()">회원가입</a>
             </p>
@@ -102,7 +66,16 @@
         //아이디 정규식
         var regId = /^[A-Za-z0-9_-]{4,12}$/;
 
-        if(userId ==''){
+        if(card == ''){
+            alert('카드번호를 입력하세요.');
+            return false;
+        }else if(card.length < 16){
+            alert('카드번호를 16자리 입력하세요.');
+            return false;
+        }else if(isCardCheck==false){
+            alert('카드 중복 체크를 하세요.');
+            return false;
+        }else if(userId ==''){
             alert("아이디를 입력하세요.");
             return false;
         }else if(isIdCheck==false){
@@ -139,12 +112,6 @@
         }else if( !regEmail.test( $('#userEmail').val())) {
             alert('올바른 이메일 주소를 입력하세요.');
             $('#userEmail').val('');
-            return false;
-        }else if(card == ''){
-            alert('카드번호를 입력하세요.');
-            return false;
-        }else if(isCardCheck==false){
-            alert('카드 중복 체크를 하세요.');
             return false;
         }else{
             return true;
@@ -188,6 +155,11 @@
     var isCardCheck = false;
     function CardCheck() {
         var usrCard = $('#acrdCrdNo').val();
+        if(usrCard.length < 16){
+            alert("카드번호를 16자리 입력하세요.");
+            $('#acrdCrdNo').val('');
+            return false;
+        }
         $.ajax({
             type:"POST",
             url:"<c:url value='/user/ajax/CardCheck.do'/>",
