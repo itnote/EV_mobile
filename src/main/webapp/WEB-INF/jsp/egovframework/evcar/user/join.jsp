@@ -66,16 +66,7 @@
         //아이디 정규식
         var regId = /^[A-Za-z0-9_-]{4,12}$/;
 
-        if(card == ''){
-            alert('카드번호를 입력하세요.');
-            return false;
-        }else if(card.length < 16){
-            alert('카드번호를 16자리 입력하세요.');
-            return false;
-        }else if(isCardCheck==false){
-            alert('카드 중복 체크를 하세요.');
-            return false;
-        }else if(userId ==''){
+        if(userId ==''){
             alert("아이디를 입력하세요.");
             return false;
         }else if(isIdCheck==false){
@@ -112,6 +103,15 @@
         }else if( !regEmail.test( $('#userEmail').val())) {
             alert('올바른 이메일 주소를 입력하세요.');
             $('#userEmail').val('');
+            return false;
+        }else if(card == ''){
+            alert('카드번호를 입력하세요.');
+            return false;
+        }else if(card.length < 16){
+            alert('카드번호를 16자리 입력하세요.');
+            return false;
+        }else if(isCardCheck==false){
+            alert('카드 중복 체크를 하세요.');
             return false;
         }else{
             return true;
