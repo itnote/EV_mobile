@@ -57,7 +57,7 @@
         var userNm = $('input[id^=userNm]').val();
         var cel = $('input[id^=telNo]').val();
         var userEmail = $('input[id^=userEmail]').val();
-        var card = $('input[id^=usrCardList]').val();
+        var card = $('input[id^=acrdCrdNo]').val();
 
         //핸드폰 번호 정규식
         var regCel = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;

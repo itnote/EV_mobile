@@ -5,118 +5,72 @@ import egovframework.evcar.user.vo.EvcarUsrVO; /**
  */
 public class UsrCardVO {
 
-    private String acrdCrdNo;
-    private String usrSno;
-    private String cardCd;
-    private String cardSno;
-    private String useYn;
-    private String cardRegYear;
-    private String cardRegMonth;
-    private String cardRegYmd;
-    private String resPayYmd;
-    private String fnCode;
-    private String fnName;
-    private String bilKey;
+    private int userSno;
+    private String billKey;
+    private String dsbrsMthdCd;
+    private String frDd;
+    private String endDd;
+    private String crdcCd;
+    private String crdcNm;
 
     public UsrCardVO(){}
 
     public UsrCardVO(EvcarUsrVO loginVO) {
-        this.acrdCrdNo = loginVO.getAcrdCrdNo();
+        this.userSno = loginVO.getUserSno();
+    }
+    public int getUserSno() {
+        return userSno;
     }
 
-    public String getUsrSno() {
-        return usrSno;
+    public void setUserSno(int userSno) {
+        this.userSno = userSno;
     }
 
-    public void setUsrSno(String usrSno) {
-        this.usrSno = usrSno;
+    public String getBillKey() {
+        return billKey;
     }
 
-    public String getAcrdCrdNo() {
-        return acrdCrdNo;
+    public void setBillKey(String billKey) {
+        this.billKey = billKey;
     }
 
-    public void setAcrdCrdNo(String acrdCrdNo) {
-        this.acrdCrdNo = acrdCrdNo;
+    public String getDsbrsMthdCd() {
+        return dsbrsMthdCd;
     }
 
-    public String getCardCd() {
-        return cardCd;
+    public void setDsbrsMthdCd(String dsbrsMthdCd) {
+        this.dsbrsMthdCd = dsbrsMthdCd;
     }
 
-    public void setCardCd(String cardCd) {
-        this.cardCd = cardCd;
+    public String getFrDd() {
+        return frDd;
     }
 
-    public String getCardSno() {
-        return cardSno;
+    public void setFrDd(String frDd) {
+        this.frDd = frDd;
     }
 
-    public void setCardSno(String cardSno) {
-        this.cardSno = cardSno;
+    public String getEndDd() {
+        return endDd;
     }
 
-    public String getUseYn() {
-        return useYn;
+    public void setEndDd(String endDd) {
+        this.endDd = endDd;
     }
 
-    public void setUseYn(String useYn) {
-        this.useYn = useYn;
+    public String getCrdcCd() {
+        return crdcCd;
     }
 
-    public String getCardRegYear() {
-        return cardRegYear;
+    public void setCrdcCd(String crdcCd) {
+        this.crdcCd = crdcCd;
     }
 
-    public void setCardRegYear(String cardRegYear) {
-        this.cardRegYear = cardRegYear;
+    public String getCrdcNm() {
+        return crdcNm;
     }
 
-    public String getCardRegMonth() {
-        return cardRegMonth;
-    }
-
-    public void setCardRegMonth(String cardRegMonth) {
-        this.cardRegMonth = cardRegMonth;
-    }
-
-    public String getCardRegYmd() {
-        return cardRegYmd;
-    }
-
-    public void setCardRegYmd(String cardRegYmd) {
-        this.cardRegYmd = cardRegYmd;
-    }
-
-    public String getResPayYmd() {
-        return resPayYmd;
-    }
-
-    public void setResPayYmd(String resPayYmd) {
-        this.resPayYmd = resPayYmd;
-    }
-
-    public String getFnCode() {
-        return fnCode;
-    }
-
-    public void setFnCode(String fnCode) {
-        this.fnCode = fnCode;
-    }
-
-    public String getFnName() {
-        return fnName;
-    }
-
-    public void setFnName(String fnName) {
-        this.fnName = fnName;
-    }
-
-    public String getBilKey() {
-        return bilKey;
-    }
-
-    public void setBilKey(String bilKey) {
-        this.bilKey = bilKey;
+    public void setCrdcNm(String crdcNm) {
+        this.crdcNm = crdcNm;
     }
 }

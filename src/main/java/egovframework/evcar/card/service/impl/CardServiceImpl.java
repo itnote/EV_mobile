@@ -35,6 +35,6 @@ public class CardServiceImpl implements CardService {
             cardDAO.insertUserCard(usrCardVO);
         }
         // 사용자 카드 정보 변경
-        // evcarUsrDAO.updateUsrCard(usrCardVO);
+        evcarUsrDAO.updateUsrCard(usrCardVO);
     }
 }

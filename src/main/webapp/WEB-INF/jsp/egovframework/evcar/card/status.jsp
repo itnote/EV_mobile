@@ -6,26 +6,25 @@
         <div class="card-info">
             <div class="card">
                 <strong>결제카드</strong>
-                <%--<p>${loginVO.usrCard}</p>--%>
             </div>
         </div>
         <dl>
-            <%--
-            <dt>총 결제금액</dt>
-            <dd><c:out value="${loginVO.totSetamt}" default="0"/>원/kw</dd>
-            <dt>총 주입충전량</dt>
-            <dd><c:out value="${loginVO.totChw}" default="0"/>kw</dd>
-            <dt>총 미수금액</dt>
-            <dd class="red"><c:out value="${loginVO.totUnclAmt}" default="0"/>원/kw</dd>
-            --%>
             <c:forEach items="${cardList}" var="item">
-                <dt>${item.fnName}</dt>
-                <dd>${item.cardSno}</dd>
+                <dt>${item.crdcNm}</dt>
+                <dd><%--${item.crdcCd}--%></dd>
             </c:forEach>
         </dl>
-        <p class="btn-set full">
-            <a class="btn sub full" href="<c:url value="/card/register.mdo"/>">카드정보등록</a>
-            <%--<a class="btn main half" href="">미수금 결제하기</a>--%>
-        </p>
+        <c:choose>
+            <c:when test="${empty cardList}">
+                <p class="btn-set full">
+                    <a class="btn sub full" href="<c:url value="/card/register.mdo"/>">카드정보등록</a>
+                </p>
+            </c:when>
+            <c:otherwise>
+                <p class="btn-set full">
+                    <a class="btn sub full" href="<c:url value="/card/register.mdo"/>">카드정보변경</a>
+                </p>
+            </c:otherwise>
+        </c:choose>
     </body>
 </html>

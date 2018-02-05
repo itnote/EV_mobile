@@ -255,13 +255,11 @@ public class CardController extends BaseController {
             VerifyBillKValue = encodeMD5Base64(MID+merchantKey+AuthDate+AuthCode+Amt+BillTid);
         }
         UsrCardVO usrCardVO = new UsrCardVO();
-        usrCardVO.setUseYn("Y");
-        usrCardVO.setCardCd("card");
-        usrCardVO.setCardSno(CardNum);
-        usrCardVO.setFnCode(fn_cd);
-        usrCardVO.setFnName(fn_name);
-        usrCardVO.setAcrdCrdNo(getLoginUserVO().getAcrdCrdNo());
-        usrCardVO.setBilKey(BillTid);
+        usrCardVO.setDsbrsMthdCd("card");
+        usrCardVO.setCrdcCd(fn_cd);
+        usrCardVO.setCrdcNm(fn_name);
+        usrCardVO.setUserSno(getLoginUserVO().getUserSno());
+        usrCardVO.setBillKey(BillTid);
 
         cardService.changeUsrCard(usrCardVO);
 

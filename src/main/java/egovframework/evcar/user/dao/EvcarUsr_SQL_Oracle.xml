@@ -103,10 +103,10 @@
 
     <!--카드정보-->
     <update id="EvcarUsrDAO.updateUsrCard" parameterClass="UsrCardVO">
-        UPDATE USR_ATH
-            SET USR_CARD = #cardSno#
+        UPDATE CHARGER_USER
+            SET BILL_KEY = #billKey#
         WHERE 1=1
-            AND USR_SNO = #usrSno#
+            AND USER_SNO = #userSno#
     </update>
 
     <!--아이디 중복체크-->

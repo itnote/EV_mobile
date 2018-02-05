@@ -6,73 +6,59 @@
 
     <select id="CardDAO.selectUserCardList" resultClass="UsrCardVO" parameterClass="UsrCardVO">
         SELECT
-              CARD_SNO cardSno
-            , CARD_CD cardCd
-            , ACRD_CRD_NO acrdCrdNo
-            , USE_YN useYn
-            , CARD_REG_YMD cardRegYmd
-            , RES_PAY_YMD resPayYmd
-            , FN_CODE fnCode
-            , FN_NAME fnName
-            , BIL_KEY bilKey
-        FROM USR_CARD
-
+         USER_SNO AS userSno
+        ,BILL_KEY AS billKey
+        ,DSBRS_MTHD_CD AS dsbrsMthdCd
+        ,FR_DD AS frDd
+        ,END_DD AS endDd
+        ,CRDC_CD AS crdcCd
+        ,CRDC_NM AS crdcNm
+        FROM CHARGER_BILL
         WHERE 1=1
-        AND ACRD_CRD_NO = #acrdCrdNo#
-        AND USE_YN='Y'
+        AND USER_SNO =#userSno#
     </select>
 
     <select id="CardDAO.selectUserCardCheck" resultClass="int" parameterClass="UsrCardVO">
-        SELECT COUNT(CARD_SNO)
-        FROM USR_CARD
+        SELECT
+        COUNT(USER_SNO)
+        FROM CHARGER_BILL
         WHERE 1=1
-        <isNotEmpty prepend="AND" property="cardCd">
-            CARD_CD = #cardCd#
-        </isNotEmpty>
-        <isNotEmpty prepend="AND" property="acrdCrdNo">
-            ACRD_CRD_NO = #acrdCrdNo#
-        </isNotEmpty>
+        AND USER_SNO = #userSno#
+        AND BILL_KEY = #billKey#
     </select>
 
     <insert id="CardDAO.insertUserCard" parameterClass="UsrCardVO">
         INSERT
-        INTO USR_CARD (
-             CARD_SNO
-            ,CARD_CD
-            ,ACRD_CRD_NO
-            ,USE_YN
-            ,CARD_REG_YMD
-            ,RES_PAY_YMD
-            ,FN_CODE
-            ,FN_NAME
-            ,BIL_KEY
+        INTO CHARGER_BILL (
+             USER_SNO
+            ,BILL_KEY
+            ,DSBRS_MTHD_CD
+            ,FR_DD
+            ,END_DD
+            ,CRDC_CD
+            ,CRDC_NM
         ) VALUES (
-             #cardSno#
-            ,#cardCd#
-            ,#acrdCrdNo#
-            ,'Y'
-            ,#cardRegYear# || '/' ||#cardRegMonth#
-            ,#resPayYmd#
-            ,#fnCode#
-            ,#fnName#
-            ,#bilKey#
+            #userSno#
+           ,#billKey#
+           ,#dsbrsMthdCd#
+           ,'20000101'
+           ,'29990101'
+           ,#crdcCd#
+           ,#crdcNm#
         )
     </insert>
     <update id="CardDAO.updateUserCard" parameterClass="UsrCardVO">
-        UPDATE USR_CARD
+        UPDATE CHARGER_BILL
         SET
-             CARD_SNO = #cardSno#
-            ,CARD_CD = #cardCd#
-            ,ACRD_CRD_NO = #acrdCrdNo#
-            ,USE_YN = #useYn#
-            ,CARD_REG_YMD = #cardRegYmd#
-            ,RES_PAY_YMD = #resPayYmd#
-            ,FN_CODE = #fnCode#
-            ,FN_NAME = #fnName#
-            ,BIL_KEY = #bilKey#
-
+             USER_SNO = #userSno#
+            ,BILL_KEY = #billKey#
+            ,DSBRS_MTHD_CD = #dsbrsMthdCd#
+            ,FR_DD = '20000101'
+            ,END_DD = '29990101'
+            ,CRDC_CD = #crdcCd#
+            ,CRDC_NM = #crdcNm#
         WHERE 1=1
-        AND CARD_CD = #cardCd#
-        AND ACRD_CRD_NO = #acrdCrdNo#
+        AND USER_SNO = #userSno#
+        AND BILL_KEY = #billKey#
     </update>
 </sqlMap>
