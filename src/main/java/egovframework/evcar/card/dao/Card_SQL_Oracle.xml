@@ -13,6 +13,7 @@
         ,END_DD AS endDd
         ,CRDC_CD AS crdcCd
         ,CRDC_NM AS crdcNm
+        ,CARD_NO AS cardNo
         FROM CHARGER_BILL
         WHERE 1=1
         AND USER_SNO =#userSno#
@@ -37,6 +38,7 @@
             ,END_DD
             ,CRDC_CD
             ,CRDC_NM
+            ,CARD_NO
         ) VALUES (
             #userSno#
            ,#billKey#
@@ -45,6 +47,7 @@
            ,'29990101'
            ,#crdcCd#
            ,#crdcNm#
+           ,#cardNo#
         )
     </insert>
     <update id="CardDAO.updateUserCard" parameterClass="UsrCardVO">
@@ -57,6 +60,7 @@
             ,END_DD = '29990101'
             ,CRDC_CD = #crdcCd#
             ,CRDC_NM = #crdcNm#
+            ,CARD_NO =#cardNo#
         WHERE 1=1
         AND USER_SNO = #userSno#
         AND BILL_KEY = #billKey#

@@ -12,6 +12,7 @@ public class UsrCardVO {
     private String endDd;
     private String crdcCd;
     private String crdcNm;
+    private String cardNo;
 
     public UsrCardVO(){}
 
@@ -72,5 +73,13 @@ public class UsrCardVO {
 
     public void setCrdcNm(String crdcNm) {
         this.crdcNm = crdcNm;
+    }
+
+    public String getCardNo() {
+        return cardNo;
+    }
+
+    public void setCardNo(String cardNo) {
+        this.cardNo = cardNo;
     }
 }

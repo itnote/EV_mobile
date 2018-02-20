@@ -15,9 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 import java.util.List;
 
-/**
- * Created by dongguk on 2017-06-01.
- */
 @Controller
 public class ChargerController extends BaseController {
 

@@ -11,7 +11,7 @@
         <dl>
             <c:forEach items="${cardList}" var="item">
                 <dt>${item.crdcNm}</dt>
-                <dd><%--${item.crdcCd}--%></dd>
+                <dd>${item.cardNo}</dd>
             </c:forEach>
         </dl>
         <c:choose>

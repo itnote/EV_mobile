@@ -9,7 +9,7 @@
     <!-- 근처 거리 충전기 위치 조회 -->
     <select id="ChargerDAO.selectDistanceStationList" parameterClass="BaseVO" resultClass="egovMap">
         SELECT
-         A.CS_ID
+        A.CS_ID
         ,A.CS_NM
         ,A.POST
         ,A.ADDRESS
@@ -18,7 +18,7 @@
         ,A.LON
         ,A.MANAGER
         ,A.USE_YN
-        ,(SELECT SUM(IF(B.STS=2, 1, 0)) FROM CHARGER B WHERE 1=1 AND  B.CS_ID = A.CS_ID) CHARGING
+        ,(SELECT B.STS FROM CHARGER B WHERE 1=1 AND  B.CS_ID = A.CS_ID GROUP BY B.STS ORDER BY COUNT(B.STS) DESC LIMIT 1) CHARGING
         ,A.CREATED_AT
         ,A.CREATED_BY
         ,A.UPDATED_AT

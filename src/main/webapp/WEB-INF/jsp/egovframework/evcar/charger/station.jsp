@@ -5,26 +5,7 @@
 </head>
 <body>
 <h3 class="sr-only">충전기 목록입니다.</h3>
-<%--
-<div class="map-info">
-    <h4>충전기ID <strong>453421</strong></h4>
-    <ul>
-        <li>충전속도 <strong class="high">고속</strong></li>
-        <!-- class : high, middle, low -->
-        <li>충전기상태 <strong class="stop">충전대기</strong></li>
-        <!-- class : ing, stop -->
-    </ul>
-    <p class="time">진행시간 <strong>01:32:00</strong>
-    <p class="price">요금 <strong>30,200원/kw</strong></p>
-</div>
---%>
 <div id="map" class="map-area" style="width: 100%;">
-    <%--
-    <ul class="tabs">
-        <li><a href="">현재충전기</a></li>
-        <li><a class="active" href="">근처충전기</a></li>
-    </ul>
-    --%>
     <ul class="zoom">
         <li><a href="javascript:;" onclick="map.setLevel('+')">지도확대<i class="fi icon-zoom_plus"></i></a></li>
         <li><a href="javascript:;" onclick="map.setLevel('-')">지도축소<i class="fi icon-zoom_minus"></i></a></li>
@@ -33,7 +14,6 @@
         <div class="filter">
             <a href="#">필터선택<i class="fi icon-filter"></i></a>
             <button>필터닫기<i class="fi icon-close"></i></button>
-
             <ul class="check">
                 <li><input id="stat01" type="checkbox" checked><label class="stat01" for="stat01">충전중</label>
                 <li><input id="stat02" type="checkbox" checked><label class="stat02" for="stat02">충전가능</label>
@@ -44,197 +24,6 @@
             </ul>
         </div>
 </div>
-<script type="text/javascript">
-    var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
-    var options = { //지도를 생성할 때 필요한 기본 옵션
-        center: new daum.maps.LatLng(33.3616666, 126.52916660000005), //지도의 중심좌표.
-        level: 10 //지도의 레벨(확대, 축소 정도)
-    };
-    var map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
-    var markers = [], overrays=[], selectedMarker = null;
-    var func = {
-        chargerType: function(type) {
-            var msg = '충전기';
-            switch(type){
-                case 1:
-                    msg = '급속';
-                    break;
-                case 2:
-                    msg = '완속';
-                    break;
-                default:
-                    break;
-            }
-            return msg;
-        },
-        chargerStat: function(chargerStat) {
-            var type = '4', msg = '오류';
-            switch(chargerStat) {
-                case '0'://알수없음
-                    type = '3', msg = '알수없음';
-                    break;
-                case '1'://대기중
-                    type = '2', msg = '대기중';
-                    break;
-                case '2'://충전중
-                    type = '1', msg = '충전중';
-                    break;
-                default:
-                    type = '4', msg = '오류';
-                    break;
-            }
-
-            var $i = $('<i />', {class: 'stat'+type, text: msg});
-
-            return $i;
-        }
-    }
-    var ACTION = {
-        loadMarker: function(){
-            // /api/v1/stationinfo
-            var result = [];
-            $.ajax({
-                async: false,
-                type: 'GET',
-                url: '/ajax/charger/station.mdo',
-                data: {},
-                beforeSend: function(){},
-                success: function(args){
-                    args.forEach(function(value, index){
-                        result.push({
-                            address: value.address,
-                            csNm: value.csNm,
-                            csId: value.csId,
-                            tel: value.tel,
-                            latlng: new daum.maps.LatLng(parseFloat(value.lat), parseFloat(value.lon)),
-                            content: value.csId,
-                            charging: value.charging
-                        });
-                    });
-                },
-                error: function(args){
-                }
-            });
-            return result;
-        },
-        loadCharger: function(args, marker) {
-            var param = args;
-            $.ajax({
-                async: false,
-                type: 'GET',
-                url: '/charger/'+param.csId+'/stat.mdo',
-                //url: '/api/v1/charger/'+id,
-                beforeSend: function(){},
-                success: function(args){
-                    if(args.length < 1) {
-                        alert('충전기가 없습니다');
-                        return;
-                    }
-
-                    var $info = $('<div />', {class: 'map-pops'}), infowindow, overlay;
-                    $info.append(
-                        $('<h2 />', {text: '충전소 운영 현황'}).append(
-                            $('<small />', {text: param.csNm}).append(
-                                $('<strong>', {class:'address', text: param.address})
-                            )
-                        )
-                    );
-
-                    $info.append($('<table />').append(
-                        $('<thead />').append(
-                            $('<tr />').append(
-                                $('<th />', {text: '구분'}),
-                                $('<th />', {text: '충전기 타입'}),
-                                $('<th />', {text: '운전 상태'})
-                            )
-                        )
-                        )
-                    );
-
-                    args.forEach(function(value, index){
-                        $info.find('table').append(
-                            $('<tr />')
-                                .append($('<td style="text-align:center;"/>').text( value.chargerGrpId + ' / ' + value.chargerId ))
-                                .append($('<td style="text-align:center;"/>').text(this.func.chargerType(value.ctp)))
-                                .append($('<td style="text-align:center;"/>').append(
-                                    this.func.chargerStat(value.sts)
-                                ))
-                        )
-                    });
-                    $info.append(
-                        $('<button />', {text: 'X'}).click(function(){closeOverlay()})
-                    );
-
-                    var iwContent = $info.get(0), // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-                        iwPosition = marker.getPosition(), //인포윈도우 표시 위치입니다
-                        iwRemoveable = false; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
-
-                    // 인포윈도우를 생성하고 지도에 표시합니다
-                    overlay = new daum.maps.CustomOverlay({
-                        map: map, // 인포윈도우가 표시될 지도
-                        position : iwPosition,
-                        content : iwContent,
-                        xAnchor: 1,
-                        yAnchor: 1.1,
-                        removable : iwRemoveable
-                    });
-                    overrays.push(overlay);
-                    function closeOverlay() {
-                        overlay.setMap(null);
-                        overrays.forEach(function(e1,e2){
-                            e1.setMap(null);
-                        });
-                    }
-                },
-                error: function(args) {
-                }
-            });
-        }
-    };
-
-    $(document).ready(function(){
-        // marker 생성
-        markers = ACTION.loadMarker();
-        $.each(markers, function(e1, e2){
-            //var pos = e2;
-
-            var markerImage;
-
-
-            console.log(e2);
-            console.log(e1);
-            if(e2.charging > 0)
-                markerImage = new daum.maps.MarkerImage(
-                    '/assets/images/marker_red.png',
-                    new daum.maps.Size(32, 32),
-                    {offset: new daum.maps.Point(16, 32)});
-            else
-                markerImage = new daum.maps.MarkerImage(
-                    '/assets/images/marker_blue.png',
-                    new daum.maps.Size(32, 32),
-                    {offset: new daum.maps.Point(16, 32)});
-
-
-
-
-
-            // 마커를 생성합니다
-            var marker = new daum.maps.Marker({
-                image: markerImage,
-                map: map, // 마커를 표시할 지도
-                position: e2.latlng, // 마커의 위치
-                title: e2.content
-            });
-
-            daum.maps.event.addListener(marker, 'click', function(){
-                overrays.forEach(function(e1,e2){
-                    e1.setMap(null);
-                });
-                ACTION.loadCharger(e2, marker);
-            });
-        });
-    });
-</script>
 <style type="text/css">
     div.map-pops {
         position: absolute;
@@ -338,17 +127,23 @@
     }
 
     div.map-pops table td i.stat1 {
-        background: #456dde;
+        background: #7e7e7e;
     }
-
     div.map-pops table td i.stat2 {
-        background: #99cc33;
+        background: #528ce2;
     }
-
+    div.map-pops table td i.stat3 {
+        background: #7bc981;
+    }
     div.map-pops table td i.stat4 {
-        background: #cc3333;
+        background: #d4573e;
     }
-
+    div.map-pops table td i.stat5 {
+        background: #7e7e7e;
+    }
+    div.map-pops table td i.stat6 {
+        background: #ca9f7c;
+    }
 
     div.map-pops button {
         position: absolute;
@@ -362,5 +157,184 @@
         border-radius: 50%;
     }
 </style>
+<script type="text/javascript">
+    var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+    var options = { //지도를 생성할 때 필요한 기본 옵션
+        center: new daum.maps.LatLng(33.3616666, 126.52916660000005), //지도의 중심좌표.
+        level: 10 //지도의 레벨(확대, 축소 정도)
+    };
+    var map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
+    var markers = [], overrays=[], selectedMarker = null;
+    var func = {
+        chargerType: function(type) {
+            var msg = '충전기';
+            switch(type){
+                case 1:
+                    msg = '급속';
+                    break;
+                case 2:
+                    msg = '완속';
+                    break;
+                default:
+                    break;
+            }
+            return msg;
+        },
+        chargerStat: function(chargerStat) {
+            var type = '6', msg = '알수없음';
+            switch(chargerStat) {
+                case '1':
+                    type = '1', msg = '통신이상';
+                    break;
+                case '2':
+                    type = '2', msg = '충전대기';
+                    break;
+                case '3':
+                    type = '3', msg = '충전중';
+                    break;
+                case '4':
+                    type = '4', msg = '운영중지';
+                    break;
+                case '5':
+                    type = '5', msg = '점검중';
+                    break;
+                default:
+                    type = '6', msg = '표시안함';
+                    break;
+            }
+            var $i = $('<i />', {class: 'stat'+type, text: msg});
+            return $i;
+        }
+    }
+    var ACTION = {
+        loadMarker: function(){
+            var result = [];
+            $.ajax({
+                async: false,
+                type: 'GET',
+                url: '/ajax/charger/station.mdo',
+                data: {},
+                beforeSend: function(){},
+                success: function(args){
+                    args.forEach(function(value, index){
+                        result.push({
+                            address: value.address,
+                            csNm: value.csNm,
+                            csId: value.csId,
+                            tel: value.tel,
+                            latlng: new daum.maps.LatLng(parseFloat(value.lat), parseFloat(value.lon)),
+                            content: value.csId,
+                            charging: value.charging
+                        });
+                    });
+                },
+                error: function(args){
+                }
+            });
+            return result;
+        },
+        loadCharger: function(args, marker) {
+            var param = args;
+            $.ajax({
+                async: false,
+                type: 'GET',
+                url: '/charger/'+param.csId+'/stat.mdo',
+                beforeSend: function(){},
+                success: function(args){
+                    if(args.length < 1) {
+                        alert('충전기가 없습니다');
+                        return;
+                    }
+                    var $info = $('<div />', {class: 'map-pops'}), infowindow, overlay;
+                    $info.append(
+                        $('<h2 />', {text: '충전소 운영 현황'}).append(
+                            $('<small />', {text: param.csNm}).append(
+                                $('<strong>', {class:'address', text: param.address})
+                            )
+                        )
+                    );
+                    $info.append($('<table />').append(
+                        $('<thead />').append(
+                        $('<tr />').append(
+                        $('<th />', {text: '구분'}),
+                        $('<th />', {text: '충전기 타입'}),
+                        $('<th />', {text: '운전 상태'})
+                        )
+                            )
+                        )
+                    );
+
+                    args.forEach(function(value, index){
+                        $info.find('table').append(
+                            $('<tr />')
+                            .append($('<td style="text-align:center;"/>').text( value.chargerGrpId + ' / ' + value.chargerId ))
+                            .append($('<td style="text-align:center;"/>').text(this.func.chargerType(value.ctp)))
+                            .append($('<td style="text-align:center;"/>').append(
+                                this.func.chargerStat(value.sts)
+                            ))
+                        )
+                    });
+                    $info.append( $('<button />', {text: 'X'}).click(function(){closeOverlay()}));
+                    var iwContent = $info.get(0), // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+                        iwPosition = marker.getPosition(), //인포윈도우 표시 위치입니다
+                        iwRemoveable = false; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+                    // 인포윈도우를 생성하고 지도에 표시합니다
+                    overlay = new daum.maps.CustomOverlay({
+                        map: map, // 인포윈도우가 표시될 지도
+                        position : iwPosition,
+                        content : iwContent,
+                        xAnchor: 1,
+                        yAnchor: 1.1,
+                        removable : iwRemoveable
+                    });
+                    overrays.push(overlay);
+                    function closeOverlay() {
+                        overlay.setMap(null);
+                        overrays.forEach(function(e1,e2){
+                            e1.setMap(null);
+                        });
+                    }
+                },
+                error: function(args) {
+                }
+            });
+        }
+    };
+    $(document).ready(function(){
+        // marker 생성
+        markers = ACTION.loadMarker();
+        $.each(markers, function(e1, e2){
+            var markerImage;
+            if(e2.charging == 2)
+                markerImage = new daum.maps.MarkerImage(
+                    '/assets/images/marker_blue.png',
+                    new daum.maps.Size(32, 32),
+                    {offset: new daum.maps.Point(16, 32)});
+            else if(e2.charging == 3)
+                markerImage = new daum.maps.MarkerImage(
+                    '/assets/images/marker_green.png',
+                    new daum.maps.Size(32, 32),
+                    {offset: new daum.maps.Point(16, 32)});
+            else
+                markerImage = new daum.maps.MarkerImage(
+                    '/assets/images/marker_gray.png',
+                    new daum.maps.Size(32, 32),
+                    {offset: new daum.maps.Point(16, 32)});
+            // 마커를 생성합니다
+            var marker = new daum.maps.Marker({
+                image: markerImage,
+                map: map, // 마커를 표시할 지도
+                position: e2.latlng, // 마커의 위치
+                title: e2.content
+            });
+            daum.maps.event.addListener(marker, 'click', function(){
+                overrays.forEach(function(e1,e2){
+                    e1.setMap(null);
+                });
+                ACTION.loadCharger(e2, marker);
+            });
+        });
+    });
+</script>
 </body>
 </html>
