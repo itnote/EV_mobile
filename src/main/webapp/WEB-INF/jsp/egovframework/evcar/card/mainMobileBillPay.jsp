@@ -1,4 +1,5 @@
 <%@page import="java.net.InetAddress"%>
+<%@page import="java.util.*"%>
 <%@ page import="egovframework.com.cmm.service.EgovProperties" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
@@ -44,6 +45,24 @@
 	String VbankExpDate = nxDay.toString();
 	VbankExpDate = VbankExpDate.substring(0, 10); 
 	VbankExpDate = VbankExpDate.replaceAll("-", "");
+
+
+//	String  orderSno =  "jeju"  + ( System.currentTimeMillis() / 1000);
+	String  orderSno ="";
+
+	//
+
+	String  ymd ="JJ180524";
+	  orderSno =  "jeju"  + ( System.currentTimeMillis() / 1000);
+	String  orderSno1 =      (""  + ( System.currentTimeMillis() / 1000)).substring(6,10);
+
+
+	System.out.println("JJ180524:" + orderSno1);
+	System.out.println(ymd + orderSno1);
+
+
+	  orderSno  =  ymd + orderSno1 ;
+
 %>
 <!DOCTYPE HTML>
 <html>
@@ -190,7 +209,7 @@
 	<input type="hidden" name="GoodsCnt"			value="1" 											/><%--상품갯수 --%>
 	<input type="hidden" name="GoodsName"			value="빌링키인증" 									/><%--빌링키인증 --%>
 	<input type="hidden" name="Amt"					value="<%=goodsAmt %>" 								/><%--상품가격 --%>
-	<input type="hidden" name="Moid"				value="mnoid1234567890" 							/><%--상품주문번호 --%>
+	<input type="hidden" name="Moid"				value="<%=orderSno %>" 							/><%--상품주문번호 --%>
 	<%--<input type="hidden" name="Moid"				value="${smartroKey}" 								/>상품주문번호 --%>
 	<input type="hidden" name="MID"					value="<%=MID %>" 									/><%--회원사아이디 --%>
 	<input type="hidden" name="SUB_ID"				value="" 											/><%--서브몰아이디 --%>

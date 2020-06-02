@@ -37,7 +37,7 @@ switch (servletPath){
     <script src="<c:url value="/assets/js/common.js"/>"></script>
     <script src="<c:url value="/assets/js/evcar.js"/>"></script>
 
-    <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=21b110c76efc5127c52ddc183aa80a46"></script>
+    <%--<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=21b110c76efc5127c52ddc183aa80a46"></script>--%>
     <script src="<c:url value="/assets/js/initMap.js"/>"></script>
 
     <script src="<c:url value="/assets/js/cleave.min.js"/>"></script>
@@ -80,7 +80,10 @@ switch (servletPath){
         </li>
         </c:if>
         <li>
-            <a href="/charger/station.mdo">충전기정보</a>
+            <a href="<c:url value="https://jevs.evwhere.co.kr"/>"   target="_blank">
+
+
+            >충전기정보</a>
         </li>
         <c:if test="${!empty loginVO}">
         <li>
@@ -94,21 +97,24 @@ switch (servletPath){
         </c:if>
         <c:if test="${empty loginVO}">
         <li>
-            <a href="<c:url value="/user/join.mdo"/>">회원가입</a>
+            <a href="<c:url value="/user/agree.mdo"/>">회원가입</a>
         </li>
         </c:if>
+        <%--<li>--%>
+            <%--<a href="/evcar/bbs/list.mdo?bbsId=BBSMSTR_000000000004">전기차소식</a>--%>
+        <%--</li>--%>
+
         <li>
-            <a href="/evcar/bbs/list.mdo?bbsId=BBSMSTR_000000000004">전기차소식</a>
+            <a href="http://www.jejuevservice.com/bbs/board.php?bo_table=qna&me_code=6020"  target="_blank">
+                FAQ</a>
         </li>
+
         <li>
-            <a href="/evcar/bbs/list.mdo?bbsId=BBSMSTR_000000000003">FAQ</a>
+            <a href="http://jejuevservice.com/bbs/board.php?bo_table=notice&me_code=6010" target="_blank">공지사항</a>
         </li>
-        <li>
-            <a href="/evcar/bbs/list.mdo?bbsId=BBSMSTR_000000000001">공지사항</a>
-        </li>
-        <li>
-            <a href="/evcar/bbs/list.mdo?bbsId=BBSMSTR_000000000002">도움말</a>
-        </li>
+        <%--<li>--%>
+            <%--<a href="/evcar/bbs/list.mdo?bbsId=BBSMSTR_000000000002">도움말</a>--%>
+        <%--</li>--%>
     </ul>
     <button class="close" herf="">메뉴닫기<i class="fi icon-close"></i></button>
 </nav>

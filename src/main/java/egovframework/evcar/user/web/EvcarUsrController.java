@@ -2,7 +2,6 @@ package egovframework.evcar.user.web;
 
 import egovframework.app.push.service.PushService;
 import egovframework.app.push.vo.PushVO;
-import egovframework.com.utl.sim.service.EgovFileScrty;
 import egovframework.evcar.common.BaseController;
 import egovframework.evcar.user.service.EvcarUsrService;
 import egovframework.evcar.user.vo.EvcarUsrVO;
@@ -110,6 +109,14 @@ public class EvcarUsrController extends BaseController {
 
         return "egovframework/evcar/user/join";
     }
+
+
+    @RequestMapping(value = "/agree.mdo")
+    public String agree(HttpServletRequest request, ModelMap model){
+
+        return "egovframework/evcar/user/agree";
+    }
+
 
     /**
      * 사용자 회원가입 처리 GET

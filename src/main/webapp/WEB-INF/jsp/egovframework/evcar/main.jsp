@@ -30,7 +30,7 @@
         </li>
         </c:if>
         <li>
-            <a href="<c:url value="/charger/station.mdo"/>">
+            <a href="<c:url value="https://jevs.evwhere.co.kr"/>"   target="_blank">
                 <p>충전기정보</p><i class="fi icon-plug"></i></a>
         </li>
         <c:if test="${!empty loginVO}">
@@ -46,28 +46,43 @@
         </li>
         </c:if>
         <c:if test="${empty loginVO}">
-        <li>
-            <a href="<c:url value="/user/join.mdo"/>">
-                <p>회원가입</p><i class="fi icon-sign"></i></a>
-        </li>
+        <%--<li>--%>
+            <%--<a href="<c:url value="/user/join.mdo"/>">--%>
+                <%--<p>회원가입</p><i class="fi icon-sign"></i></a>--%>
+        <%--</li>--%>
+
+            <li>
+                <a href="<c:url value="/user/agree.mdo"/>">
+                    <p>회원가입</p><i class="fi icon-sign"></i></a>
+            </li>
         </c:if>
 
+        <%--<li>--%>
+            <%--<a href="/evcar/bbs/list.mdo?bbsId=BBSMSTR_000000000004" target="_blank">--%>
+                <%--<p>전기차소식</p><i class="fi icon-ev"></i></a>--%>
+        <%--</li>--%>
+
+
         <li>
-            <a href="/evcar/bbs/list.mdo?bbsId=BBSMSTR_000000000004">
-                <p>전기차소식</p><i class="fi icon-ev"></i></a>
-        </li>
-        <li>
-            <a href="/evcar/bbs/list.mdo?bbsId=BBSMSTR_000000000003">
+            <a href="http://www.jejuevservice.com/bbs/board.php?bo_table=qna&me_code=6020"  target="_blank">
                 <p>FAQ</p><i class="fi icon-faq"></i></a>
         </li>
+        <%--<li>--%>
+            <%--<a href="/evcar/bbs/list.mdo?bbsId=BBSMSTR_000000000001">--%>
+                <%--<p>공지사항</p><i class="fi icon-notice"></i></a>--%>
+        <%--</li>--%>
         <li>
-            <a href="/evcar/bbs/list.mdo?bbsId=BBSMSTR_000000000001">
+            <a href="http://jejuevservice.com/bbs/board.php?bo_table=notice&me_code=6010" target="_blank">
                 <p>공지사항</p><i class="fi icon-notice"></i></a>
         </li>
-        <li>
-            <a href="/evcar/bbs/list.mdo?bbsId=BBSMSTR_000000000002">
-                <p>도움말</p><i class="fi icon-help"></i></a>
-        </li>
+
+
+        <%--<li>--%>
+            <%--<a href="/evcar/bbs/list.mdo?bbsId=BBSMSTR_000000000002">--%>
+                <%--<p>도움말</p><i class="fi icon-help"></i></a>--%>
+        <%--</li>--%>
+
+
     </ul>
 </nav>
 <%--<h2 class="mark">본 사이트는 웹접근성품질인증을 획득하였습니다.</h2>--%>

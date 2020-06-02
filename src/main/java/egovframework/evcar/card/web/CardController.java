@@ -238,14 +238,17 @@ public class CardController extends BaseController {
             try{
                 kr.co.smartro.xpg_pay.crypt cy = new kr.co.smartro.xpg_pay.crypt();
                 DecryptBillTid = cy.xpgClientDecrypt(merchantKey,BillTid);
-
+                logger.debug("##############################################################");
                 logger.debug("BillTid: "+BillTid);
                 logger.debug("MID: "+MID);
                 logger.debug("merchantKey: "+merchantKey);
-                logger.debug("AuthDate: "+AuthDate);
+//                logger.debug("AuthDate: "+AuthDate);
                 logger.debug("AuthCode: "+AuthCode);
                 logger.debug("Amt: "+Amt);
                 logger.debug("DecryptBillTid: "+DecryptBillTid);
+                logger.debug("OrderSno: "+Moid);
+
+                logger.debug("##############################################################");
 
                 VerifyBillKValue = encodeMD5Base64(MID+merchantKey+AuthDate+AuthCode+DecryptBillTid);
             } catch (Exception e) {
