@@ -241,6 +241,19 @@ public class CardController extends BaseController {
                 logger.debug("##############################################################");
                 logger.debug("BillTid: "+BillTid);
                 logger.debug("MID: "+MID);
+                logger.debug("fn_cd: "+fn_cd);
+                logger.debug("fn_name: "+fn_name);
+                logger.debug("CardNum: "+CardNum);
+                logger.debug("BuyerName: "+BuyerName);
+                logger.debug("GoodsName: "+GoodsName);
+                logger.debug("mallUserID: "+mallUserID);
+
+                logger.debug("Moid: "+Moid);
+                logger.debug("ResultCode: "+ResultCode);
+                logger.debug("ResultMsg: "+ResultMsg);
+
+
+
                 logger.debug("merchantKey: "+merchantKey);
 //                logger.debug("AuthDate: "+AuthDate);
                 logger.debug("AuthCode: "+AuthCode);
@@ -268,6 +281,7 @@ public class CardController extends BaseController {
         cardService.changeUsrCard(usrCardVO);
 
         return "redirect:/card/status.mdo";
+
     }
 
     @LoginCheck

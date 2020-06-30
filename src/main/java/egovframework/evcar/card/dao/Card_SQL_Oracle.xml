@@ -14,6 +14,7 @@
         ,CRDC_CD AS crdcCd
         ,CRDC_NM AS crdcNm
         ,CARD_NO AS cardNo
+        , fn_card_nm(CRDC_CD) as cardNm
         FROM CHARGER_BILL
         WHERE 1=1
         AND USER_SNO =#userSno#
@@ -39,6 +40,7 @@
             ,CRDC_CD
             ,CRDC_NM
             ,CARD_NO
+            ,MOD_DT
         ) VALUES (
             #userSno#
            ,#billKey#
@@ -48,6 +50,7 @@
            ,#crdcCd#
            ,#crdcNm#
            ,#cardNo#
+           ,now()
         )
     </insert>
     <update id="CardDAO.updateUserCard" parameterClass="UsrCardVO">
@@ -61,6 +64,7 @@
             ,CRDC_CD = #crdcCd#
             ,CRDC_NM = #crdcNm#
             ,CARD_NO =#cardNo#
+            ,MOD_DT = now()
         WHERE 1=1
         AND USER_SNO = #userSno#
         AND BILL_KEY = #billKey#

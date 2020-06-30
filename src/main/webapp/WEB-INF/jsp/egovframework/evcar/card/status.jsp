@@ -10,7 +10,7 @@
         </div>
         <dl>
             <c:forEach items="${cardList}" var="item">
-                <dt>${item.crdcNm}</dt>
+                <dt>${item.cardNm}</dt>
                 <dd>${item.cardNo}</dd>
             </c:forEach>
         </dl>

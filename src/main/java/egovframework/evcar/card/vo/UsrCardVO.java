@@ -13,6 +13,15 @@ public class UsrCardVO {
     private String crdcCd;
     private String crdcNm;
     private String cardNo;
+    private String cardNm;
+
+    public String getCardNm() {
+        return cardNm;
+    }
+
+    public void setCardNm(String cardNm) {
+        this.cardNm = cardNm;
+    }
 
     public UsrCardVO(){}
 
